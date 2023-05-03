@@ -27,11 +27,11 @@ export default {
       300: '#AB222E',
       400: '#AB4D55'
     },
-    YELLOW: '#FBA94C',
-    GREEN: '#04d361',
     BLUE: {
       100: '#82F3FF',
       200: '#065E7C'
-    }
+    },
+    YELLOW: '#FBA94C',
+    GREEN: '#04d361'
   }
 }

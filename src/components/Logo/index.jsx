@@ -1,11 +1,16 @@
 import { Container } from "./styles"
+import logo from "../../assets/logo/logo.svg"
 
-export function Logo() {
+// eslint-disable-next-line react/prop-types
+export function Logo({ isAdmin = false }) {
   return (
     <Container>
-      <img src="../../assets/logo/logo.svg" alt="Polygonal shape" />
-      <p>food explorer</p>
-      <span>admin</span>
+      <img src={logo} alt="Polygonal shape" />
+      <p>
+        food explorer
+        {isAdmin && <p>admin</p>}
+
+      </p>
     </Container>
   )
 }

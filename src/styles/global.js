@@ -8,15 +8,15 @@ export default createGlobalStyle`
   }
 
   body{
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
-    color: ${({ theme }) => theme.COLORS.WHITE};
+    background-color: ${({ theme }) => theme.COLORS.DARK[400]};
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
 
     -webkitfont-smoothing: antialiased
 
   }
 
   body, input, button, textarea, select{
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     outline: none;
   }

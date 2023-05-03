@@ -4,7 +4,7 @@ import receipt from "../../assets/icons/receipt.svg"
 import { Container } from "./styles"
 
 // eslint-disable-next-line react/prop-types
-export function Header({ isAdmin = true }) {
+export function Header({ isAdmin = false }) {
   return (
     <Container>
 

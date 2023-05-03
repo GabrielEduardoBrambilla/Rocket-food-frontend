@@ -1,17 +1,18 @@
 import { Logo } from '../Logo'
 import menu from "../../assets/icons/Menu.svg"
+import receipt from "../../assets/icons/receipt.svg"
+import { Container } from "./styles"
 
-export function Header() {
+// eslint-disable-next-line react/prop-types
+export function Header({ isAdmin = true }) {
   return (
-    <>
-      <header>
+    <Container>
 
-        <img src={menu} alt="Menu de opções do usuario" />
+      <img src={menu} alt="User option menu" />
 
-        <Logo />
+      <Logo isAdmin={isAdmin} />
 
-
-      </header>
-    </>
+      {!isAdmin && <img src={receipt} alt="Receipt icon" />}
+    </Container>
   )
 }

@@ -8,9 +8,9 @@ export function Logo({ isAdmin = false }) {
       <img src={logo} alt="Polygonal shape" />
       <p>
         food explorer
-        {isAdmin && <p>admin</p>}
 
       </p>
+      {isAdmin && <span>admin</span>}
     </Container>
   )
 }

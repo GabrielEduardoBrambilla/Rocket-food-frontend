@@ -10,12 +10,15 @@ export const Container = styled.div`
   p {
     font-size: 21px;
     font-weight: bold;
-    p {
-      font-size: 12px;
-      font-weight: 400;
+    align-items: center;
+    align-self: center;
+  }
+  span {
+    font-size: 12px;
+    font-weight: 400;
+    align-self: center;
 
-      color: ${({ theme }) => theme.COLORS.BLUE[100]};
-      text-align: right;
-    }
+    color: ${({ theme }) => theme.COLORS.BLUE[100]};
+    text-align: right;
   }
 `

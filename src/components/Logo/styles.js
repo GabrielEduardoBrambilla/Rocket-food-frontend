@@ -6,19 +6,44 @@ export const Container = styled.div`
 
   img {
     align-self: flex-start;
+    width: 24px;
+    height: 24px;
   }
   p {
+    display: flex;
     font-size: 21px;
     font-weight: bold;
     align-items: center;
     align-self: center;
-  }
-  span {
-    font-size: 12px;
-    font-weight: 400;
-    align-self: center;
+    gap: 8px;
 
-    color: ${({ theme }) => theme.COLORS.BLUE[100]};
-    text-align: right;
+    span {
+      font-size: 12px;
+      font-weight: 400;
+      align-self: center;
+      color: ${({ theme }) => theme.COLORS.BLUE[100]};
+      text-align: right;
+    }
+  }
+  /* destopk class */
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: flex-start;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      font-size: 24px;
+      font-weight: bold;
+      align-self: flex-start;
+      line-height: auto;
+      span {
+        line-height: auto;
+        align-self: flex-end;
+      }
+    }
   }
 `

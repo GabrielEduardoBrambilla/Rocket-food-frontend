@@ -34,4 +34,20 @@ export default createGlobalStyle`
     filter: brightness(0.9)
   }
 
+  @media (min-width: 768px) {
+    .mobile {
+      display: none;
+    }
+    .desktop {
+      display: block;
+    }
+  }
+  @media (max-width: 768px) {
+    .mobile {
+      display: block;
+    }
+    .desktop {
+      display: none;
+    }
+  }
 `

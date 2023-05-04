@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.button`
   display: flex;
-  min-width: 216px;
   justify-content: center;
   align-items: center;
   gap: 8px;

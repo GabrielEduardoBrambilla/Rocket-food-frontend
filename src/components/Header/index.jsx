@@ -22,7 +22,6 @@ export function Header({ isAdmin = true }) {
       <Input icon={search} className='desktop' placeholder='Search for dishes or ingredients' />
       {/* desktop */}
       <Button isAdmin={isAdmin} />
-      <Button title="aksdjsakdjka" />
       {/* desktop */}
       <img src={SignOut} alt="" className='desktop' />
     </Container>

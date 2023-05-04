@@ -15,8 +15,10 @@ export const Container = styled.div`
     font-weight: bold;
     align-items: center;
     align-self: center;
+    justify-content: center;
     gap: 8px;
-
+    flex-wrap: nowrap;
+    flex-shrink: 0;
     span {
       font-size: 12px;
       font-weight: 400;
@@ -36,9 +38,12 @@ export const Container = styled.div`
     p {
       display: flex;
       flex-direction: column;
+      flex-wrap: nowrap;
+
       font-size: 24px;
       font-weight: bold;
       align-self: flex-start;
+      gap: 0px;
       line-height: auto;
       span {
         line-height: auto;

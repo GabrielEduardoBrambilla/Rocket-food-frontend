@@ -6,14 +6,13 @@ import { ThemeProvider } from 'styled-components'
 
 
 
-
 import theme from './styles/theme'
-import { Footer } from './components/Footer'
+import { Home } from './pages/home'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode >
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Footer />
+      <Home />
     </ThemeProvider>
   </React.StrictMode>
 )

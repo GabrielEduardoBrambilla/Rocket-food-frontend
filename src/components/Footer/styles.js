@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.footer`
   display: flex;
   padding: 30px 27px;
   justify-content: space-evenly;

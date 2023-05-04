@@ -2,7 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  gap: 10px;
+  padding: 30px 27px;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  background-color: ${({ theme }) => theme.COLORS.DARK[600]};
   color: ${({ theme }) => theme.COLORS.LIGHT[700]};
 
   > p {
@@ -11,11 +15,10 @@ export const Container = styled.div`
     font-size: 14px;
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   }
-  /* destopk class */
+  /* desktop class */
   @media (min-width: 768px) {
     display: flex;
-    padding: 30px 27px;
-    justify-content: space-evenly;
-    align-items: center;
+    padding: 24px 123px;
+    justify-content: space-between;
   }
 `

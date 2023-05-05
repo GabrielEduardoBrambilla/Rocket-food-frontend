@@ -5,7 +5,8 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 12px;
+  padding: 4px 12px;
+  width: inherit;
 
   background-color: ${({ theme }) => theme.COLORS.RED[100]};
   color: ${({ theme }) => theme.COLORS.LIGHT[100]};
@@ -24,4 +25,7 @@ export const Container = styled.button`
     background-color: ${({ theme }) => theme.COLORS.RED[400]};
   }
   /* destopk class */
+  @media (min-width: 768px) {
+    /* padding: 0; */
+  }
 `

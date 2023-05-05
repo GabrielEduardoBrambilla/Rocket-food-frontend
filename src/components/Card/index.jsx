@@ -16,8 +16,11 @@ export function Card({ img, price, title, isAdmin = false, ...rest }) {
       <p >{title} </p>
       <p className="description">Juice made with sweet Passion fruit</p>
       <span>R$ {price}</span>
-      {!isAdmin && <Stepper />}
-      {!isAdmin && <IncludeButton title='incluir' />}
+      {!isAdmin && <div className="buttonsWrapper">
+        <Stepper />
+        <IncludeButton title='incluir' />
+      </div>
+      }
     </Container>
   )
 }

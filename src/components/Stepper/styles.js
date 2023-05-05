@@ -16,4 +16,7 @@ export const Container = styled.div`
     border: none;
     background-color: ${({ theme }) => theme.COLORS.DARK[300]};
   }
+  @media (min-width: 768px) {
+    margin: 12px 0px 16px;
+  }
 `

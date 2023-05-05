@@ -47,6 +47,10 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.BLUE[100]};
   }
 
+  .buttonsWrapper {
+    width: 100%;
+  }
+
   @media (min-width: 768px) {
     width: 304px;
     min-height: 462px;
@@ -98,6 +102,11 @@ export const Container = styled.div`
       text-align: center;
 
       color: ${({ theme }) => theme.COLORS.BLUE[100]};
+    }
+    .buttonsWrapper {
+      display: grid;
+      margin: 0 24px;
+      grid-template-areas: 'Stepper IncludeButton';
     }
   }
 `

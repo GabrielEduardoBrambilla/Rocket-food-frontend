@@ -11,7 +11,6 @@ export function Card({ img, price, title, isAdmin = false, ...rest }) {
     <Container {...rest}>
       <img className="topLeftIcon" src={icon} alt="Top left icon" />
       <img src={img} alt="Dishe ilustrative image">
-
       </img>
       <p >{title} </p>
       <p className="description">Juice made with sweet Passion fruit</p>

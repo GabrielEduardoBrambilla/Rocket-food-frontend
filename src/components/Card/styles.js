@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   position: relative;
 
   width: 210px;
@@ -32,11 +31,6 @@ export const Container = styled.div`
     position: absolute;
     top: 16px;
     right: 16px;
-    /* padding: 24px; */
-  }
-
-  > p {
-    margin: 12px 0;
   }
   .description {
     display: none;
@@ -55,8 +49,7 @@ export const Container = styled.div`
     width: 304px;
     min-height: 462px;
     padding: 24px;
-    margin: 24px;
-
+    gap: 15px;
     background-color: ${({ theme }) => theme.COLORS.DARK[200]};
 
     > img {
@@ -80,7 +73,6 @@ export const Container = styled.div`
       line-height: 34px;
       letter-spacing: 0em;
       text-align: center;
-      margin: 12px 0;
     }
     .description {
       display: block;
@@ -104,7 +96,8 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.BLUE[100]};
     }
     .buttonsWrapper {
-      display: grid;
+      display: flex;
+      justify-content: center;
       margin: 0 24px;
       grid-template-areas: 'Stepper IncludeButton';
     }

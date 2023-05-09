@@ -18,6 +18,5 @@ export const Container = styled.div`
   }
   @media (min-width: 768px) {
     margin: 12px 0px 16px;
-    padding: 12px 0px 16px;
   }
 `

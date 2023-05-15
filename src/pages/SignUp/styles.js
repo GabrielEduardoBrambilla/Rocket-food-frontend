@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.COLORS.LIGHT[300]};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.COLORS.DARK[400]};
 `

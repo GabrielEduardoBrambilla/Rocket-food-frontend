@@ -8,13 +8,13 @@ export function SignIn() {
       <Logo formHeader />
       <form action="">
         <p className="desktop-title">Login</p>
-        <label htmlFor="">Email
-          <Input label='email' type='text' placeholder='example@gmail.com' />
+        <label htmlFor="email">Email
+          <Input id='email' label='email' type='text' placeholder='example@gmail.com' />
         </label>
-        <label htmlFor="">Password
-          <Input placeholder='password' />
+        <label htmlFor="password">Password
+          <Input id='password' placeholder='password' />
         </label>
-        <IncludeButton title='SignIn' />
+        <IncludeButton title='SignIn' type='submit' />
         <a href="#">New? SignUp here!</a>
       </form>
     </Container>

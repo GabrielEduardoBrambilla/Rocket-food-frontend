@@ -19,7 +19,7 @@ export function Header({ isAdmin = false }) {
       {/* mobile */}
       {!isAdmin && <img className='mobile' src={receipt} alt="Receipt icon" />}
       {/* desktop */}
-      <Input className='desktop' icon={search} placeholder='Search for dishes or ingredients' />
+      <Input icon={search} placeholder='Search for dishes or ingredients' />
       {/* desktop */}
       <Button isAdmin={isAdmin} />
       {/* desktop */}

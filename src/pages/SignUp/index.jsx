@@ -2,7 +2,7 @@ import { Container } from "./styles"
 import { Logo } from '../../components/Logo'
 import { Input } from '../../components/Input'
 import { IncludeButton } from '../../components/IncludeButton'
-export function SignIn() {
+export function SignUp() {
   return (
     <Container>
       <Logo />

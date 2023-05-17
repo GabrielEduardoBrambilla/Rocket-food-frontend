@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 581px;
+  width: 100%;
+  max-width: 581px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +32,7 @@ export const Container = styled.div`
   }
   /* destopk class */
   @media (max-width: 768px) {
-    width: 316px;
+    width: 100%;
     height: 48px;
     display: flex;
     align-items: center;

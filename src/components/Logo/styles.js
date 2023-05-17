@@ -51,4 +51,21 @@ export const Container = styled.div`
       }
     }
   }
+
+  .formHeader-text {
+    width: 224px;
+    height: 44px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 44px;
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+  }
+  .formHeader-img {
+    align-self: flex-start;
+    width: 44px;
+    height: 44px;
+  }
 `

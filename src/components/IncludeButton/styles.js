@@ -5,8 +5,8 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
-  width: inherit;
+  padding: 12px 32px;
+  width: 100%;
 
   background-color: ${({ theme }) => theme.COLORS.RED[100]};
   color: ${({ theme }) => theme.COLORS.LIGHT[100]};

@@ -8,7 +8,7 @@ import SignOut from "../../assets/icons/SignOut.svg"
 import { Container } from "./styles"
 
 // eslint-disable-next-line react/prop-types
-export function Header({ isAdmin = true }) {
+export function Header({ isAdmin = false }) {
 
   return (
     <Container>
@@ -19,7 +19,7 @@ export function Header({ isAdmin = true }) {
       {/* mobile */}
       {!isAdmin && <img className='mobile' src={receipt} alt="Receipt icon" />}
       {/* desktop */}
-      <Input icon={search} className='desktop' placeholder='Search for dishes or ingredients' />
+      <Input className='desktop' icon={search} placeholder='Search for dishes or ingredients' />
       {/* desktop */}
       <Button isAdmin={isAdmin} />
       {/* desktop */}

@@ -1,6 +1,6 @@
 
 import { Container } from "./styles"
-import { IncludeButton } from '../ButtonInclude'
+import { IncludeButton } from '../IncludeButton'
 import { Stepper } from '../Stepper'
 import favIcon from '../../assets/icons/Heart.svg'
 import editIcon from '../../assets/icons/Pencil.svg'

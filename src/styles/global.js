@@ -39,12 +39,12 @@ export default createGlobalStyle`
       display: none;
     }
     .desktop {
-      display: block;
+      display: flex;
     }
   }
   @media (max-width: 768px) {
     .mobile {
-      display: block;
+      display: flex;
     }
     .desktop {
       display: none;

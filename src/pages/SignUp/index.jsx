@@ -5,15 +5,21 @@ import { IncludeButton } from '../../components/IncludeButton'
 export function SignUp() {
   return (
     <Container>
-      <Logo />
+      <Logo formHeader />
       <form action="">
-        <label htmlFor="">Email</label>
-        <Input label='email' type='text' placeholder='example@gmail.com' />
-        <label htmlFor="">Password</label>
-        <Input placeholder='password' />
-        <IncludeButton title='SignIn' />
+        <p className="desktop-title">Create your account</p>
+        <label htmlFor="user-name">Your name
+          <Input id='user-name' label='email' type='text' placeholder='John Don' />
+        </label>
+        <label htmlFor="email">Email
+          <Input id='email' label='email' type='text' placeholder='example@gmail.com' />
+        </label>
+        <label htmlFor="password">Password
+          <Input id='password' placeholder='password' />
+        </label>
+        <IncludeButton title='Create account' type='submit' />
+        <a href="#">Login here!</a>
       </form>
-      <a href="#">SignUp</a>
     </Container>
   )
 }

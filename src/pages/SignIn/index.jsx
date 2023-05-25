@@ -14,7 +14,6 @@ export function SignIn() {
 
   function handleSignIn(e) {
     e.preventDefault(); // Prevent the default form submission behavior
-
     signIn({ email, password });
   }
 

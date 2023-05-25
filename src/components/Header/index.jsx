@@ -4,12 +4,14 @@ import { Input } from '../Input'
 import menu from "../../assets/icons/Menu.svg"
 import receipt from "../../assets/icons/receipt.svg"
 import search from "../../assets/icons/search.svg"
-import SignOut from "../../assets/icons/SignOut.svg"
+import SignOutImg from "../../assets/icons/SignOut.svg"
 import { Container } from "./styles"
+
+import { useAuth } from '../../hooks/auth'
 
 // eslint-disable-next-line react/prop-types
 export function Header({ isAdmin = false }) {
-
+  const { signOut } = useAuth()
   return (
     <Container>
 
@@ -19,11 +21,12 @@ export function Header({ isAdmin = false }) {
       {/* mobile */}
       {!isAdmin && <img className='mobile' src={receipt} alt="Receipt icon" />}
       {/* desktop */}
-      <Input icon={search} placeholder='Search for dishes or ingredients' />
+      {/* mobileHeader is for hiding the search bar in mobile devices */}
+      <Input mobileHeader icon={search} placeholder='Search for dishes or ingredients' />
       {/* desktop */}
       <Button isAdmin={isAdmin} />
       {/* desktop */}
-      <img src={SignOut} alt="" className='desktop' />
+      <img onClick={signOut} src={SignOutImg} alt="" className='desktop' />
     </Container>
   )
 }

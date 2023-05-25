@@ -6,6 +6,8 @@ export const AuthContext = createContext({})
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
 
+
+
   async function signIn({ email, password }) {
 
 
@@ -16,7 +18,7 @@ function AuthProvider({ children }) {
       localStorage.setItem("@rocketfood:user", JSON.stringify(user))
       localStorage.setItem("@rocketfood:token", token)
 
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       setData({ user, token })
 
     } catch (error) {
@@ -28,12 +30,19 @@ function AuthProvider({ children }) {
     }
   }
 
+  function singOut() {
+    localStorage.removeItem("@rocketfood:token")
+    localStorage.removeItem("@rocketfood:user")
+
+    setData({})
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('@rocketfood:token')
     const user = localStorage.getItem('@rocketfood:user')
 
     if (token && user) {
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setData({
         token,
@@ -42,7 +51,7 @@ function AuthProvider({ children }) {
     }
   }, [])
 
-  return <AuthContext.Provider value={{ signIn, user: data.user }}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={{ signIn, singOut, user: data.user }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {

@@ -2,6 +2,7 @@ import { Container } from "./styles"
 import { Logo } from '../../components/Logo'
 import { Input } from '../../components/Input'
 import { IncludeButton } from '../../components/IncludeButton'
+import { Link } from 'react-router-dom';
 
 import { useState } from "react"
 import { api } from "../../services/api";
@@ -42,10 +43,10 @@ export function SignUp() {
           <Input id='email' label='email' type='text' placeholder='example@gmail.com' onChange={e => setEmail(e.target.value)} />
         </label>
         <label htmlFor="password">Password
-          <Input id='password' placeholder='password' onChange={e => setPassword(e.target.value)} />
+          <Input id='password' type='password' placeholder='password' onChange={e => setPassword(e.target.value)} />
         </label>
         <IncludeButton title='Create account' onClick={handleSignUp} />
-        <a href="#">Login here!</a>
+        <Link to="/">Login here!</Link>
       </form>
     </Container>
   )

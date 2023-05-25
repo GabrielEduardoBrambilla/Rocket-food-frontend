@@ -6,12 +6,18 @@ import receipt from "../../assets/icons/receipt.svg"
 import search from "../../assets/icons/search.svg"
 import SignOutImg from "../../assets/icons/SignOut.svg"
 import { Container } from "./styles"
-
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth'
 
 // eslint-disable-next-line react/prop-types
 export function Header({ isAdmin = false }) {
   const { signOut } = useAuth()
+  const navigation = useNavigate()
+
+  function handleSignOut() {
+    navigation("/")
+    signOut()
+  }
   return (
     <Container>
 
@@ -26,7 +32,7 @@ export function Header({ isAdmin = false }) {
       {/* desktop */}
       <Button isAdmin={isAdmin} />
       {/* desktop */}
-      <img onClick={signOut} src={SignOutImg} alt="" className='desktop' />
+      <img onClick={handleSignOut} src={SignOutImg} alt="" className='desktop' />
     </Container>
   )
 }

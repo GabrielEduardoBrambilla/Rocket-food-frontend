@@ -6,6 +6,10 @@ export const Container = styled.header`
   padding: 56px 28px 24px;
   background-color: ${({ theme }) => theme.COLORS.DARK[700]};
 
+  img {
+    cursor: pointer;
+  }
+
   @media (min-width: 768px) {
     align-items: center;
     justify-content: space-between;

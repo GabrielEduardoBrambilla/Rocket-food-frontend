@@ -6,10 +6,7 @@ export const AuthContext = createContext({})
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
 
-
-
   async function signIn({ email, password }) {
-
 
     try {
       const response = await api.post("/sessions", { email: email, password: password })
@@ -30,7 +27,7 @@ function AuthProvider({ children }) {
     }
   }
 
-  function singOut() {
+  function signOut() {
     localStorage.removeItem("@rocketfood:token")
     localStorage.removeItem("@rocketfood:user")
 
@@ -51,7 +48,7 @@ function AuthProvider({ children }) {
     }
   }, [])
 
-  return <AuthContext.Provider value={{ signIn, singOut, user: data.user }}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {

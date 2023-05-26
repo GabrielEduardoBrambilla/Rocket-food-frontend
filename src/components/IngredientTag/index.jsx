@@ -1,7 +1,7 @@
 import { Container } from "./styles"
 
 // eslint-disable-next-line react/prop-types
-export function Ingredient({ name }) {
+export function IngredientTag({ name }) {
 
   return (
     <Container>

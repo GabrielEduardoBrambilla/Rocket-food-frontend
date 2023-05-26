@@ -27,6 +27,14 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.LIGHT[100]};
     }
   }
+  .category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+  }
   > img {
     margin-left: 16px;
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};

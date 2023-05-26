@@ -8,7 +8,9 @@ export function Input({ icon: Icon, mobileHeader = false, ...rest }) {
     // signIn screen need the display in mobile, can't use desktop class 
     <Container className={hideInHeader}>
       {Icon && <img src={Icon} size={20} />}
-      <input {...rest} />
+      <input {...rest} >
+
+      </input>
     </Container>
   )
 }

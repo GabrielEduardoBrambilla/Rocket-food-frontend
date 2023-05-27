@@ -54,6 +54,7 @@ export function CreateDish() {
         <h2>Novo Prato</h2>
         <label htmlFor="imgUpload">
           Dish Image
+
           <Input
             onChange={e => setDishImg(e.target.value)}
             id='imgUpload'
@@ -72,7 +73,7 @@ export function CreateDish() {
         </label>
         <label htmlFor="category">
           Category
-          <input
+          <Input
             onChange={e => setCategory(e.target.value)}
             id='category'
             placeholder='Select a Category'
@@ -86,10 +87,30 @@ export function CreateDish() {
             <IngredientFormItem value="Pão de Batata"></IngredientFormItem>
           </div>
         </label>
+        {/* <div className="tags">
+          {
+            tags.map((tag, index) => (
+              <NoteItem
+                key={String(index)}
+                value={tag}
+                onClick={() => handleRemoveTag(tag)}
+              />
 
+            ))
+          }
+          <NoteItem
+            isNew
+            placeholder="Nova Tag"
+            onChange={e => setNewTag(e.target.value)}
+            value={newTag}
+            onClick={handleAddTag}
+          />
+        </div> */}
 
         <label htmlFor="price">
+
           Price
+
           <Input
             onChange={e => setPrice(e.target.value)}
             id='price'
@@ -97,7 +118,9 @@ export function CreateDish() {
           />
         </label>
         <label htmlFor="description">
+
           Description
+
           <Input
             onChange={e => setDescription(e.target.value)}
             id='description'

@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[900]};
   color: ${({ theme }) => theme.COLORS.LIGHT[500]};
 
+  border-radius: 15px;
   border-radius: 10px;
 
   > input {

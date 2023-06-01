@@ -2,6 +2,52 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
+
+  .ingredient {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to a new line */
+    background-color: ${({ theme }) => theme.COLORS.DARK[800]};
+    border-radius: 8px;
+    justify-content: flex-start; /* Start align items from the beginning */
+    align-items: center; /* Vertically center align items */
+    gap: 8px;
+    padding: 8px;
+
+    > .ingredientItem {
+      height: 1px;
+      background-color: red;
+    }
+  }
+
+  @media (min-width: 320px) {
+    .ingredient > * {
+      flex-basis: calc(50% - 8px); /* Two items per row with 8px gap */
+    }
+  }
+
+  @media (min-width: 480px) {
+    .ingredient > * {
+      flex-basis: calc(33.33% - 8px); /* Three items per row with 8px gap */
+    }
+  }
+
+  @media (min-width: 640px) {
+    .ingredient > * {
+      flex-basis: calc(25% - 8px); /* Four items per row with 8px gap */
+    }
+  }
+
+  /* Add more media queries as needed for different breakpoints */
+  select {
+    background-color: ${({ theme }) => theme.COLORS.DARK[900]};
+    color: ${({ theme }) => theme.COLORS.LIGHT[500]};
+
+    border: 0;
+    border-radius: 15px;
+    border-radius: 10px;
+    height: 56px;
+    padding: 12px;
+  }
 `
 export const Form = styled.form`
   display: flex;

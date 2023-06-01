@@ -3,16 +3,15 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   align-items: center;
-
+  justify-content: space-evenly;
   background-color: ${({ theme, isNew }) =>
     isNew ? 'transparent' : theme.COLORS.LIGHT[600]};
 
   color: ${({ theme }) => theme.COLORS.DARK[300]};
 
   border: ${({ theme, isNew }) =>
-    isNew ? `1px dashed ${theme.COLORS.DARK[600]}` : 'none'};
+    isNew ? `2px dashed ${theme.COLORS.LIGHT[600]}` : 'none'};
 
-  margin-bottom: 8px;
   border-radius: 10px;
   padding-right: 16px;
 
@@ -29,7 +28,7 @@ export const Container = styled.div`
   }
 
   > input {
-    height: 56px;
+    height: 32px;
     width: 100%;
 
     padding: 12px;

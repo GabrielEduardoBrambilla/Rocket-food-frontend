@@ -31,12 +31,6 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 640px) {
-    .ingredient > * {
-      flex-basis: calc(25% - 8px); /* Four items per row with 8px gap */
-    }
-  }
-
   /* Add more media queries as needed for different breakpoints */
   select {
     background-color: ${({ theme }) => theme.COLORS.DARK[900]};

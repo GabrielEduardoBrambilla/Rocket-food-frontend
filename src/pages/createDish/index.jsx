@@ -112,25 +112,6 @@ export function CreateDish() {
             />
           </div>
         </label>
-        {/* <div className="tags">
-          {
-            tags.map((tag, index) => (
-              <NoteItem
-                key={String(index)}
-                value={tag}
-                onClick={() => handleRemoveTag(tag)}
-              />
-
-            ))
-          }
-          <NoteItem
-            isNew
-            placeholder="Nova Tag"
-            onChange={e => setNewTag(e.target.value)}
-            value={newTag}
-            onClick={handleAddTag}
-          />
-        </div> */}
 
         <label htmlFor="price">
 

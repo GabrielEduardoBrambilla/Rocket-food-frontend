@@ -23,24 +23,33 @@ export function CreateDish() {
   const [newIngredient, setNewIngredient] = useState("");
 
   const handleSubmit = () => {
-    // console.log(user, id_Dish);
-    api.post("/dishes/", {
-      image: dishImg,
-      price: price,
-      category: selectedCategory,
-      name: name,
-      ingredients: ingredients,
-      description: description
-    })
+    const formData = new FormData();
+    formData.append("price", price);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("category", selectedCategory);
+    formData.append("ingredients", JSON.stringify(ingredients));
+    console.log(ingredients)
+
+    formData.append("image", dishImg);
+
+    api.post("/dishes/", formData)
       .then(() => {
         alert("Add to favorites");
-      }).catch(error => {
+      })
+      .catch((error) => {
         if (error.response) {
           alert(error.response.data.message);
         } else {
           alert("Not possible to be added to favorites");
         }
       });
+  };
+
+
+  function handleImageChange(e) {
+    const file = e.target.files[0]; // Get the first selected file
+    setDishImg(file)
 
   }
 
@@ -57,6 +66,7 @@ export function CreateDish() {
     setSelectedCategory(event.target.value);
   }
 
+
   return (
     <Container>
       <Header isAdmin />
@@ -68,7 +78,8 @@ export function CreateDish() {
           Dish Image
 
           <Input
-            onChange={e => setDishImg(e.target.value)}
+            onChange={handleImageChange}
+
             id='imgUpload'
             placeholder='Select Image'
             type='file'
@@ -78,6 +89,7 @@ export function CreateDish() {
         <label htmlFor="name">
           Name
           <Input
+            value='name'
             onChange={e => setName(e.target.value)}
             id='name'
             placeholder='Ex: Mac and cheese'
@@ -87,8 +99,9 @@ export function CreateDish() {
         <label htmlFor="category">Category:</label>
         <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
           <option value="">-- Select --</option>
-          <option value="Meal">Meal</option>
-          <option value="Drink">Drink</option>
+          <option value="meal">meal</option>
+          <option value="dessert">Dessert</option>
+          <option value="beverage">Beverage</option>
         </select>
 
         <label htmlFor="ingredients">
@@ -97,8 +110,10 @@ export function CreateDish() {
             {
               ingredients.map((ingredient, index) => (
 
-                <IngredientFormItem value={ingredient} key={String(index)}
+                <IngredientFormItem value={ingredient}
+                  key={String(index)}
                   onClick={() => handleRemoveIngredient(ingredient)}
+
                 />
               ))
             }
@@ -106,7 +121,8 @@ export function CreateDish() {
             <IngredientFormItem
               isNew
               placeholder='Add'
-              value={newIngredient}
+              // value={newIngredient}
+              value='name'
               onChange={e => setNewIngredient(e.target.value)}
               onClick={handleAddIngredient}
             />
@@ -118,6 +134,8 @@ export function CreateDish() {
           Price
 
           <Input
+            value={10}
+
             onChange={e => setPrice(e.target.value)}
             id='price'
             placeholder='Ex: 10 [just the number]'

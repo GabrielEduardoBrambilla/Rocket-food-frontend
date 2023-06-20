@@ -5,8 +5,6 @@ import { Container } from "./styles"
 export function Input({ icon: Icon, mobileHeader = false, ...rest }) {
   const hideInHeader = mobileHeader ? "desktop" : ""
 
-
-
   return (
     // signIn screen need the display in mobile, can't use desktop class 
     <Container className={hideInHeader}>

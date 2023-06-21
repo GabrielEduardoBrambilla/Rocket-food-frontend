@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
+
   .ingredient {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */
@@ -68,7 +69,6 @@ export const Form = styled.form`
     font-size: 16px;
     line-height: 100%;
   }
-
   /* CSS just for the description  */
   > label {
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};
@@ -94,6 +94,47 @@ export const Form = styled.form`
     > img {
       width: 22px;
       height: 22px;
+    }
+  }
+
+  .third-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    padding: 0px;
+    gap: 32px;
+
+    width: 364px;
+    height: 48px;
+
+    .IncludeButton {
+      flex: 1 1 172px;
+    }
+  }
+  .deleteButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 24px;
+    gap: 8px;
+
+    width: 160px;
+    height: 48px;
+    background: #0d161b;
+    border-radius: 5px;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 
@@ -157,6 +198,41 @@ export const Form = styled.form`
         gap: 16px;
         width: 251px;
       }
+    }
+
+    .third-wrapper {
+      justify-content: end;
+      padding: 0px;
+      gap: 32px;
+
+      width: 100%;
+      height: 48px;
+
+      .IncludeButton {
+        flex: 0 1 172px;
+      }
+    }
+    .deleteButton {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      padding: 12px 24px;
+      gap: 8px;
+
+      width: 160px;
+      height: 48px;
+      background: #0d161b;
+      border-radius: 5px;
+
+      font-family: Poppins, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
     }
   }
 `

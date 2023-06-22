@@ -14,6 +14,13 @@ export const Container = styled.div`
   border-radius: 15px;
   border-radius: 10px;
 
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
   > input {
     width: 100%;
     height: 56px;

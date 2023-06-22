@@ -12,6 +12,17 @@ import { Container, Form } from "./styles"
 import { useState } from "react";
 import { api } from "../../services/api";
 
+
+
+
+
+
+
+
+
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+
 export function EditDish() {
   const [dishImg, setDishImg] = useState("");
   const [name, setName] = useState("");
@@ -22,8 +33,43 @@ export function EditDish() {
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+  const navigate = useNavigate()
 
-  const handleSubmit = () => {
+
+  useEffect(() => {
+    async function fetchDish() {
+      const response = await api.get(`/dishes/show/${id}`);
+      const ingredients = response.data.ingredients;
+      setIngredients(ingredients);
+      setDishImg(response.data.image)
+      setName(response.data.name)
+      setSelectedCategory(response.data.category)
+      setPrice(response.data.price)
+      setDescription(response.data.description)
+      console.log(response.data);
+    }
+    fetchDish()
+  }, [])
+
+
+
+  function handleImageChange(e) {
+    const file = e.target.files[0]; // Get the first selected file
+    setDishImg(file)
+
+  }
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient])
+    setNewIngredient("")
+  }
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
+  }
+  function handleCategoryChange(event) {
+    setSelectedCategory(event.target.value);
+  }
+
+  function handleSubmit() {
     const formData = new FormData();
     formData.append("price", price);
     formData.append("name", name);
@@ -43,22 +89,20 @@ export function EditDish() {
           alert("Not possible to be added to favorites");
         }
       });
-  };
-  function handleImageChange(e) {
-    const file = e.target.files[0]; // Get the first selected file
-    setDishImg(file)
+  }
+  const id = 30;
 
+  async function handleDelete() {
+    try {
+      const responseDelete = await api.delete(`/dishes/delete/${id}`);
+      alert(responseDelete.data.message);
+      navigate("/")
+    } catch (error) {
+      console.error(error);
+      // Handle error
+    }
   }
-  function handleAddIngredient() {
-    setIngredients(prevState => [...prevState, newIngredient])
-    setNewIngredient("")
-  }
-  function handleRemoveIngredient(deleted) {
-    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
-  }
-  function handleCategoryChange(event) {
-    setSelectedCategory(event.target.value);
-  }
+
 
 
   return (
@@ -66,13 +110,14 @@ export function EditDish() {
       <Header isAdmin />
 
       <Form>
-        <div className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
-        <h2>Novo Prato</h2>
+        <div className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
+        <h2>Edit Dish</h2>
         <div className="first-wrapper">
           <label className='imgUpload' htmlFor="imgUpload">
             Dish Image
 
             <Input
+
               onChange={handleImageChange}
               id='imgUpload'
               placeholder='Select Image'
@@ -83,6 +128,7 @@ export function EditDish() {
           <label className='name' htmlFor="name">
             Name
             <Input
+              value={name}
               onChange={e => setName(e.target.value)}
               id='name'
               placeholder='Ex: Mac and cheese'
@@ -104,7 +150,7 @@ export function EditDish() {
               {
                 ingredients.map((ingredient, index) => (
 
-                  <IngredientFormItem value={ingredient}
+                  <IngredientFormItem value={ingredient.name}
                     key={String(index)}
                     onClick={() => handleRemoveIngredient(ingredient)}
 
@@ -122,14 +168,13 @@ export function EditDish() {
             </div>
           </label>
           <label className='price' htmlFor="price">
-
             Price
-
             <Input
-
+              value={price}
               onChange={e => setPrice(e.target.value)}
               id='price'
               placeholder='Ex: 10 [just the number]'
+              type="number"
             />
           </label>
         </div>
@@ -139,6 +184,7 @@ export function EditDish() {
           Description
 
           <Textarea
+            value={description}
             onChange={e => setDescription(e.target.value)}
             id='description'
             placeholder='Succinct description about the product'
@@ -147,8 +193,8 @@ export function EditDish() {
         </label>
 
         <div className="third-wrapper">
-          <p className='deleteButton'>Delete Dish</p>
-          <IncludeButton className='IncludeButton' onClick={handleSubmit} title='Register Dish' type='submit' />
+          <p className='deleteButton' onClick={handleDelete} >Delete Dish</p>
+          <IncludeButton className='IncludeButton' onClick={handleSubmit} title='Save Edit' type='submit' />
         </div>
 
       </Form>

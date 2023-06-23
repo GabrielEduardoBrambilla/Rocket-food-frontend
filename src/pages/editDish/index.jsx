@@ -12,14 +12,6 @@ import { Container, Form } from "./styles"
 import { useState } from "react";
 import { api } from "../../services/api";
 
-
-
-
-
-
-
-
-
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 

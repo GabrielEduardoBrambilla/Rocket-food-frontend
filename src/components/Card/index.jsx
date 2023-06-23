@@ -67,7 +67,7 @@ export function Card({ id_Dish, img, price, title, description, isAdmin = false,
   return (
     <Container {...rest}>
       <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
-      <img src={img} alt="Dishe ilustrative image">
+      <img className="plateImg" src={img} alt="Dishe ilustrative image">
       </img>
       <p >{title} </p>
       <p className="description">{description}</p>

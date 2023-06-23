@@ -25,6 +25,11 @@ export const Container = styled.div`
     height: 88px;
   }
 
+  .plateImg {
+    border-radius: 90px;
+    object-fit: cover;
+  }
+
   .topLeftIcon {
     width: 24px;
     height: 22px;
@@ -66,13 +71,14 @@ export const Container = styled.div`
     }
 
     > p {
-      //styleName: Poppins/300-bold;
       font-family: Poppins;
       font-size: 24px;
+      width: 280px;
       font-weight: 700;
       line-height: 34px;
       letter-spacing: 0em;
       text-align: center;
+      word-wrap: break-word;
     }
     .description {
       display: block;
@@ -82,6 +88,8 @@ export const Container = styled.div`
       line-height: 22px;
       letter-spacing: 0em;
       text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
       color: ${({ theme }) => theme.COLORS.LIGHT[400]};
     }
     > span {

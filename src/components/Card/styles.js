@@ -79,7 +79,12 @@ export const Container = styled.div`
       letter-spacing: 0em;
       text-align: center;
       word-wrap: break-word;
+      word-break: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+    white-space: default;
+
     .description {
       display: block;
       font-family: Roboto;
@@ -90,6 +95,7 @@ export const Container = styled.div`
       text-align: center;
       word-wrap: break-word;
       overflow-wrap: break-word;
+
       color: ${({ theme }) => theme.COLORS.LIGHT[400]};
     }
     > span {

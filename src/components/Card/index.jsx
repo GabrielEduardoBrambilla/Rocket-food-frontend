@@ -56,6 +56,8 @@ export function Card({ id_Dish, img, price, title, description, isAdmin = false,
       }
     }
   }
+  const [quantity, setQuantity] = useState(1);
+
 
 
   useEffect(() => {
@@ -71,12 +73,13 @@ export function Card({ id_Dish, img, price, title, description, isAdmin = false,
       </img>
       <p >{title} </p>
       <p className="description">{description}</p>
-      <span>R$ {price}</span>
-      {!isAdmin && <div className="buttonsWrapper">
-        <Stepper />
-        <IncludeButton title='incluir' />
-      </div>
-      }
+      <span>R$ {price * quantity}</span>
+      {!isAdmin && (
+        <div className="buttonsWrapper">
+          <Stepper quantity={quantity} setQuantity={setQuantity} />
+          <IncludeButton title="incluir" />
+        </div>
+      )}
     </Container>
   )
 }

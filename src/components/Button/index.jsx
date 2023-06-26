@@ -1,12 +1,12 @@
 import { Container } from "./styles"
-import receipt from "../../assets/icons/receipt.svg"
 
 
 // eslint-disable-next-line react/prop-types
-export function Button({ isAdmin = false }) {
+export function Button({ mobileHeader = false, title, receipt, isAdmin = false }) {
+  const hideInHeader = mobileHeader ? "desktop" : ""
 
   return (
-    <Container>
+    <Container className={hideInHeader}>
 
       {isAdmin ? (
         <>
@@ -15,7 +15,7 @@ export function Button({ isAdmin = false }) {
       ) : (
         <>
           <img src={receipt} alt="Receipt icon" />
-          <p>Meu pedido (0)</p>
+          <p>{title}</p>
         </>
       )}
     </Container>

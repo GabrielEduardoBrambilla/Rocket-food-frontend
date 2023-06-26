@@ -9,11 +9,15 @@ export const Container = styled.header`
   img {
     cursor: pointer;
   }
-
+  .hideMobile {
+    display: none;
+  }
   @media (min-width: 768px) {
     align-items: center;
     justify-content: space-between;
-
+    .hideMobile {
+      display: none;
+    }
     padding: 24px 123px;
     height: 104;
   }

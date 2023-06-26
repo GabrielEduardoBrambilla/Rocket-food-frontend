@@ -25,7 +25,6 @@ export const Container = styled.button`
     background-color: ${({ theme }) => theme.COLORS.RED[400]};
   }
   /* destopk class */
-  @media (max-width: 768px) {
-    display: none;
+  @media (min-width: 768px) {
   }
 `

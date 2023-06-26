@@ -1,61 +1,70 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+import { IngredientTag } from '../../components/IngredientTag'
 
 import caretLeft from '../../assets/icons/CaretLeft.svg'
-import { Container, Form } from "./styles"
-
+import { Container } from "./styles"
+import Receipt from '../../assets/icons/Receipt.svg'
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { useParams } from 'react-router-dom';
+import { Button } from '../../components/Button'
+import { Stepper } from '../../components/Stepper'
 
 export function DisplayDish() {
   const { id } = useParams();
-  const [img, setImg] = useState([]);
-  // function handleImageChange(e) {
-  //   const file = e.target.files[0]; // Get the first selected file
-  //   setDishImg(file)
+  const [dish, setDish] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
-  // }
-  // function handleAddIngredient() {
-  //   setIngredients(prevState => [...prevState, newIngredient])
-  //   setNewIngredient("")
-  // }
-  // function handleRemoveIngredient(deleted) {
-  //   setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
-  // }
-  // function handleCategoryChange(event) {
-  //   setSelectedCategory(event.target.value);
-  // }
   useEffect(() => {
 
     async function fetchApi() {
       const response = await api.get(`/dishes/show/${id}`);
       const { data } = response;
-      console.log(data);
+      // console.log(data);
       const img = `${api.defaults.baseURL}/files/${data.image}`
-      setImg(img)
+      const dishData = { ...data, image: img }
+      setDish(dishData)
+      const ingredients = data.ingredients
+      setIngredients(ingredients)
+
     }
 
     fetchApi()
 
 
 
-  }, [])
+  }, [id])
 
+  console.table(ingredients)
   return (
-    <Container>
-      <Header isAdmin />
-      <div>
-        <h1>Detail Page</h1>
-        <p>ID: {id}</p>
-      </div>
-      <Form>
+    <>
+      <Header isAdmin notInMobile />
+      <Container>
+
         <div className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
-        <h2>Novo Prato</h2>
-        DetailPage()
-        <img src={img} alt="" />
-      </Form>
+
+        <img src={dish.image} alt="" />
+
+        <section className="right-section">
+          <h2 className='dishName'>{dish.name}</h2>
+          <p className='dishDescription'>{dish.description}</p>
+          <div className="ingredients">
+            {
+              ingredients.map(ingredients => (
+                < IngredientTag key={ingredients.id} name={ingredients.name} />
+              ))
+            }
+          </div>
+          <div className="counter">
+            <Stepper quantity={quantity} setQuantity={setQuantity} />
+            <Button receipt={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
+          </div>
+        </section>
+      </Container >
       <Footer />
-    </Container>
+    </>
+
   )
 }

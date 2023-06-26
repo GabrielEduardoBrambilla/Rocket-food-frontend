@@ -8,12 +8,12 @@ import favoritedIcon from '../../assets/icons/favoritedIcon.svg'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-export function Card({ id_Dish, img, price, title, description, isAdmin = false, ...rest }) {
+export function Card({ redirect, id_Dish, img, price, title, description, isAdmin = false, ...rest }) {
   const { user } = useAuth();
   const [icon, setIcon] = useState(isAdmin ? editIcon : favIcon);
-  // const [quantity, setQuantity] = useState("");
 
   const handleIconClick = () => {
     console.log(user, id_Dish);
@@ -57,22 +57,25 @@ export function Card({ id_Dish, img, price, title, description, isAdmin = false,
     }
   }
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
+  function handleRedirect() {
+    navigate(`/${redirect}`)
 
+  }
 
   useEffect(() => {
     // This effect will run whenever the icon variable changes
     // It will trigger a re-render and update the displayed icon
   }, [icon]);
 
-
   return (
     <Container {...rest}>
       <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
-      <img className="plateImg" src={img} alt="Dishe ilustrative image">
+      <img onClick={handleRedirect} className="plateImg" src={img} alt="Dishe ilustrative image">
       </img>
-      <p >{title} </p>
-      <p className="description">{description}</p>
+      <p onClick={handleRedirect} >{title} </p>
+      <p onClick={handleRedirect} className="description">{description}</p>
       <span>R$ {price * quantity}</span>
       {!isAdmin && (
         <div className="buttonsWrapper">

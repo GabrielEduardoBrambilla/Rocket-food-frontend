@@ -14,6 +14,7 @@ export function Home() {
   const [image, setImage] = useState([])
 
 
+
   useEffect(() => {
 
     async function fetchApi() {
@@ -38,6 +39,7 @@ export function Home() {
 
   }, [])
 
+
   return (
     <Container>
       <Header />
@@ -45,17 +47,18 @@ export function Home() {
         <p>Meal</p>
         {
           meal.map(meal => (
-
             <Card
               key={String(meal.id)}
               id_Dish={meal.id}
               img={`${api.defaults.baseURL}/files/${(
                 () => {
                   const matchingImage = image.find((imageName) => imageName === meal.image);
-                  return matchingImage || ''; // Return the matching image name or an empty string if not found
+                  return matchingImage || '';
                 })()}`}
               description={meal.description}
               title={meal.name}
+              redirect={`displaydish/${meal.id}`}
+
               price={meal.price}
             />
           ))

@@ -2,7 +2,7 @@ import { Container } from "./styles"
 
 
 // eslint-disable-next-line react/prop-types
-export function Button({ mobileHeader = false, title, receipt, isAdmin = false }) {
+export function Button({ mobileHeader = false, title, icon, isAdmin = false }) {
   const hideInHeader = mobileHeader ? "desktop" : ""
 
   return (
@@ -14,7 +14,7 @@ export function Button({ mobileHeader = false, title, receipt, isAdmin = false }
         </>
       ) : (
         <>
-          <img src={receipt} alt="Receipt icon" />
+          <img src={icon} alt="Receipt icon" />
           <p>{title}</p>
         </>
       )}

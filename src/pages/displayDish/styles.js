@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
@@ -9,34 +9,29 @@ export const Container = styled.div`
   gap: 16px;
   font-family: Poppins;
 
-  ${({ notInMobile }) => {
-    notInMobile &&
-      css`
-        display: none;
-      `
-  }}
-
-  > img {
-    margin: auto;
-    display: flex;
-    width: 264px;
-    height: 264px;
-    flex-shrink: 0;
-    object-fit: cover;
-    border-radius: 90%;
-  }
-  .back-btn {
-    display: flex;
-    align-items: center;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 140%;
-    gap: 3px;
+  .left-section {
     > img {
-      width: 22px;
-      height: 22px;
+      margin: auto;
+      display: flex;
+      width: 264px;
+      height: 264px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 90%;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 140%;
+      gap: 3px;
+      > img {
+        width: 22px;
+        height: 22px;
+      }
     }
   }
   .dishName {
@@ -74,9 +69,49 @@ export const Container = styled.div`
       margin: 12px;
     }
   }
-  div > p {
-    /* background-color: red; */
-  }
-  @media (min-width: 480px) {
+
+  @media (min-width: 768px) {
+    min-height: 90vh;
+    height: auto;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: left;
+
+    .left-section {
+      > img {
+        display: flex;
+        width: 390.105px;
+        height: 389px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .back-btn {
+        margin-bottom: 42px;
+      }
+    }
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      width: 687px;
+      justify-content: start;
+      .dishName {
+        text-align: left;
+        font-size: 40px;
+      }
+      .dishDescription {
+        text-align: left;
+        font-size: 24px;
+      }
+      .ingredients {
+        justify-content: left;
+      }
+    }
+    .counter {
+      justify-content: left;
+    }
   }
 `

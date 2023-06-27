@@ -1,9 +1,9 @@
+import { Container } from "./styles"
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { IngredientTag } from '../../components/IngredientTag'
 
 import caretLeft from '../../assets/icons/CaretLeft.svg'
-import { Container } from "./styles"
 import Receipt from '../../assets/icons/Receipt.svg'
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
@@ -40,12 +40,12 @@ export function DisplayDish() {
   console.table(ingredients)
   return (
     <>
-      <Header isAdmin notInMobile />
+      <Header notInMobile />
       <Container>
-
-        <div className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
-
-        <img src={dish.image} alt="" />
+        <section className="left-section">
+          <div className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
+          <img src={dish.image} alt="" />
+        </section>
 
         <section className="right-section">
           <h2 className='dishName'>{dish.name}</h2>
@@ -59,7 +59,7 @@ export function DisplayDish() {
           </div>
           <div className="counter">
             <Stepper quantity={quantity} setQuantity={setQuantity} />
-            <Button receipt={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
+            <Button icon={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
           </div>
         </section>
       </Container >

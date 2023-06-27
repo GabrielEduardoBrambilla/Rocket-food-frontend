@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import { useState } from "react";
 import { api } from "../../services/api";
+import { Footer } from '../../components/Footer';
 
 export function Home() {
   const [meal, setMeal] = useState([])
@@ -69,17 +70,18 @@ export function Home() {
         <p>Beverage</p>
         {
           beverage.map(meal => (
-
             <Card
               key={String(meal.id)}
               id_Dish={meal.id}
               img={`${api.defaults.baseURL}/files/${(
                 () => {
                   const matchingImage = image.find((imageName) => imageName === meal.image);
-                  return matchingImage || ''; // Return the matching image name or an empty string if not found
+                  return matchingImage || '';
                 })()}`}
               description={meal.description}
               title={meal.name}
+              redirect={`displaydish/${meal.id}`}
+
               price={meal.price}
             />
           ))
@@ -90,22 +92,24 @@ export function Home() {
         <p>Dessert</p>
         {
           dessert.map(meal => (
-
             <Card
               key={String(meal.id)}
               id_Dish={meal.id}
               img={`${api.defaults.baseURL}/files/${(
                 () => {
                   const matchingImage = image.find((imageName) => imageName === meal.image);
-                  return matchingImage || ''; // Return the matching image name or an empty string if not found
+                  return matchingImage || '';
                 })()}`}
               description={meal.description}
               title={meal.name}
+              redirect={`displaydish/${meal.id}`}
+
               price={meal.price}
             />
           ))
         }
       </div>
+      <Footer></Footer>
     </Container>
   )
 }

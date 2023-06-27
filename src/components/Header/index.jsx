@@ -30,7 +30,7 @@ export function Header({ isAdmin = false }) {
       {/* mobileHeader is for hiding the search bar in mobile devices */}
       <Input mobileHeader icon={search} placeholder='Search for dishes or ingredients' />
       {/* desktop */}
-      <Button mobileHeader isAdmin={isAdmin} />
+      <Button icon={receipt} title={"Pedidos (0)"} mobileHeader isAdmin={isAdmin} />
       {/* desktop */}
       <img onClick={handleSignOut} src={SignOutImg} alt="" className='desktop' />
     </Container>

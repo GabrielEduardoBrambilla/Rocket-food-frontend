@@ -5,11 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-
+  height: 100%;
   width: 210px;
   min-height: 292px;
   padding: 24px;
-  margin: 24px;
+  margin: auto;
 
   background-color: ${({ theme }) => theme.COLORS.DARK[200]};
 
@@ -48,7 +48,6 @@ export const Container = styled.div`
   }
   > span {
     font-size: 16px;
-    /* margin-bottom: 12px;  */
     color: ${({ theme }) => theme.COLORS.BLUE[100]};
   }
 
@@ -59,6 +58,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: 304px;
     min-height: 462px;
+    height: 100%;
     padding: 24px;
     gap: 15px;
     background-color: ${({ theme }) => theme.COLORS.DARK[200]};

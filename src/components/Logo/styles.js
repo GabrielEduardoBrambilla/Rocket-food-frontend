@@ -6,6 +6,7 @@ export const Container = styled(Link)`
   gap: 10px;
   text-decoration: none;
   color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+
   img {
     align-self: flex-start;
     width: 24px;
@@ -29,10 +30,14 @@ export const Container = styled(Link)`
       text-align: right;
     }
   }
+  .footer-text {
+    color: ${({ theme }) => theme.COLORS.LIGHT[700]};
+  }
   /* destopk class */
   @media (min-width: 768px) {
     display: flex;
     justify-content: flex-start;
+
     img {
       width: 30px;
       height: 30px;

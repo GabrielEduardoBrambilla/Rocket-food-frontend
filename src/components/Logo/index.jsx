@@ -6,14 +6,14 @@ import footerLogo from "../../assets/logo/Footer.svg"
 export function Logo({ isAdmin = false, footer = false, formHeader = false }) {
   let logo = footer ? footerLogo : normalLogo
 
-
   const imgClasses = formHeader ? "formHeader-img" : ""
   const pClasses = formHeader ? "formHeader-text" : ""
+  const textColor = footer ? "footer-text" : ""
 
   return (
     <Container to="/">
       <img className={imgClasses} src={logo} alt="Polygonal shape" />
-      <p className={pClasses}>
+      <p className={textColor + pClasses}>
         food explorer
         {isAdmin && <span>admin</span>}
       </p>

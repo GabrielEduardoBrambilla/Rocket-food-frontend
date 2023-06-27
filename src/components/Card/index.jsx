@@ -10,6 +10,10 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
 import { useNavigate } from 'react-router-dom';
+// import Swiper core and required modules
+
+
+// Import Swiper styles
 
 // eslint-disable-next-line react/prop-types
 export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {

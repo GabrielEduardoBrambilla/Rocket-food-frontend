@@ -10,7 +10,7 @@ import { api } from "../../services/api";
 import { Footer } from '../../components/Footer';
 
 
-import { Navigation, A11y } from 'swiper';
+import { Navigation, A11y, Pagination, EffectCards } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -77,23 +77,105 @@ export function Home() {
 
   }, [])
 
-
   return (
     <Container>
       <Header />
       <div className="Meal type-wrapper">
         <p className="type-title">Meal</p>
         <Swiper
+          // spaceBetween={90}
+          modules={[EffectCards]}
+          navigation
+
+          pagination={{
+            dynamicBullets: true,
+          }}
+          className="swiper-container"
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              modules: [Navigation, A11y],
+              pagination: {
+                dynamicBullets: true,
+              },
+            }
+          }}
+        >
+          {
+            meal.map(meal => (
+
+              < SwiperSlide height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
+                <Card
+                  id_Dish={meal.id}
+                  img={images[meal.image] || loading}
+                  description={meal.description}
+                  title={meal.name}
+                  redirect={`displaydish/${meal.id}`}
+                  price={meal.price}
+                />
+              </SwiperSlide>
+            ))
+          }
+        </Swiper>
+      </div>
+      <div className="Beverage type-wrapper">
+        <p className="type-title">Beverage</p>
+        <Swiper
           modules={[Navigation, A11y]}
-          slidesPerView={3}
           navigation
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
           className="swiper-container"
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              modules: [Navigation, A11y],
+              pagination: {
+                dynamicBullets: true,
+              },
+            }
+          }}
         >
           {
-            meal.map(meal => (
-              < SwiperSlide key={String(meal.id)} style={{ height: '100%' }} >
+            beverage.map(meal => (
+
+              < SwiperSlide
+                height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
+                <Card
+                  id_Dish={meal.id}
+                  img={images[meal.image] || loading}
+                  description={meal.description}
+                  title={meal.name}
+                  redirect={`displaydish/${meal.id}`}
+                  price={meal.price}
+                />
+              </SwiperSlide>
+            ))
+          }
+        </Swiper>
+      </div>
+      <div className="Dessert type-wrapper">
+        <p className="type-title">Dessert</p>
+        <Swiper
+          modules={[Navigation, A11y]}
+          navigation
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+          className="swiper-container"
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              modules: [Navigation, A11y],
+              pagination: {
+                dynamicBullets: true,
+              },
+            }
+          }}
+        >
+          {
+            dessert.map(meal => (
+
+              < SwiperSlide height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
                 <Card
                   id_Dish={meal.id}
                   img={images[meal.image] || loading}
@@ -108,71 +190,6 @@ export function Home() {
         </Swiper>
       </div>
 
-      {
-        /* <div className="Beverage type-wrapper">
-          <p>Beverage</p>
-          <Swiper
-            // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={90}
-            slidesPerView={3}
-            navigation
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
-          >
-            {
-              beverage.map(meal => (
-                <SwiperSlide key={String(meal.id)}>
-                  <Card
-                    id_Dish={meal.id}
-                    img={images[meal.image]}
-                    description={meal.description}
-                    title={meal.name}
-                    redirect={`displaydish/${meal.id}`}
-  
-                    price={meal.price}
-                  />
-                </SwiperSlide>
-  
-              ))
-            }
-          </Swiper>
-        </div>
-  
-        <div className="Dessert type-wrapper">
-          <p>Dessert</p>
-          <Swiper
-            // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={90}
-            slidesPerView={3}
-            navigation
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
-          >
-            {
-              dessert.map(meal => (
-                <SwiperSlide key={String(meal.id)}>
-                  <Card
-                    id_Dish={meal.id}
-                    img={images[meal.image]}
-                    description={meal.description}
-                    title={meal.name}
-                    redirect={`displaydish/${meal.id}`}
-  
-                    price={meal.price}
-                  />
-                </SwiperSlide>
-  
-              ))
-            }
-          </Swiper>
-        </div> */
-      }
       <Footer></Footer>
     </Container >
   )

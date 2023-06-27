@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   position: relative;
-  height: 100%;
   width: 210px;
   min-height: 292px;
   padding: 24px;
@@ -46,9 +46,11 @@ export const Container = styled.div`
     cursor: pointer;
     display: none;
   }
-  > span {
-    font-size: 16px;
-    color: ${({ theme }) => theme.COLORS.BLUE[100]};
+  div {
+    > .price {
+      font-size: 16px;
+      color: ${({ theme }) => theme.COLORS.BLUE[100]};
+    }
   }
 
   .buttonsWrapper {
@@ -57,8 +59,8 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     width: 304px;
-    min-height: 462px;
-    height: 100%;
+    height: 482px;
+
     padding: 24px;
     gap: 15px;
     background-color: ${({ theme }) => theme.COLORS.DARK[200]};
@@ -104,21 +106,24 @@ export const Container = styled.div`
 
       color: ${({ theme }) => theme.COLORS.LIGHT[400]};
     }
-    > span {
-      //styleName: Roboto/Biggest regular;
-      font-family: Roboto;
-      font-size: 32px;
-      font-weight: 400;
-      line-height: 51px;
-      letter-spacing: 0em;
-      text-align: center;
+    div {
+      .price {
+        //styleName: Roboto/Biggest regular;
+        font-family: Roboto;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 51px;
+        letter-spacing: 0em;
+        text-align: center;
 
-      color: ${({ theme }) => theme.COLORS.BLUE[100]};
+        color: ${({ theme }) => theme.COLORS.BLUE[100]};
+      }
     }
+
     .buttonsWrapper {
       display: flex;
-      justify-content: center;
-      margin: 0 24px;
+      justify-content: space-evenly;
+      gap: 16px;
       grid-template-areas: 'Stepper IncludeButton';
     }
   }

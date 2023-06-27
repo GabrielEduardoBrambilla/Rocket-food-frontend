@@ -82,13 +82,15 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       </img>
       <p onClick={handleRedirect} className="title">{title} </p>
       <p onClick={handleRedirect} className="description">{description}</p>
-      <span>R$ {price * quantity}</span>
-      {!isAdmin && (
-        <div className="buttonsWrapper">
-          <Stepper quantity={quantity} setQuantity={setQuantity} />
-          <IncludeButton title="incluir" />
-        </div>
-      )}
+      <div>
+        <span className="price">R$ {price * quantity}</span>
+        {!isAdmin && (
+          <div className="buttonsWrapper">
+            <Stepper quantity={quantity} setQuantity={setQuantity} />
+            <IncludeButton title="incluir" />
+          </div>
+        )}
+      </div>
     </Container>
   )
 }

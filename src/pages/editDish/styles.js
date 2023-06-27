@@ -152,6 +152,13 @@ export const Form = styled.form`
     margin: 10px auto 55px;
     width: 1120px;
 
+    .back-btn {
+      cursor: pointer;
+      margin-top: 40px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
     .first-wrapper {
       display: flex;
       flex-direction: row;

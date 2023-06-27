@@ -4,7 +4,11 @@ export const AuthContext = createContext({})
 
 // eslint-disable-next-line react/prop-types
 function AuthProvider({ children }) {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({
+    user: null,
+    token: null,
+    isAdmin: false // Default value
+  });
 
   async function signIn({ email, password }) {
 
@@ -40,15 +44,17 @@ function AuthProvider({ children }) {
 
     if (token && user) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-
+      const parsedUser = JSON.parse(user);
+      const userInBoolean = parsedUser.is_Admin == 0 ? false : true;
       setData({
         token,
-        user: JSON.parse(user)
+        user: parsedUser,
+        isAdmin: userInBoolean
       })
     }
   }, [])
 
-  return <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={{ signIn, signOut, user: data.user, isAdmin: data.isAdmin }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {

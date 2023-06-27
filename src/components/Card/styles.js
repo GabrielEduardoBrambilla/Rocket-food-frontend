@@ -28,6 +28,7 @@ export const Container = styled.div`
   .plateImg {
     border-radius: 90px;
     object-fit: cover;
+    cursor: pointer;
   }
 
   .topLeftIcon {
@@ -36,8 +37,13 @@ export const Container = styled.div`
     position: absolute;
     top: 16px;
     right: 16px;
+    cursor: pointer;
+  }
+  .title {
+    cursor: pointer;
   }
   .description {
+    cursor: pointer;
     display: none;
   }
   > span {

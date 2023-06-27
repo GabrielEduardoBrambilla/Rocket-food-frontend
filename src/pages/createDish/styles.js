@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
+  height: 100%;
+  min-height: 895px;
+  width: 100%;
   .ingredient {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */
@@ -111,6 +114,12 @@ export const Form = styled.form`
     margin: 10px auto 55px;
     width: 1120px;
 
+    .back-btn {
+      margin-top: 44px;
+      font-weight: 700;
+      font-size: 24px;
+      cursor: pointer;
+    }
     .first-wrapper {
       display: flex;
       flex-direction: row;

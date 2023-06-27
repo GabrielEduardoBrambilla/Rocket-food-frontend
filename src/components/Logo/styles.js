@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   display: flex;
   gap: 10px;
-
+  text-decoration: none;
+  color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   img {
     align-self: flex-start;
     width: 24px;

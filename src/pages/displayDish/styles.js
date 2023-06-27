@@ -8,7 +8,10 @@ export const Container = styled.div`
   padding: 16px 56px;
   gap: 16px;
   font-family: Poppins;
-
+  .back-btn {
+    text-decoration: none;
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+  }
   .left-section {
     > img {
       margin: auto;

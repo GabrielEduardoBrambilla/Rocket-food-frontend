@@ -8,10 +8,12 @@ import favoritedIcon from '../../assets/icons/favoritedIcon.svg'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-export function Card({ redirect, id_Dish, img, price, title, description, isAdmin = false, ...rest }) {
+export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {
+  const { isAdmin } = useAuth();
   const { user } = useAuth();
   const [icon, setIcon] = useState(isAdmin ? editIcon : favIcon);
 
@@ -74,7 +76,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, isAdmi
       <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
       <img onClick={handleRedirect} className="plateImg" src={img} alt="Dishe ilustrative image">
       </img>
-      <p onClick={handleRedirect} >{title} </p>
+      <p onClick={handleRedirect} className="title">{title} </p>
       <p onClick={handleRedirect} className="description">{description}</p>
       <span>R$ {price * quantity}</span>
       {!isAdmin && (

@@ -7,7 +7,7 @@ import caretLeft from '../../assets/icons/CaretLeft.svg'
 import Receipt from '../../assets/icons/Receipt.svg'
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Stepper } from '../../components/Stepper'
 
@@ -37,13 +37,12 @@ export function DisplayDish() {
 
   }, [id])
 
-  console.table(ingredients)
   return (
     <>
       <Header notInMobile />
       <Container>
         <section className="left-section">
-          <div className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
+          <Link to='/' className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></Link>
           <img src={dish.image} alt="" />
         </section>
 

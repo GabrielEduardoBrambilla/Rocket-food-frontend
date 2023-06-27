@@ -1,3 +1,4 @@
+import { Container, Form } from "./styles"
 import { Input } from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -7,7 +8,6 @@ import { IngredientFormItem } from "../../components/IngredientFormItem"
 
 import caretLeft from '../../assets/icons/CaretLeft.svg'
 import uploadIcon from '../../assets/icons/UploadSimple.svg'
-import { Container, Form } from "./styles"
 
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -38,7 +38,7 @@ export function EditDish() {
       setSelectedCategory(response.data.category)
       setPrice(response.data.price)
       setDescription(response.data.description)
-      console.log(response.data);
+      // console.log(response.data);
     }
     fetchDish()
   }, [])
@@ -84,6 +84,10 @@ export function EditDish() {
   }
   const id = 30;
 
+  function handleBackButton() {
+    navigate("/")
+  }
+
   async function handleDelete() {
     try {
       const responseDelete = await api.delete(`/dishes/delete/${id}`);
@@ -99,10 +103,10 @@ export function EditDish() {
 
   return (
     <Container>
-      <Header isAdmin />
+      <Header />
 
       <Form>
-        <div className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
+        <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
         <h2>Edit Dish</h2>
         <div className="first-wrapper">
           <label className='imgUpload' htmlFor="imgUpload">

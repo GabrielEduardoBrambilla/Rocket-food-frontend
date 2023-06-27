@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth'
 
 // eslint-disable-next-line react/prop-types
-export function Header({ isAdmin = false }) {
+export function Header() {
   const { signOut } = useAuth()
+  const { isAdmin } = useAuth();
   const navigation = useNavigate()
 
   function handleSignOut() {

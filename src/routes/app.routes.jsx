@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 
-import { Home } from '../pages/home copy'
+import { Home } from '../pages/home'
 import { CreateDish } from '../pages/createDish'
 import { EditDish } from '../pages/editDish'
 import { DisplayDish } from '../pages/displayDish'

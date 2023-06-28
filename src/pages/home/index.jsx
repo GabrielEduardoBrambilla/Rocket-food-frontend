@@ -29,8 +29,6 @@ export function Home() {
   const [images, setImages] = useState({}) // Store images in an object for efficient lookup
   const [sweetsImage, setSweetsImage] = useState();
 
-  console.log(dessert);
-  console.log(beverage);
 
 
   useEffect(() => {
@@ -99,7 +97,9 @@ export function Home() {
 
   return (
     <Container>
-      <Header />
+      <Header
+        onChange={e => console.log(e.target.value)}
+      />
       <div className="slogan-banner">
         <img src={sweetsImage} alt="" />
         <div className="slogan-text">
@@ -114,8 +114,6 @@ export function Home() {
         <Swiper
           modules={[Navigation, A11y]}
           navigation
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
           className="swiper-container"
           breakpoints={{
             768: {
@@ -150,8 +148,6 @@ export function Home() {
         <Swiper
           modules={[Navigation, A11y]}
           navigation
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
           className="swiper-container"
           breakpoints={{
             768: {
@@ -186,8 +182,6 @@ export function Home() {
         <Swiper
           modules={[Navigation, A11y]}
           navigation
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
           className="swiper-container"
           breakpoints={{
             768: {

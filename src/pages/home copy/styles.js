@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
-  min-height: 786px;
+  min-height: 78.6rem;
   font-family: Poppins;
 
   .slogan-banner {
@@ -10,9 +10,9 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
     position: relative;
-    width: 376px;
-    height: 120px;
-    margin: 44px auto 47px auto;
+    width: 37.6rem;
+    height: 12rem;
+    margin: 4.4rem auto 4.7rem auto;
     background: var(
       --gradients-200,
       linear-gradient(180deg, #091e26 0%, #00131c 100%)
@@ -22,18 +22,18 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       gap: 0.2em;
-      margin: 36px 0 22px 153px;
+      margin: 3.6rem 0 2.2rem 15.3rem;
 
       .slogan-title {
         color: ${({ theme }) => theme.COLORS.LIGHT[300]};
-        font-size: 18px;
+        font-size: 1.8rem;
         font-weight: 600;
         line-height: 140%;
       }
 
       .slogan-description {
         color: ${({ theme }) => theme.COLORS.LIGHT[300]};
-        font-size: 12px;
+        font-size: 1.2rem;
 
         font-family: Poppins;
         line-height: 140%;
@@ -43,10 +43,10 @@ export const Container = styled.div`
       display: flex;
       /* object-fit: contain; */
       position: absolute;
-      top: -30px;
-      left: -30px;
-      width: 191px;
-      height: 149px;
+      top: -3rem;
+      left: -3rem;
+      width: 19.1rem;
+      height: 14.9rem;
       flex-shrink: 0;
     }
   }
@@ -58,17 +58,17 @@ export const Container = styled.div`
 
     .type-title {
       color: var(--light-light-300, #e1e1e6);
-      font-size: 18px;
+      font-size: 1.8rem;
       font-weight: 500;
       line-height: 140%;
-      width: 380px;
-      margin: 2px auto;
-      margin: 15px auto 0 auto;
+      width: 38rem;
+      margin: 0.2rem auto;
+      margin: 1.5rem auto 0 auto;
     }
   }
   .swiper-container {
     display: flex;
-    width: 380px;
+    width: 38rem;
     align-items: center;
 
     justify-content: center;
@@ -87,7 +87,7 @@ export const Container = styled.div`
     align-items: center;
   }
   .type-wrapper::-webkit-scrollbar {
-    height: 8px;
+    height: 0.8rem;
   }
 
   .type-wrapper::-webkit-scrollbar-track {
@@ -96,7 +96,7 @@ export const Container = styled.div`
 
   .type-wrapper::-webkit-scrollbar-thumb {
     background-color: #888;
-    border-radius: 4px;
+    border-radius: 0.4rem;
   }
 
   .type-wrapper::-webkit-scrollbar-thumb:hover {
@@ -105,39 +105,39 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     .swiper-container {
-      width: 1200px;
+      width: 120rem;
     }
     .type-wrapper {
       > div {
-        padding: 20px;
+        padding: 2rem;
       }
       .type-title {
-        font-size: 32px;
-        width: 1200px;
+        font-size: 3.2rem;
+        width: 120rem;
         margin: auto;
       }
     }
     .slogan-banner {
-      width: 1120px;
-      height: 260px;
-      margin: 164px auto 62px;
+      width: 112rem;
+      height: 26rem;
+      margin: 16.4rem auto 6.2rem;
 
       .slogan-text {
-        margin: 88px 100px 92px 598px;
+        margin: 8.8rem 10rem 9.2rem 59.8rem;
         .slogan-title {
-          font-size: 40px;
+          font-size: 4rem;
           font-weight: 400;
         }
         .slogan-description {
-          font-size: 16px;
+          font-size: 1.6rem;
           width: auto;
         }
       }
       > img {
-        width: 632px;
-        height: 406px;
-        top: -146px;
-        left: -60px;
+        width: 63.2rem;
+        height: 40.6rem;
+        top: -14.6rem;
+        left: -6rem;
         flex-shrink: 0;
       }
     }

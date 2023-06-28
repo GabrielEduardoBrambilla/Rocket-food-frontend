@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
+html:root{
+  font-size: 62.5%; /* Set base font size to 62.5% (10px) of the default 16px */
+}
   *{
     margin: 0;
     padding: 0;

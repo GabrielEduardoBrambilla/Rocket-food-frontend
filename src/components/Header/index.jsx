@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth'
 
 // eslint-disable-next-line react/prop-types
-export function Header() {
+export function Header({ searchValue, setSearchValue }) {
   const { signOut } = useAuth()
   const { isAdmin } = useAuth();
   const navigation = useNavigate()
@@ -29,7 +29,7 @@ export function Header() {
       {!isAdmin && <img className='mobile' src={receipt} alt="Receipt icon" />}
       {/* desktop */}
       {/* mobileHeader is for hiding the search bar in mobile devices */}
-      <Input mobileHeader icon={search} placeholder='Search for dishes or ingredients' />
+      <Input onChange={e => setSearchValue(e.target.value)} mobileHeader icon={search} placeholder='Search for dishes or ingredients' value={searchValue} />
       {/* desktop */}
       <Button icon={receipt} title={"Pedidos (0)"} mobileHeader isAdmin={isAdmin} />
       {/* desktop */}

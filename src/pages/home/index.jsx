@@ -4,8 +4,8 @@ import { Card } from '../../components/Card'
 import { useEffect } from 'react'
 
 import loading from "../../assets/icons/loading.jpg"
-import sweetsMobile from "../../assets/logo/pngegg2.png"
-import sweetsDesktop from "../../assets/logo/pngegg1.png"
+import sweetsMobile from "../../assets/logo/sweetsMobile.png"
+import sweetsDesktop from "../../assets/logo/sweetsDesktop.png"
 
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -28,7 +28,7 @@ export function Home() {
   const [beverage, setBeverage] = useState([])
   const [images, setImages] = useState({}) // Store images in an object for efficient lookup
   const [sweetsImage, setSweetsImage] = useState();
-
+  const [searchValue, setSearchValue] = useState('');
 
 
   useEffect(() => {
@@ -41,10 +41,10 @@ export function Home() {
       const filteredDessert = data.filter((dish) => dish.category === "Dessert");
       const filteredBeverage = data.filter((dish) => dish.category === "Beverage");
 
-
       setMeal(filteredMeals);
       setDessert(filteredDessert)
       setBeverage(filteredBeverage)
+
 
       const imgNames = data.map((item) => item.image)
       await Promise.all(imgNames.map(fetchImage)) // Fetch all images concurrently
@@ -72,6 +72,7 @@ export function Home() {
 
     }
 
+
     function handleResize() {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
       if (isMobile) {
@@ -95,11 +96,12 @@ export function Home() {
 
   }, [])
 
+
+
   return (
     <Container>
-      <Header
-        onChange={e => console.log(e.target.value)}
-      />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+
       <div className="slogan-banner">
         <img src={sweetsImage} alt="" />
         <div className="slogan-text">

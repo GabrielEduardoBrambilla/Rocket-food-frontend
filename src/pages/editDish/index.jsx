@@ -103,99 +103,102 @@ export function EditDish() {
 
 
   return (
-    <Container>
+    <>
       <Header />
+      <Container>
 
-      <Form>
-        <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
-        <h2>Edit Dish</h2>
-        <div className="first-wrapper">
-          <label className='imgUpload' htmlFor="imgUpload">
-            Dish Image
+        <Form>
+          <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
+          <h2>Edit Dish</h2>
+          <div className="first-wrapper">
+            <label className='imgUpload' htmlFor="imgUpload">
+              Dish Image
 
-            <Input
+              <Input
 
-              onChange={handleImageChange}
-              id='imgUpload'
-              placeholder='Select Image'
-              type='file'
-              icon={uploadIcon}
-            />
-          </label>
-          <label className='name' htmlFor="name">
-            Name
-            <Input
-              value={name}
-              onChange={e => setName(e.target.value)}
-              id='name'
-              placeholder='Ex: Mac and cheese'
-            />
-          </label>
-          <label className='category' htmlFor="category">Category:
-            <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
-              <option value="">-- Select --</option>
-              <option value="Meal">Meal</option>
-              <option value="Dessert">Dessert</option>
-              <option value="Beverage">Beverage</option>
-            </select>
-          </label>
-        </div>
-        <div className="second-wrapper">
-          <label className='ingredients' htmlFor="ingredients">
-            Ingredients
-            <div className="ingredient">
-              {
-                ingredients.map((ingredient, index) => (
-
-                  <IngredientFormItem value={ingredient.name}
-                    key={String(index)}
-                    onClick={() => handleRemoveIngredient(ingredient)}
-
-                  />
-                ))
-              }
-
-              <IngredientFormItem
-                isNew
-                placeholder='Add'
-                value={newIngredient}
-                onChange={e => setNewIngredient(e.target.value)}
-                onClick={handleAddIngredient}
+                onChange={handleImageChange}
+                id='imgUpload'
+                placeholder='Select Image'
+                type='file'
+                icon={uploadIcon}
               />
-            </div>
-          </label>
-          <label className='price' htmlFor="price">
-            Price
-            <Input
-              value={price}
-              onChange={e => setPrice(e.target.value)}
-              id='price'
-              placeholder='Ex: 10 [just the number]'
-              type="number"
+            </label>
+            <label className='name' htmlFor="name">
+              Name
+              <Input
+                value={name}
+                onChange={e => setName(e.target.value)}
+                id='name'
+                placeholder='Ex: Mac and cheese'
+              />
+            </label>
+            <label className='category' htmlFor="category">Category:
+              <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+                <option value="">-- Select --</option>
+                <option value="Meal">Meal</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Beverage">Beverage</option>
+              </select>
+            </label>
+          </div>
+          <div className="second-wrapper">
+            <label className='ingredients' htmlFor="ingredients">
+              Ingredients
+              <div className="ingredient">
+                {
+                  ingredients.map((ingredient, index) => (
+
+                    <IngredientFormItem value={ingredient.name}
+                      key={String(index)}
+                      onClick={() => handleRemoveIngredient(ingredient)}
+
+                    />
+                  ))
+                }
+
+                <IngredientFormItem
+                  isNew
+                  placeholder='Add'
+                  value={newIngredient}
+                  onChange={e => setNewIngredient(e.target.value)}
+                  onClick={handleAddIngredient}
+                />
+              </div>
+            </label>
+            <label className='price' htmlFor="price">
+              Price
+              <Input
+                value={price}
+                onChange={e => setPrice(e.target.value)}
+                id='price'
+                placeholder='Ex: 10 [just the number]'
+                type="number"
+              />
+            </label>
+          </div>
+
+          <label htmlFor="description">
+
+            Description
+
+            <Textarea
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              id='description'
+              placeholder='Succinct description about the product'
+              type='textarea'
             />
           </label>
-        </div>
 
-        <label htmlFor="description">
+          <div className="third-wrapper">
+            <p className='deleteButton' onClick={handleDelete} >Delete Dish</p>
+            <IncludeButton className='IncludeButton' onClick={handleSubmit} title='Save Edit' type='submit' />
+          </div>
 
-          Description
-
-          <Textarea
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            id='description'
-            placeholder='Succinct description about the product'
-            type='textarea'
-          />
-        </label>
-
-        <div className="third-wrapper">
-          <p className='deleteButton' onClick={handleDelete} >Delete Dish</p>
-          <IncludeButton className='IncludeButton' onClick={handleSubmit} title='Save Edit' type='submit' />
-        </div>
-
-      </Form>
+        </Form>
+      </Container>
       <Footer />
-    </Container>
+    </>
+
   )
 }

@@ -68,8 +68,8 @@ export function CreateDish() {
   }
   return (
     <>
+      <Header />
       <Container>
-        <Header />
 
         <Form>
           <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>

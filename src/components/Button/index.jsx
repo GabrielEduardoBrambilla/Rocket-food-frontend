@@ -2,15 +2,15 @@ import { Container } from "./styles"
 
 
 // eslint-disable-next-line react/prop-types
-export function Button({ mobileHeader = false, title, icon, isAdmin = false }) {
+export function Button({ mobileHeader = false, title, icon, isAdmin = false, ...rest }) {
   const hideInHeader = mobileHeader ? "desktop" : ""
 
   return (
-    <Container className={hideInHeader}>
+    <Container className={hideInHeader} {...rest}>
 
       {isAdmin ? (
         <>
-          <p>Novo Prato (0)</p>
+          <p>Novo Prato</p>
         </>
       ) : (
         <>

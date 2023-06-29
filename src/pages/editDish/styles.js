@@ -2,7 +2,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
-
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .ingredient {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */

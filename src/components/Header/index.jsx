@@ -18,6 +18,16 @@ export function Header({ searchValue, setSearchValue }) {
     navigation("/")
     signOut()
   }
+
+  function handleClickRedirect() {
+    if (isAdmin) {
+      navigation("/createdish")
+    } else {
+      navigation("/order")
+
+    }
+  }
+
   return (
     <Container>
 
@@ -30,7 +40,7 @@ export function Header({ searchValue, setSearchValue }) {
       {/* mobileHeader is for hiding the search bar in mobile devices */}
       <Input onChange={e => setSearchValue(e.target.value)} mobileHeader icon={search} placeholder='Search for dishes or ingredients' value={searchValue} />
       {/* desktop */}
-      <Button icon={receipt} title={"Pedidos (0)"} mobileHeader isAdmin={isAdmin} />
+      <Button icon={receipt} onClick={handleClickRedirect} title={"Pedidos (0)"} mobileHeader isAdmin={isAdmin} />
       {/* desktop */}
       <img onClick={handleSignOut} src={SignOutImg} alt="" className='desktop' />
     </Container>

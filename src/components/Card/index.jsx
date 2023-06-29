@@ -10,29 +10,27 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
 import { useNavigate } from 'react-router-dom';
-// import Swiper core and required modules
 
-
-// Import Swiper styles
+// favoritelist
 
 // eslint-disable-next-line react/prop-types
 export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {
   const { isAdmin } = useAuth();
   const { user } = useAuth();
   const [icon, setIcon] = useState(isAdmin ? editIcon : favIcon);
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
-  const handleIconClick = () => {
-    console.log(user, id_Dish);
 
+  function handleIconClick() {
     if (isAdmin) {
-      // Redirect the admin to the editing screen or modal
-      history.push('/edit'); // Replace '/edit' with the appropriate route
+      navigate(`/editdish/${id_Dish}`);
     } else {
       if (icon === favIcon) {
         setIcon(favoritedIcon);
-        api.post("/favoritelist/delete", {
-          id_User: user.id
-          , id_Dish
+        api.post("/favoritelist/", {
+          id_user: user.id,
+          id_dish: id_Dish
         })
           .then(() => {
             alert("Add to favorites");
@@ -47,8 +45,10 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       } else {
         setIcon(favIcon);
         api.delete("/favoritelist/delete", {
-          id_User: user.id
-          , id_Dish
+          data: {
+            id_user: user.id,
+            id_dish: id_Dish
+          }
         })
           .then(() => {
             alert("Removed from favorites");
@@ -62,17 +62,12 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       }
     }
   }
-  const [quantity, setQuantity] = useState(1);
-  const navigate = useNavigate();
 
   function handleRedirect() {
     navigate(`/${redirect}`)
-
   }
 
   useEffect(() => {
-    // This effect will run whenever the icon variable changes
-    // It will trigger a re-render and update the displayed icon
   }, [icon]);
 
   return (

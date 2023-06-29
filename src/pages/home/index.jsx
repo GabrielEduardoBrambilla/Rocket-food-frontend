@@ -29,24 +29,36 @@ export function Home() {
   const [images, setImages] = useState({}) // Store images in an object for efficient lookup
   const [sweetsImage, setSweetsImage] = useState();
   const [searchValue, setSearchValue] = useState('');
+  const [dataGlobal, setDataGlobal] = useState([])
 
+  const filteredMeals = meal.filter((m) =>
+    m.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  const filteredDesserts = dessert.filter((d) =>
+    d.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  const filteredBeverages = beverage.filter((b) =>
+    b.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   useEffect(() => {
-
     async function fetchApi() {
-      const response = await api.get(`/dishes/index`);
-      const { data } = response; // Assuming the array of dishes is in the `data` property
+      if (meal.length === 0 || dessert.length === 0 || beverage.length === 0) {
+        const response = await api.get(`/dishes/index`);
+        const { data } = response; // Assuming the array of dishes is in the `data` property
 
-      const filteredMeals = data.filter((dish) => dish.category === "Meal");
-      const filteredDessert = data.filter((dish) => dish.category === "Dessert");
-      const filteredBeverage = data.filter((dish) => dish.category === "Beverage");
+        setDataGlobal(data)
 
-      setMeal(filteredMeals);
-      setDessert(filteredDessert)
-      setBeverage(filteredBeverage)
-
-
-      const imgNames = data.map((item) => item.image)
+        const filteredMeals = data.filter((dish) => dish.category === "Meal");
+        const filteredDessert = data.filter((dish) => dish.category === "Dessert");
+        const filteredBeverage = data.filter((dish) => dish.category === "Beverage");
+        // console.log(data)
+        setMeal(filteredMeals);
+        setDessert(filteredDessert)
+        setBeverage(filteredBeverage)
+      }
+      const imgNames = dataGlobal.map((item) => item.image)
+      console.log(dataGlobal)
       await Promise.all(imgNames.map(fetchImage)) // Fetch all images concurrently
 
       function fetchImage(imageName) {
@@ -73,6 +85,7 @@ export function Home() {
     }
 
 
+
     function handleResize() {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
       if (isMobile) {
@@ -92,11 +105,7 @@ export function Home() {
       window.removeEventListener("resize", handleResize);
     };
 
-
-
-  }, [])
-
-
+  }, [beverage.length, dataGlobal, dessert.length, meal.length])
 
   return (
     <Container>
@@ -111,107 +120,113 @@ export function Home() {
 
         </div>
       </div>
-      <div className="Meal type-wrapper">
-        <p className="type-title">Meal</p>
-        <Swiper
-          modules={[Navigation, A11y]}
-          navigation
-          className="swiper-container"
-          breakpoints={{
-            768: {
-              slidesPerView: 3,
-              modules: [Navigation, A11y],
-              pagination: {
-                dynamicBullets: true,
-              },
-            }
-          }}
-        >
-          {
-            meal.map(meal => (
+      {filteredMeals.length > 0 && (
+        <div className="Meal type-wrapper">
+          <p className="type-title">Meal</p>
+          <Swiper
+            modules={[Navigation, A11y]}
+            navigation
+            className="swiper-container"
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+                modules: [Navigation, A11y],
+                pagination: {
+                  dynamicBullets: true,
+                },
+              }
+            }}
+          >
+            {
+              filteredMeals.map(meal => (
 
-              < SwiperSlide
-                height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
-                <Card
-                  id_Dish={meal.id}
-                  img={images[meal.image] || loading}
-                  description={meal.description}
-                  title={meal.name}
-                  redirect={`displaydish/${meal.id}`}
-                  price={meal.price}
-                />
-              </SwiperSlide>
-            ))
-          }
-        </Swiper>
-      </div>
-      <div className="Beverage type-wrapper">
-        <p className="type-title">Beverage</p>
-        <Swiper
-          modules={[Navigation, A11y]}
-          navigation
-          className="swiper-container"
-          breakpoints={{
-            768: {
-              slidesPerView: 3,
-              modules: [Navigation, A11y],
-              pagination: {
-                dynamicBullets: true,
-              },
+                < SwiperSlide
+                  height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
+                  <Card
+                    id_Dish={meal.id}
+                    img={images[meal.image] || loading}
+                    description={meal.description}
+                    title={meal.name}
+                    redirect={`displaydish/${meal.id}`}
+                    price={meal.price}
+                  />
+                </SwiperSlide>
+              ))
             }
-          }}
-        >
-          {
-            beverage.map(meal => (
+          </Swiper>
+        </div>
+      )}
+      {filteredBeverages.length > 0 && (
+        <div className="Beverage type-wrapper">
+          <p className="type-title">Beverage</p>
+          <Swiper
+            modules={[Navigation, A11y]}
+            navigation
+            className="swiper-container"
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+                modules: [Navigation, A11y],
+                pagination: {
+                  dynamicBullets: true,
+                },
+              }
+            }}
+          >
+            {
+              filteredBeverages.map(meal => (
 
-              < SwiperSlide
-                height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
-                <Card
-                  id_Dish={meal.id}
-                  img={images[meal.image] || loading}
-                  description={meal.description}
-                  title={meal.name}
-                  redirect={`displaydish/${meal.id}`}
-                  price={meal.price}
-                />
-              </SwiperSlide>
-            ))
-          }
-        </Swiper>
-      </div>
-      <div className="Dessert type-wrapper">
-        <p className="type-title">Dessert</p>
-        <Swiper
-          modules={[Navigation, A11y]}
-          navigation
-          className="swiper-container"
-          breakpoints={{
-            768: {
-              slidesPerView: 3,
-              modules: [Navigation, A11y],
-              pagination: {
-                dynamicBullets: true,
-              },
+                < SwiperSlide
+                  height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
+                  <Card
+                    id_Dish={meal.id}
+                    img={images[meal.image] || loading}
+                    description={meal.description}
+                    title={meal.name}
+                    redirect={`displaydish/${meal.id}`}
+                    price={meal.price}
+                  />
+                </SwiperSlide>
+              ))
             }
-          }}
-        >
-          {
-            dessert.map(meal => (
+          </Swiper>
+        </div>
+      )}
+      {filteredDesserts.length > 0 && (
+        <div className="Dessert type-wrapper">
+          <p className="type-title">Dessert</p>
+          <Swiper
+            modules={[Navigation, A11y]}
+            navigation
+            className="swiper-container"
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+                modules: [Navigation, A11y],
+                pagination: {
+                  dynamicBullets: true,
+                },
+              }
+            }}
+          >
+            {
+              filteredDesserts.map(meal => (
 
-              < SwiperSlide height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
-                <Card
-                  id_Dish={meal.id}
-                  img={images[meal.image] || loading}
-                  description={meal.description}
-                  title={meal.name}
-                  redirect={`displaydish/${meal.id}`}
-                  price={meal.price}
-                />
-              </SwiperSlide>
-            ))
-          }
-        </Swiper>
-      </div>
+                < SwiperSlide height="unset" key={String(meal.id)} style={{ height: 'auto' }} >
+                  <Card
+                    id_Dish={meal.id}
+                    img={images[meal.image] || loading}
+                    description={meal.description}
+                    title={meal.name}
+                    redirect={`displaydish/${meal.id}`}
+                    price={meal.price}
+                  />
+                </SwiperSlide>
+              ))
+            }
+          </Swiper>
+        </div>
+      )}
 
       <Footer></Footer>
     </Container >

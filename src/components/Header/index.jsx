@@ -11,8 +11,7 @@ import { useAuth } from '../../hooks/auth'
 
 // eslint-disable-next-line react/prop-types
 export function Header({ searchValue, setSearchValue }) {
-  const { signOut } = useAuth()
-  const { isAdmin } = useAuth();
+  const { signOut, isAdmin } = useAuth()
   const navigation = useNavigate()
 
   function handleSignOut() {

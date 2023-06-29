@@ -11,6 +11,7 @@ import uploadIcon from '../../assets/icons/UploadSimple.svg'
 
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useParams } from 'react-router-dom';
 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
@@ -26,6 +27,7 @@ export function EditDish() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
   const navigate = useNavigate()
+  const { id } = useParams();
 
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export function EditDish() {
       // console.log(response.data);
     }
     fetchDish()
-  }, [])
+  }, [id])
 
 
 
@@ -82,7 +84,6 @@ export function EditDish() {
         }
       });
   }
-  const id = 30;
 
   function handleBackButton() {
     navigate("/")

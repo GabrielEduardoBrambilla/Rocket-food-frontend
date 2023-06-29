@@ -15,9 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {
-  const { isAdmin } = useAuth();
-  const { user } = useAuth();
-  const [icon, setIcon] = useState(isAdmin ? editIcon : favIcon);
+  const { user, isAdmin } = useAuth();
+  const [icon, setIcon] = useState();
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -25,6 +24,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
   function handleIconClick() {
     if (isAdmin) {
       navigate(`/editdish/${id_Dish}`);
+
     } else {
       if (icon === favIcon) {
         setIcon(favoritedIcon);
@@ -82,7 +82,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           if (favorite) {
             setIcon(favoritedIcon);
           } else {
-            setIcon(favIcon);
+            setIcon(isAdmin ? editIcon : favIcon);
           }
         }
       } catch (error) {
@@ -93,7 +93,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
 
     fetchData();
 
-  }, [id_Dish, user.id]);
+  }, [id_Dish, isAdmin, user.id]);
 
   return (
     <Container {...rest}>

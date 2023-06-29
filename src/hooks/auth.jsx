@@ -38,21 +38,22 @@ function AuthProvider({ children }) {
     setData({})
   }
 
+  const token = localStorage.getItem('@rocketfood:token')
+  const user = localStorage.getItem('@rocketfood:user')
+
   useEffect(() => {
-    const token = localStorage.getItem('@rocketfood:token')
-    const user = localStorage.getItem('@rocketfood:user')
 
     if (token && user) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       const parsedUser = JSON.parse(user);
-      const userInBoolean = parsedUser.is_Admin == 0 ? false : true;
+      const userInBoolean = parsedUser.is_Admin === 0 ? false : true;
       setData({
         token,
         user: parsedUser,
         isAdmin: userInBoolean
       })
     }
-  }, [])
+  }, [token, user])
 
   return <AuthContext.Provider value={{ signIn, signOut, user: data.user, isAdmin: data.isAdmin }}>{children}</AuthContext.Provider>
 }

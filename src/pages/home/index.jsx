@@ -1,65 +1,61 @@
-import { Container } from "./styles"
-import { Header } from '../../components/Header'
-import { Card } from '../../components/Card'
-import { useEffect } from 'react'
-
-import loading from "../../assets/icons/loading.jpg"
-import sweetsMobile from "../../assets/logo/sweetsMobile.png"
-import sweetsDesktop from "../../assets/logo/sweetsDesktop.png"
-
+import { Container } from "./styles";
+import { Header } from "../../components/Header";
+import { Card } from "../../components/Card";
+import { useEffect } from "react";
+import loading from "../../assets/icons/loading.jpg";
+import sweetsMobile from "../../assets/logo/sweetsMobile.png";
+import sweetsDesktop from "../../assets/logo/sweetsDesktop.png";
 import { useState } from "react";
 import { api } from "../../services/api";
-import { Footer } from '../../components/Footer';
-
-
-import { Navigation, A11y } from 'swiper';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Footer } from "../../components/Footer";
+import { Navigation, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+import Fuse from "fuse.js";
 
 export function Home() {
-  const [meal, setMeal] = useState([])
-  const [dessert, setDessert] = useState([])
-  const [beverage, setBeverage] = useState([])
-  const [images, setImages] = useState({}) // Store images in an object for efficient lookup
+  const [meal, setMeal] = useState([]);
+  const [dessert, setDessert] = useState([]);
+  const [beverage, setBeverage] = useState([]);
+  const [images, setImages] = useState({});
   const [sweetsImage, setSweetsImage] = useState();
-  const [searchValue, setSearchValue] = useState('');
-  const [dataGlobal, setDataGlobal] = useState([])
-
-  const filteredMeals = meal.filter((m) =>
-    m.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
-  const filteredDesserts = dessert.filter((d) =>
-    d.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
-  const filteredBeverages = beverage.filter((b) =>
-    b.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const [searchValue, setSearchValue] = useState("");
+  const [dataGlobal, setDataGlobal] = useState([]);
+  let userWarning = false;
 
   useEffect(() => {
     async function fetchApi() {
-      if (meal.length === 0 || dessert.length === 0 || beverage.length === 0) {
+      if (
+        meal.length === 0 ||
+        dessert.length === 0 ||
+        beverage.length === 0
+      ) {
         const response = await api.get(`/dishes/index`);
         const { data } = response; // Assuming the array of dishes is in the `data` property
 
-        setDataGlobal(data)
+        setDataGlobal(data);
 
         const filteredMeals = data.filter((dish) => dish.category === "Meal");
-        const filteredDessert = data.filter((dish) => dish.category === "Dessert");
-        const filteredBeverage = data.filter((dish) => dish.category === "Beverage");
-        // console.log(data)
+        const filteredDessert = data.filter(
+          (dish) => dish.category === "Dessert"
+        );
+        const filteredBeverage = data.filter(
+          (dish) => dish.category === "Beverage"
+        );
+
         setMeal(filteredMeals);
-        setDessert(filteredDessert)
-        setBeverage(filteredBeverage)
+        setDessert(filteredDessert);
+        setBeverage(filteredBeverage);
       }
-      const imgNames = dataGlobal.map((item) => item.image)
-      console.log(dataGlobal)
-      await Promise.all(imgNames.map(fetchImage)) // Fetch all images concurrently
+
+      const imgNames = dataGlobal.map((item) => item.image);
+      await Promise.all(imgNames.map(fetchImage)); // Fetch all images concurrently
 
       function fetchImage(imageName) {
         return new Promise((resolve, reject) => {
@@ -68,23 +64,20 @@ export function Home() {
           img.onload = () => {
             setImages((prevImages) => ({
               ...prevImages,
-              [imageName]: img.src
+              [imageName]: img.src,
             }));
             resolve();
           };
           img.onerror = () => {
             setImages((prevImages) => ({
               ...prevImages,
-              [imageName]: loading
+              [imageName]: loading,
             }));
             reject();
           };
         });
       }
-
     }
-
-
 
     function handleResize() {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
@@ -94,7 +87,8 @@ export function Home() {
         setSweetsImage(sweetsDesktop);
       }
     }
-    fetchApi()
+
+    fetchApi();
 
     // Call handleResize initially and on window resize
     handleResize();
@@ -104,13 +98,36 @@ export function Home() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, [beverage.length, dataGlobal, dessert.length, meal.length]);
 
-  }, [beverage.length, dataGlobal, dessert.length, meal.length])
+  // Function to perform the fuzzy search
+  function performFuzzySearch(data, searchValue) {
+    const options = {
+      keys: ["name"],
+      threshold: 0.4,
+    };
+
+    const fuse = new Fuse(data, options);
+    const searchResults = fuse.search(searchValue);
+    if (searchResults.length === 0) {
+      userWarning = true
+      return data
+    } else {
+      return searchResults.map((result) => result.item);
+    }
+  }
+
+  const filteredMeals = searchValue ? performFuzzySearch(meal, searchValue) : meal;
+  const filteredDesserts = searchValue ? performFuzzySearch(dessert, searchValue) : dessert;
+  const filteredBeverages = searchValue ? performFuzzySearch(beverage, searchValue) : beverage;
 
   return (
     <Container>
       <Header searchValue={searchValue} setSearchValue={setSearchValue} />
 
+      {userWarning && (
+        <p className="warning-text">There are no available dishes with searched name </p>
+      )}
       <div className="slogan-banner">
         <img src={sweetsImage} alt="" />
         <div className="slogan-text">
@@ -120,6 +137,7 @@ export function Home() {
 
         </div>
       </div>
+
       {filteredMeals.length > 0 && (
         <div className="Meal type-wrapper">
           <p className="type-title">Meal</p>
@@ -230,5 +248,5 @@ export function Home() {
 
       <Footer></Footer>
     </Container >
-  )
+  );
 }

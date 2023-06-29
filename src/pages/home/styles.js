@@ -5,6 +5,17 @@ export const Container = styled.div`
   min-height: 786px;
   font-family: Poppins;
 
+  .warning-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 4px auto;
+    font-size: 16px;
+    transition: all 2.5s ease;
+    color: ${({ theme }) => theme.COLORS.RED[400]};
+  }
+
   .slogan-banner {
     display: flex;
     flex-direction: row;
@@ -116,6 +127,13 @@ export const Container = styled.div`
         width: 1200px;
         margin: auto;
       }
+    }
+
+    .warning-text {
+      margin: 8px auto;
+      font-size: 24px;
+
+      color: ${({ theme }) => theme.COLORS.RED[400]};
     }
     .slogan-banner {
       width: 1120px;

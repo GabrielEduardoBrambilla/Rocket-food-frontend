@@ -33,7 +33,6 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           id_dish: id_Dish
         })
           .then(() => {
-            alert("Add to favorites");
           }).catch(error => {
             if (error.response) {
               alert(error.response.data.message);
@@ -51,7 +50,6 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           }
         })
           .then(() => {
-            alert("Removed from favorites");
           }).catch(error => {
             if (error.response) {
               alert(error.response.data.message);
@@ -68,7 +66,34 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
   }
 
   useEffect(() => {
-  }, [icon]);
+    async function fetchData() {
+      try {
+        if (id_Dish !== undefined && user.id !== undefined) {
+
+          const response = await api.get("/favoritelist/show", {
+            params: {
+              id_user: user.id,
+              id_dish: id_Dish
+            }
+          });
+
+          const { favorite } = response.data;
+
+          if (favorite) {
+            setIcon(favoritedIcon);
+          } else {
+            setIcon(favIcon);
+          }
+        }
+      } catch (error) {
+        // Handle the error if the request fails
+        // console.error(error);
+      }
+    }
+
+    fetchData();
+
+  }, [id_Dish, user.id]);
 
   return (
     <Container {...rest}>

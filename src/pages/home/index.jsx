@@ -102,8 +102,9 @@ export function Home() {
 
   // Function to perform the fuzzy search
   function performFuzzySearch(data, searchValue) {
+    console.log(data)
     const options = {
-      keys: ["name"],
+      keys: ["name", ""],
       threshold: 0.4,
     };
 
@@ -116,10 +117,9 @@ export function Home() {
       return searchResults.map((result) => result.item);
     }
   }
-
-  const filteredMeals = searchValue ? performFuzzySearch(meal, searchValue) : meal;
-  const filteredDesserts = searchValue ? performFuzzySearch(dessert, searchValue) : dessert;
-  const filteredBeverages = searchValue ? performFuzzySearch(beverage, searchValue) : beverage;
+  const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "meal") : meal;
+  const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "dessert") : dessert;
+  const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "beverage") : beverage;
 
   return (
     <Container>

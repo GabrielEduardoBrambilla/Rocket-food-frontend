@@ -101,25 +101,34 @@ export function Home() {
   }, [beverage.length, dataGlobal, dessert.length, meal.length]);
 
   // Function to perform the fuzzy search
-  function performFuzzySearch(data, searchValue) {
-    console.log(data)
+  function performFuzzySearch(data, searchValue, category) {
     const options = {
-      keys: ["name", ""],
+      keys: ["name", "ingredients.name"],
       threshold: 0.4,
     };
 
     const fuse = new Fuse(data, options);
     const searchResults = fuse.search(searchValue);
+
     if (searchResults.length === 0) {
-      userWarning = true
-      return data
-    } else {
-      return searchResults.map((result) => result.item);
+      userWarning = true;
+      // Handle the case when there are no search results
+      const filteredDishes = data.filter((dish) => dish.category === category);
+
+      return filteredDishes;
     }
+
+    const filteredResults = searchResults
+      .map((result) => result.item)
+      .filter((dish) => dish.category === category);
+
+    return filteredResults
   }
-  const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "meal") : meal;
-  const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "dessert") : dessert;
-  const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "beverage") : beverage;
+
+
+  const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Meal") : meal;
+  const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Dessert") : dessert;
+  const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Beverage") : beverage;
 
   return (
     <Container>

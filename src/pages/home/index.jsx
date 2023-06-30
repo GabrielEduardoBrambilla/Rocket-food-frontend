@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { Header } from "../../components/Header";
+import { Header } from "../../components/Header copy";
 import { Card } from "../../components/Card";
 import { useEffect } from "react";
 import loading from "../../assets/icons/loading.jpg";
@@ -27,7 +27,35 @@ export function Home() {
   const [sweetsImage, setSweetsImage] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [dataGlobal, setDataGlobal] = useState([]);
+  const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Meal") : meal;
+  const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Dessert") : dessert;
+  const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Beverage") : beverage;
   let userWarning = false;
+
+  // Function to perform the fuzzy search
+  function performFuzzySearch(data, searchValue, category) {
+    const options = {
+      keys: ["name", "ingredients.name"],
+      threshold: 0.4,
+    };
+
+    const fuse = new Fuse(data, options);
+    const searchResults = fuse.search(searchValue);
+
+    if (searchResults.length === 0) {
+      userWarning = true;
+      // Handle the case when there are no search results
+      const filteredDishes = data.filter((dish) => dish.category === category);
+
+      return filteredDishes;
+    }
+
+    const filteredResults = searchResults
+      .map((result) => result.item)
+      .filter((dish) => dish.category === category);
+
+    return filteredResults
+  }
 
   useEffect(() => {
     async function fetchApi() {
@@ -99,36 +127,6 @@ export function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, [beverage.length, dataGlobal, dessert.length, meal.length]);
-
-  // Function to perform the fuzzy search
-  function performFuzzySearch(data, searchValue, category) {
-    const options = {
-      keys: ["name", "ingredients.name"],
-      threshold: 0.4,
-    };
-
-    const fuse = new Fuse(data, options);
-    const searchResults = fuse.search(searchValue);
-
-    if (searchResults.length === 0) {
-      userWarning = true;
-      // Handle the case when there are no search results
-      const filteredDishes = data.filter((dish) => dish.category === category);
-
-      return filteredDishes;
-    }
-
-    const filteredResults = searchResults
-      .map((result) => result.item)
-      .filter((dish) => dish.category === category);
-
-    return filteredResults
-  }
-
-
-  const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Meal") : meal;
-  const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Dessert") : dessert;
-  const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Beverage") : beverage;
 
   return (
     <Container>

@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { Header } from "../../components/Header copy";
+import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { useEffect } from "react";
 import loading from "../../assets/icons/loading.jpg";
@@ -30,7 +30,7 @@ export function Home() {
   const filteredMeals = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Meal") : meal;
   const filteredDesserts = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Dessert") : dessert;
   const filteredBeverages = searchValue ? performFuzzySearch(dataGlobal, searchValue, "Beverage") : beverage;
-  let userWarning = false;
+  var userWarning = false;
 
   // Function to perform the fuzzy search
   function performFuzzySearch(data, searchValue, category) {

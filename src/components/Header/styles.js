@@ -9,6 +9,13 @@ export const Container = styled.header`
   img {
     cursor: pointer;
   }
+
+  .userImg {
+    height: 42px;
+    width: 42px;
+    object-fit: cover;
+    border-radius: 90%;
+  }
   .hideMobile {
     display: none;
   }

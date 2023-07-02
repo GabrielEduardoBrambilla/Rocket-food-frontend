@@ -65,6 +65,23 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
     navigate(`/${redirect}`)
   }
 
+  function handleOrderInclude() {
+    async function fetch() {
+      console.log("User " + user.id)
+      console.log("Dish " + id_Dish)
+      console.log("Quant " + quantity)
+      console.log("Price " + price)
+      await api.post(`/order/`, {
+        id_user: user.id,
+        id_dish: id_Dish,
+        selectedQuantity: quantity,
+        dishPrice: price
+      });
+    }
+
+    fetch()
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -95,6 +112,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
 
   }, [id_Dish, isAdmin, user.id]);
 
+
   return (
     <Container {...rest}>
       <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
@@ -107,7 +125,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
         {!isAdmin && (
           <div className="buttonsWrapper">
             <Stepper quantity={quantity} setQuantity={setQuantity} />
-            <IncludeButton title="incluir" />
+            <IncludeButton onClick={handleOrderInclude} title="incluir" />
           </div>
         )}
       </div>

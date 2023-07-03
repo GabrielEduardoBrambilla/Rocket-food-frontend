@@ -67,19 +67,7 @@ export function Order() {
                 <img className="dish_img left-section" src={images[item.dish_img] || loading} alt={item.dish_img} />
                 <div className="middle-section">
                   <p>{item.dish_name}</p>
-                  <Stepper
-                    className="stepper"
-                    quantity={item.quantity}
-                    setQuantity={(newQuantity) => {
-                      setUserOrder((prevOrder) =>
-                        prevOrder.map((orderItem) =>
-                          orderItem.dish_id === item.dish_id
-                            ? { ...orderItem, quantity: newQuantity }
-                            : orderItem
-                        )
-                      );
-                    }}
-                  />
+                  <Stepper className="stepper" quantity={item.quantity} setQuantity={setQuantity} />
                 </div>
                 <FaTrashAlt className="right-section " />
               </div>

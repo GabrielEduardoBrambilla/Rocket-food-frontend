@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 100vh;
   padding: 16px 56px;
   gap: 16px;
   font-family: Poppins;

@@ -6,7 +6,7 @@ import menu from "../../assets/icons/Menu.svg"
 import receipt from "../../assets/icons/receipt.svg"
 import search from "../../assets/icons/search.svg"
 // import SignOutImg from "../../assets/icons/SignOut.svg"
-import UserPng from "../../assets/icons/user.png"
+import UserPng from "../../assets/icons/user2.png"
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth'
 import { Sidebar } from "../Sidebar"
@@ -36,6 +36,9 @@ export function Header({ searchValue, setSearchValue }) {
   const [sidebar, setSidebar] = useState(false)
 
   const showSiderbar = () => setSidebar(!sidebar);
+  function handleOrderRedirect() {
+    navigation("/order")
+  }
   return (
     <Container>
       {/* mobile */}
@@ -45,7 +48,7 @@ export function Header({ searchValue, setSearchValue }) {
       }
       <Logo isAdmin={isAdmin} />
       {/* mobile */}
-      {!isAdmin && <img className='mobile' src={receipt} alt="Receipt icon" />}
+      {!isAdmin && <img onClick={handleOrderRedirect} className='mobile' src={receipt} alt="Receipt icon" />}
       {/* desktop */}
       {/* mobileHeader is for hiding the search bar in mobile devices */}
       <Input onChange={e => setSearchValue(e.target.value)} mobileHeader icon={search} placeholder='Search for dishes or ingredients' value={searchValue} />

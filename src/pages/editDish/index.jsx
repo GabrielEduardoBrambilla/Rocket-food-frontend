@@ -118,9 +118,10 @@ export function EditDish() {
 
                 onChange={handleImageChange}
                 id='imgUpload'
-                placeholder='Select Image'
                 type='file'
                 icon={uploadIcon}
+                text='Select Image'
+                isImage={true}
               />
             </label>
             <label className='name' htmlFor="name">

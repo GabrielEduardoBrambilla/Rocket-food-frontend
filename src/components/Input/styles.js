@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Poppins;
 
   width: 100%;
   max-width: 581px;
@@ -34,6 +35,18 @@ export const Container = styled.div`
     &:placeholder {
       color: ${({ theme }) => theme.COLORS.LIGHT[100]};
     }
+  }
+  .hideInput {
+    display: none;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+    font-size: 16px;
+    line-height: 24px;
+    height: 56px;
   }
   > img {
     margin-left: 16px;
@@ -66,6 +79,9 @@ export const Container = styled.div`
       &:placeholder {
         color: ${({ theme }) => theme.COLORS.LIGHT[100]};
       }
+    }
+    > label {
+      font-size: 16px;
     }
     > img {
       margin-left: 16px;

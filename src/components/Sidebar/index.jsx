@@ -30,18 +30,18 @@ export function Sidebar({ active, viewType }) {
   function handleCreateDishRedirect() {
     navigation("/createdish")
   }
+  console.log(!isAdmin)
   return (
     <Container className={viewType} view={viewType} sidebar={active}>
       <LiaTimesSolid onClick={closeSidebar} />
       <Content>
         <SidebarItem onClick={handleHomeRedirect} Icon={FaHome} Text="Home" />
-        {!isAdmin &&
-          <SidebarItem Icon={FaHeart} Text="Favorites" />
+        {!isAdmin && <SidebarItem Icon={FaHeart} Text="Favorites" />
         }
-        {!isAdmin &&
-          <SidebarItem onClick={handleOrderRedirect} Icon={PiReceipt} Text="Order" />
+        {isAdmin && <SidebarItem onClick={handleOrderRedirect} Icon={PiReceipt} Text="Order" />
         }
-        <SidebarItem onClick={handleCreateDishRedirect} Icon={MdOutlineAddToPhotos} Text="Add Dish" />
+        {isAdmin && <SidebarItem onClick={handleCreateDishRedirect} Icon={MdOutlineAddToPhotos} Text="Add Dish" />
+        }
         <SidebarItem onClick={handleSignOut} Icon={LuLogOut} Text="Logout" />
         <div>
           <p>

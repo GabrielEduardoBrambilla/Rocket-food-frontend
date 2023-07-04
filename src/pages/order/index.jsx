@@ -11,20 +11,54 @@ import { FaTrashAlt } from "react-icons/fa"
 export function Order() {
   const { user } = useAuth()
   const [quantity, setQuantity] = useState(1);
+  const [localQuantity, setLocalQuantity] = useState(1);
   const [userOrder, setUserOrder] = useState([]);
   const [images, setImages] = useState({});
-  const orderTotalPrice = userOrder.reduce(
+  const [orderTotalPrice, setOrderTotalPrice] = useState(10)
+  const [itemTotalPrice, setItemTotalPrice] = useState({})
+  const orderPrice = userOrder.reduce(
     (accumulator, item) =>
       accumulator + item.quantity * item.item_price_at_time,
     0
   )
+
+  async function handleOrderItemDelete(id_dish) {
+    try {
+      await api.delete("order/delete",
+        {
+          data: {
+            id_user: user.id,
+            id_dish: id_dish,
+
+          }
+        });
+      setUserOrder(prevUserOrder => prevUserOrder.filter(item => item.dish_id !== id_dish));
+      const updatedTotalPrice = userOrder.reduce((accumulator, item) =>
+        accumulator + item.quantity * item.item_price_at_time,
+        0
+      );
+      setOrderTotalPrice(updatedTotalPrice);
+    } catch (error) {
+      // Handle error
+    }
+  }
+
+  useEffect(() => {
+    console.log("Total " + orderTotalPrice)
+    console.log("Order " + orderPrice)
+    console.log(itemTotalPrice)
+    setOrderTotalPrice(orderPrice)
+    async function getOrderTotalPrice() {
+
+    }
+    getOrderTotalPrice()
+  }, [orderPrice, orderTotalPrice, quantity])
 
   useEffect(() => {
 
     async function fetchApi() {
       const { data } = await api.get(`/order/index/${user.id}`);
       setQuantity(quantity)
-      console.log(quantity)
       setUserOrder(data)
 
       const imgNames = data.map((item) => item.dish_img);
@@ -51,10 +85,14 @@ export function Order() {
         });
       }
     }
-
     fetchApi()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.id])
+  }, [user.id]);
+
+  useEffect(() => {
+    setLocalQuantity(quantity)
+  }, [localQuantity, quantity])
+
   return (
     <Container>
       <Header />
@@ -67,9 +105,16 @@ export function Order() {
                 <img className="dish_img left-section" src={images[item.dish_img] || loading} alt={item.dish_img} />
                 <div className="middle-section">
                   <p>{item.dish_name}</p>
-                  <Stepper className="stepper" quantity={quantity} defaultQuantity={item.quantity} setQuantity={setQuantity} />
+                  <Stepper
+                    className="stepper"
+                    dishId={item.dish_id}
+                    itemPrice={item.item_price_at_time}
+                    setItemTotalPrice={setItemTotalPrice}
+                    defaultQuantity={item.quantity}
+                    setQuantity={setQuantity}
+                  />
                 </div>
-                <FaTrashAlt className="right-section " />
+                <FaTrashAlt onClick={() => handleOrderItemDelete(item.dish_id)} className="right-section " />
               </div>
 
             )

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   /* display: flex; */
   flex-direction: column;
+  min-height: 100%;
   height: 100vh;
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
 
@@ -12,6 +13,7 @@ export const Container = styled.div`
     width: 350px;
     margin: auto;
     gap: 25px;
+    transition: all 1.5s ease-in;
 
     > span {
       font-size: 20px;
@@ -19,6 +21,7 @@ export const Container = styled.div`
       font-style: normal;
       font-weight: 500;
       line-height: 160%;
+      padding: 0 0 20px 0;
     }
 
     > h2 {
@@ -42,6 +45,7 @@ export const Container = styled.div`
     grid-template-columns: auto 1fr auto;
     gap: 10px;
     align-items: center;
+    transition: all 1.5s ease-in;
   }
 
   .left-section {

@@ -124,7 +124,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
         <span className="price">R$ {price * quantity}</span>
         {!isAdmin && (
           <div className="buttonsWrapper">
-            <Stepper quantity={quantity} setQuantity={setQuantity} />
+            <Stepper setItemTotalPrice={handleIconClick} setQuantity={setQuantity} />
             <IncludeButton onClick={handleOrderInclude} title="incluir" />
           </div>
         )}

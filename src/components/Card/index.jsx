@@ -112,7 +112,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
 
   }, [id_Dish, isAdmin, user.id]);
 
-
+  const fixedQuantity = price * quantity;
   return (
     <Container {...rest}>
       <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
@@ -121,10 +121,10 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       <p onClick={handleRedirect} className="title">{title} </p>
       <p onClick={handleRedirect} className="description">{description}</p>
       <div>
-        <span className="price">R$ {price * quantity}</span>
+        <span className="price">R$ {fixedQuantity.toFixed(2)}</span>
         {!isAdmin && (
           <div className="buttonsWrapper">
-            <Stepper setItemTotalPrice={handleIconClick} setQuantity={setQuantity} />
+            <Stepper setQuantity={setQuantity} />
             <IncludeButton onClick={handleOrderInclude} title="incluir" />
           </div>
         )}

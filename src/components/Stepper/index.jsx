@@ -30,10 +30,12 @@ export function Stepper({ defaultQuantity, setQuantity, dishId, itemPrice, setIt
           dishPrice: itemPrice
 
         });
-        setItemTotalPrice(prevItemTotalPrice => ({
-          ...prevItemTotalPrice,
-          [dishId]: quantity * itemPrice
-        }));
+        if (setItemTotalPrice) {
+          setItemTotalPrice(prevItemTotalPrice => ({
+            ...prevItemTotalPrice,
+            [dishId]: quantity * itemPrice
+          }));
+        }
       } catch (error) {
         // Handle error
       }
@@ -51,6 +53,7 @@ export function Stepper({ defaultQuantity, setQuantity, dishId, itemPrice, setIt
     PatchApi()
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quantity, setLocalQuantity])
 
   return (

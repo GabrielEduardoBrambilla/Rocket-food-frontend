@@ -58,7 +58,6 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       gap: 32px;
-      width: 34rem;
       padding: 64px;
       border-radius: 16px;
 

@@ -10,12 +10,31 @@ import { api } from "../../services/api";
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Stepper } from '../../components/Stepper'
+import { useAuth } from "../../hooks/auth";
 
 export function DisplayDish() {
   const { id } = useParams();
   const [dish, setDish] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const { user } = useAuth();
+
+  function handleOrderInclude() {
+    async function fetch() {
+      console.log("User " + user.id)
+      console.log("Dish " + dish.id)
+      console.log("Quant " + quantity)
+      console.log("Price " + dish.price)
+      await api.post(`/order/`, {
+        id_user: user.id,
+        id_dish: dish.id,
+        selectedQuantity: quantity,
+        dishPrice: dish.price
+      });
+    }
+    console.log(dish)
+    fetch()
+  }
 
   useEffect(() => {
 
@@ -26,6 +45,8 @@ export function DisplayDish() {
       const img = `${api.defaults.baseURL}/files/${data.image}`
       const dishData = { ...data, image: img }
       setDish(dishData)
+      console.log(dish)
+
       const ingredients = data.ingredients
       setIngredients(ingredients)
 
@@ -58,7 +79,7 @@ export function DisplayDish() {
           </div>
           <div className="counter">
             <Stepper quantity={quantity} setQuantity={setQuantity} />
-            <Button icon={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
+            <Button onClick={handleOrderInclude} icon={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
           </div>
         </section>
       </Container >

@@ -103,6 +103,17 @@ export const Container = styled.div`
     }
   }
 
+  .swiper-slide {
+    /* background-color: darkblue; */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    min-height: 300px;
+  }
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
   .type-wrapper::-webkit-scrollbar {
     height: 8px;
   }

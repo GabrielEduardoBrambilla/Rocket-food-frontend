@@ -7,9 +7,9 @@ export const Container = styled.div`
   justify-content: space-between;
   position: relative;
   width: 210px;
-  min-height: 292px;
+  min-height: 305px;
+  height: max-content;
   padding: 24px;
-  margin: auto;
 
   background-color: ${({ theme }) => theme.COLORS.DARK[200]};
 

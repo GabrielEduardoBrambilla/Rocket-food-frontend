@@ -188,6 +188,7 @@ export function Home() {
           <Swiper
             modules={[Navigation, A11y]}
             navigation
+            slidesPerView={1.5}
             className="swiper-container"
             breakpoints={{
               768: {
@@ -225,6 +226,7 @@ export function Home() {
             modules={[Navigation, A11y]}
             navigation
             className="swiper-container"
+            slidesPerView={1.5}
             breakpoints={{
               768: {
                 slidesPerView: 3,

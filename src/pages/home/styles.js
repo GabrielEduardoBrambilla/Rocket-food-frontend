@@ -92,6 +92,7 @@ export const Container = styled.div`
     align-items: center;
     flex-grow: 1;
     flex-grow: inherit;
+    min-height: 300px;
   }
   .swiper-wrapper {
     display: flex;

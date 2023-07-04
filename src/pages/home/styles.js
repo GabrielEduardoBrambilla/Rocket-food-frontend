@@ -5,6 +5,31 @@ export const Container = styled.div`
   min-height: 786px;
   font-family: Poppins;
 
+  .swiper-container {
+    display: flex;
+    width: 380px;
+    align-items: center;
+
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .swiper-slide {
+    /* background-color: darkblue; */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-grow: inherit;
+    flex-shrink: 1;
+    padding: 0 16px;
+    /* background-color: red; */
+  }
+
   .warning-text {
     display: flex;
     flex-direction: row;
@@ -77,26 +102,7 @@ export const Container = styled.div`
       margin: 15px auto 0 auto;
     }
   }
-  .swiper-container {
-    display: flex;
-    width: 380px;
-    align-items: center;
 
-    justify-content: center;
-    text-align: center;
-    flex-direction: row;
-  }
-  .swiper-slide {
-    /* background-color: darkblue; */
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    flex-grow: inherit;
-  }
-  .swiper-wrapper {
-    display: flex;
-    align-items: center;
-  }
   .type-wrapper::-webkit-scrollbar {
     height: 8px;
   }
@@ -128,7 +134,9 @@ export const Container = styled.div`
         margin: auto;
       }
     }
-
+    .swiper-slide {
+      flex-shrink: 0;
+    }
     .warning-text {
       margin: 8px auto;
       font-size: 24px;

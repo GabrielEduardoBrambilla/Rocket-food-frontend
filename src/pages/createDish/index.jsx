@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom'
 
 export function CreateDish() {
   const [dishImg, setDishImg] = useState("");
+  const [dishImgPreview, setDishImgPreview] = useState("");
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -50,6 +51,7 @@ export function CreateDish() {
   function handleImageChange(e) {
     const file = e.target.files[0]; // Get the first selected file
     setDishImg(file)
+    setDishImgPreview(URL.createObjectURL(file))
 
   }
   function handleAddIngredient() {
@@ -76,6 +78,10 @@ export function CreateDish() {
           <h2>Novo Prato</h2>
           <div className="first-wrapper">
             <label className='imgUpload' htmlFor="imgUpload">
+              {
+                dishImg &&
+                <img className="imgPrev" src={dishImgPreview} alt="Image Preview" />
+              }
               Dish Image
 
               <Input

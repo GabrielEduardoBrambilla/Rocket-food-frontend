@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   .ingredient {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */
@@ -55,6 +56,13 @@ export const Form = styled.form`
   width: 364px;
   justify-content: center;
   margin: 10px auto 55px;
+
+  .imgPrev {
+    border-radius: 90%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
 
   .first-wrapper,
   .second-wrapper {
@@ -126,8 +134,16 @@ export const Form = styled.form`
     .first-wrapper {
       display: flex;
       flex-direction: row;
+      align-items: end;
       padding: 0px;
       gap: 32px;
+
+      .imgPrev {
+        border-radius: 90%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
       > label {
         display: flex;
         flex-direction: column;

@@ -13,6 +13,9 @@ export const Container = styled.header`
   img {
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   }
+  .mobile {
+    font-size: 30px;
+  }
   .userImg {
     height: 42px;
     width: 42px;

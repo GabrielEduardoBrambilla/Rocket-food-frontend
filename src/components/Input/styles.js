@@ -5,10 +5,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: Poppins;
-
   width: 100%;
   max-width: 581px;
-
   background-color: ${({ theme }) => theme.COLORS.DARK[900]};
   color: ${({ theme }) => theme.COLORS.LIGHT[500]};
 
@@ -48,8 +46,10 @@ export const Container = styled.div`
     line-height: 24px;
     height: 56px;
   }
-  > img {
+  > svg {
     margin-left: 16px;
+    font-size: 24px;
+
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};
   }
   /* destopk class */
@@ -83,7 +83,8 @@ export const Container = styled.div`
     > label {
       font-size: 16px;
     }
-    > img {
+    > svg {
+      font-size: 16px;
       margin-left: 16px;
       color: ${({ theme }) => theme.COLORS.LIGHT[400]};
     }

@@ -6,8 +6,8 @@ import { Textarea } from '../../components/Textarea'
 import { IncludeButton } from '../../components/IncludeButton';
 import { IngredientFormItem } from "../../components/IngredientFormItem"
 
-import caretLeft from '../../assets/icons/CaretLeft.svg'
-import uploadIcon from '../../assets/icons/UploadSimple.svg'
+import { PiCaretLeftBold } from 'react-icons/pi'
+import { FiUpload } from 'react-icons/fi'
 
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -20,6 +20,7 @@ export function EditDish() {
   const [dishImg, setDishImg] = useState("");
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [dishImgPreview, setDishImgPreview] = useState("");
 
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -40,16 +41,27 @@ export function EditDish() {
       setSelectedCategory(response.data.category)
       setPrice(response.data.price)
       setDescription(response.data.description)
-      // console.log(response.data);
+
+      // Maybe later
+      // const imageFile = await api.get(`/files/${response.data.image}`);
+      // const imageString = imageFile.data; // Assuming 'imageFile' contains the image data in string format
+      // const imageBlob = new Blob([imageString], { type: imageFile.headers['content-type'] });
+      // const imageUrl = URL.createObjectURL(imageBlob);
+      // setDishImgPreview(imageUrl);
+      // console.log(imageBlob);
+
+
+
     }
     fetchDish()
-  }, [id])
+  }, [id], dishImg, dishImgPreview)
 
 
 
   function handleImageChange(e) {
     const file = e.target.files[0]; // Get the first selected file
     setDishImg(file)
+    setDishImgPreview(URL.createObjectURL(file))
 
   }
   function handleAddIngredient() {
@@ -108,18 +120,21 @@ export function EditDish() {
       <Container>
 
         <Form>
-          <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>back</span></div>
+          <div onClick={handleBackButton} className="back-btn">{<PiCaretLeftBold />} <span>back</span></div>
           <h2>Edit Dish</h2>
           <div className="first-wrapper">
             <label className='imgUpload' htmlFor="imgUpload">
+              {
+                dishImgPreview &&
+                <img className="imgPrev" src={dishImgPreview} alt="Image Preview" />
+              }
               Dish Image
-
               <Input
 
                 onChange={handleImageChange}
                 id='imgUpload'
                 type='file'
-                icon={uploadIcon}
+                icon={<FiUpload />}
                 text='Select Image'
                 isImage={true}
               />

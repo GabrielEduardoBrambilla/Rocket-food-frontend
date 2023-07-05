@@ -2,21 +2,22 @@
 import { Container } from "./styles"
 import { IncludeButton } from '../IncludeButton'
 import { Stepper } from '../Stepper'
-import favIcon from '../../assets/icons/Heart.svg'
-import editIcon from '../../assets/icons/Pencil.svg'
-import favoritedIcon from '../../assets/icons/favoritedIcon.svg'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
 import { useNavigate } from 'react-router-dom';
 
-// favoritelist
+import { MdOutlineFavoriteBorder } from 'react-icons/md'
+import { PiPencilSimpleBold } from 'react-icons/pi'
+import { MdOutlineFavorite } from 'react-icons/md'
+
+
 
 // eslint-disable-next-line react/prop-types
 export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {
   const { user, isAdmin } = useAuth();
-  const [icon, setIcon] = useState();
+  const [icon, setIcon] = useState(<MdOutlineFavoriteBorder />);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -26,8 +27,8 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       navigate(`/editdish/${id_Dish}`);
 
     } else {
-      if (icon === favIcon) {
-        setIcon(favoritedIcon);
+      if (icon.type === MdOutlineFavoriteBorder) {
+        setIcon(<MdOutlineFavorite />);
         api.post("/favoritelist/", {
           id_user: user.id,
           id_dish: id_Dish
@@ -42,7 +43,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           });
 
       } else {
-        setIcon(favIcon);
+        setIcon(<MdOutlineFavoriteBorder />);
         api.delete("/favoritelist/delete", {
           data: {
             id_user: user.id,
@@ -97,9 +98,9 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           const { favorite } = response.data;
 
           if (favorite) {
-            setIcon(favoritedIcon);
+            setIcon(<MdOutlineFavorite />);
           } else {
-            setIcon(isAdmin ? editIcon : favIcon);
+            setIcon(isAdmin ? <PiPencilSimpleBold /> : <MdOutlineFavorite />);
           }
         }
       } catch (error) {
@@ -115,9 +116,12 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
   const fixedQuantity = price * quantity;
   return (
     <Container {...rest}>
-      <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" />
-      <img onClick={handleRedirect} className="plateImg" src={img} alt="Dishe ilustrative image">
-      </img>
+      {/* <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" /> */}
+      <img onClick={handleRedirect} className="plateImg" src={img} alt="Dishe ilustrative image" />
+      <div onClick={handleIconClick} className="topLeftIcon" >
+        {icon}
+      </div>
+
       <p onClick={handleRedirect} className="title">{title} </p>
       <p onClick={handleRedirect} className="description">{description}</p>
       <div>

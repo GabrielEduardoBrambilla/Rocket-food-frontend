@@ -34,6 +34,7 @@ html:root{
     cursor: pointer;
     transition: filter 0.2s;
   }
+  transition: all 2.5s ease-in;
 
   button:hover, a:hover {
     filter: brightness(0.9)

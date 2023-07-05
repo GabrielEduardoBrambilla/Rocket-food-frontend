@@ -6,6 +6,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  .imgPrev {
+    border-radius: 90%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
   .ingredient {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */
@@ -155,6 +162,13 @@ export const Form = styled.form`
     margin: 10px auto 55px;
     width: 1120px;
 
+    .imgPrev {
+      border-radius: 90%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
     .back-btn {
       cursor: pointer;
       margin-top: 40px;
@@ -167,6 +181,8 @@ export const Form = styled.form`
       flex-direction: row;
       padding: 0px;
       gap: 32px;
+      align-items: end;
+
       > label {
         display: flex;
         flex-direction: column;

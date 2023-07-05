@@ -14,7 +14,7 @@ export function Button({ mobileHeader = false, title, icon, isAdmin = false, ...
         </>
       ) : (
         <>
-          <img src={icon} alt="Receipt icon" />
+          {icon}
           <p>{title}</p>
         </>
       )}

@@ -35,6 +35,7 @@ export const Container = styled.div`
     width: 24px;
     height: 22px;
     position: absolute;
+    font-size: 24px;
     top: 16px;
     right: 16px;
     cursor: pointer;

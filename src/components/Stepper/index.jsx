@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Container } from "./styles";
-import plus from "../../assets/icons/Plus.svg";
-import minus from "../../assets/icons/Minus.svg";
+import { FaMinus } from 'react-icons/fa'
+import { FaPlus } from 'react-icons/fa'
 import { api } from "../../services/api";
 import { useAuth } from '../../hooks/auth'
 
@@ -58,13 +58,13 @@ export function Stepper({ defaultQuantity, setQuantity, dishId, itemPrice, setIt
 
   return (
     <Container>
-      <button onClick={decreaseQuantity}>
-        <img src={minus} alt="" />
-      </button>
+      <div className="Operator-box" onClick={decreaseQuantity}>
+        <FaMinus className="Operator" />
+      </div>
       <span>{quantity}</span>
-      <button onClick={increaseQuantity}>
-        <img src={plus} alt="" />
-      </button>
+      <div className="Operator-box" onClick={increaseQuantity}>
+        <FaPlus />
+      </div>
     </Container>
   );
 }

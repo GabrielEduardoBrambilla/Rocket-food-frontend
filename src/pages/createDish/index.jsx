@@ -6,8 +6,8 @@ import { Textarea } from '../../components/Textarea'
 import { IncludeButton } from '../../components/IncludeButton';
 import { IngredientFormItem } from "../../components/IngredientFormItem"
 
-import caretLeft from '../../assets/icons/CaretLeft.svg'
-import uploadIcon from '../../assets/icons/UploadSimple.svg'
+import { PiCaretLeftBold } from 'react-icons/pi'
+import { FiUpload } from 'react-icons/fi'
 
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -74,7 +74,7 @@ export function CreateDish() {
       <Container>
 
         <Form>
-          <div onClick={handleBackButton} className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></div>
+          <div onClick={handleBackButton} className="back-btn"><PiCaretLeftBold /><span>voltar</span></div>
           <h2>Novo Prato</h2>
           <div className="first-wrapper">
             <label className='imgUpload' htmlFor="imgUpload">
@@ -88,7 +88,7 @@ export function CreateDish() {
                 onChange={handleImageChange}
                 id='imgUpload'
                 type='file'
-                icon={uploadIcon}
+                icon={<FiUpload />}
                 text='Select Image'
                 isImage={true}
               />

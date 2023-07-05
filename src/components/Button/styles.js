@@ -18,7 +18,8 @@ export const Container = styled.button`
   font-weight: 500;
   font-size: 14px;
 
-  img {
+  svg {
+    font-size: 26px;
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   }
 

@@ -33,21 +33,18 @@ export function Sidebar({ active, viewType }) {
   console.log(!isAdmin)
   return (
     <Container className={viewType} view={viewType} sidebar={active}>
-      <LiaTimesSolid onClick={closeSidebar} />
+      <LiaTimesSolid className='close-btn' onClick={closeSidebar} />
       <Content>
         <SidebarItem onClick={handleHomeRedirect} Icon={FaHome} Text="Home" />
-        {!isAdmin && <SidebarItem Icon={FaHeart} Text="Favorites" />
-        }
-        {isAdmin && <SidebarItem onClick={handleOrderRedirect} Icon={PiReceipt} Text="Order" />
-        }
-        {isAdmin && <SidebarItem onClick={handleCreateDishRedirect} Icon={MdOutlineAddToPhotos} Text="Add Dish" />
-        }
+        {!isAdmin && <SidebarItem Icon={FaHeart} Text="Favorites" />}
+
+        <SidebarItem onClick={handleOrderRedirect} Icon={PiReceipt} Text="Order" />
+
+        {isAdmin && <SidebarItem onClick={handleCreateDishRedirect} Icon={MdOutlineAddToPhotos} Text="Add Dish" />}
+
+        <SidebarItem onClick={handleOrderRedirect} Icon={PiReceipt} Text="Change Theme" />
         <SidebarItem onClick={handleSignOut} Icon={LuLogOut} Text="Logout" />
-        <div>
-          <p>
-            {viewType}
-          </p>
-        </div>
+
       </Content>
     </Container>
   )

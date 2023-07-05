@@ -16,7 +16,9 @@ export const Container = styled.div`
   left: ${props => (props.sidebar ? '' : '100%')};
   animation: showSidebar 0.4s;
   z-index: 1000;
-
+  .close-btn {
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+  }
   > svg {
     position: fixed;
     color: white;

@@ -2,9 +2,8 @@ import { Container } from "./styles"
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { IngredientTag } from '../../components/IngredientTag'
+import { PiCaretLeftBold, PiReceipt } from 'react-icons/pi'//Maybe is the PiReceiptBold
 
-import caretLeft from '../../assets/icons/CaretLeft.svg'
-import Receipt from '../../assets/icons/Receipt.svg'
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { Link, useParams } from 'react-router-dom';
@@ -63,7 +62,7 @@ export function DisplayDish() {
       <Header notInMobile />
       <Container>
         <section className="left-section">
-          <Link to='/' className="back-btn"><img src={caretLeft} alt="" /><span>voltar</span></Link>
+          <Link to='/' className="back-btn"><PiCaretLeftBold /><span>voltar</span></Link>
           <img src={dish.image} alt="" />
         </section>
 
@@ -79,7 +78,7 @@ export function DisplayDish() {
           </div>
           <div className="counter">
             <Stepper quantity={quantity} setQuantity={setQuantity} />
-            <Button onClick={handleOrderInclude} icon={Receipt} title={`incluir - R$ ${dish.price * quantity}`} />
+            <Button onClick={handleOrderInclude} icon={<PiReceipt />} title={`incluir - R$ ${dish.price * quantity}`} />
           </div>
         </section>
       </Container >

@@ -158,7 +158,12 @@ export const Form = styled.form`
       .category {
         display: flex;
         flex-direction: column;
+
         width: 364px;
+      }
+      #category {
+        background-color: ${({ theme }) => theme.COLORS.DARK[900]};
+        color: ${({ theme }) => theme.COLORS.LIGHT[500]};
       }
     }
 

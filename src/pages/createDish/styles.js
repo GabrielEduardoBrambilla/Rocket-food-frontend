@@ -41,7 +41,7 @@ export const Container = styled.div`
   select {
     background-color: ${({ theme }) => theme.COLORS.DARK[900]};
     color: ${({ theme }) => theme.COLORS.LIGHT[500]};
-
+    background-color: #0d161b;
     border: 0;
     border-radius: 15px;
     border-radius: 10px;

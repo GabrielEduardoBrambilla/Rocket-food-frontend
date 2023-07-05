@@ -50,7 +50,7 @@ export const Container = styled.div`
     height: 120px;
     margin: 44px auto 47px auto;
     background: var(
-      --gradients-200,
+      ${({ theme }) => theme.COLORS.DARK[200]},
       linear-gradient(180deg, #091e26 0%, #00131c 100%)
     );
 
@@ -93,7 +93,7 @@ export const Container = styled.div`
     align-items: center;
 
     .type-title {
-      color: var(--light-light-300, #e1e1e6);
+      color: ${({ theme }) => theme.COLORS.LIGHT[400]};
       font-size: 18px;
       font-weight: 500;
       line-height: 140%;

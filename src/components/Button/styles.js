@@ -18,6 +18,10 @@ export const Container = styled.button`
   font-weight: 500;
   font-size: 14px;
 
+  img {
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+  }
+
   &:hover {
     background-color: ${({ theme }) => theme.COLORS.RED[200]};
   }

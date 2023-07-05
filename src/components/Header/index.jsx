@@ -19,10 +19,6 @@ export function Header({ searchValue, setSearchValue }) {
   const { isAdmin } = useAuth()
   const navigation = useNavigate()
 
-
-
-
-
   function handleClickRedirect() {
     if (isAdmin) {
       navigation("/createdish")

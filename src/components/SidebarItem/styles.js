@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK[900]};
 
   font-size: 20px;
-  color: white;
+  color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
@@ -17,6 +17,6 @@ export const Container = styled.div`
   }
 
   &:hover {
-    background-color: black;
+    opacity: 0.8;
   }
 `

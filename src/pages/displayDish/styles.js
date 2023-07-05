@@ -12,6 +12,9 @@ export const Container = styled.div`
   .back-btn {
     text-decoration: none;
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+    > img {
+      color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+    }
   }
   .left-section {
     > img {

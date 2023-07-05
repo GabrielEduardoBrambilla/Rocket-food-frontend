@@ -10,6 +10,9 @@ export const Container = styled.header`
     cursor: pointer;
   }
 
+  img {
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+  }
   .userImg {
     height: 42px;
     width: 42px;

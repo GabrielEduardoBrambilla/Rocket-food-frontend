@@ -4,10 +4,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
+  /* Each individual item */
   background-color: ${({ theme, isNew }) =>
     isNew ? 'transparent' : theme.COLORS.LIGHT[600]};
-
-  color: ${({ theme }) => theme.COLORS.DARK[300]};
 
   border: ${({ theme, isNew }) =>
     isNew ? `2px dashed ${theme.COLORS.LIGHT[600]}` : 'none'};
@@ -33,7 +33,10 @@ export const Container = styled.div`
 
     padding: 12px;
 
+    /* Text inside the item */
+    /* in light theme goes REALLY dark */
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
+
     background: transparent;
 
     border: none;

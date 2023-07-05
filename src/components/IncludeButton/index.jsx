@@ -8,6 +8,4 @@ export function IncludeButton({ title, ...rest }) {
       <p>{title}</p>
     </Container>
   )
-
-
 }

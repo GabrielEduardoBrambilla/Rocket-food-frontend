@@ -40,8 +40,7 @@ export const Container = styled.div`
   /* Add more media queries as needed for different breakpoints */
   select {
     background-color: ${({ theme }) => theme.COLORS.DARK[900]};
-    color: ${({ theme }) => theme.COLORS.LIGHT[500]};
-    background-color: #0d161b;
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
     border: 0;
     border-radius: 15px;
     border-radius: 10px;

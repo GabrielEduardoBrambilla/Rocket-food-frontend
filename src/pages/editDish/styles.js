@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   .imgPrev {
     border-radius: 90%;
     width: 80px;
@@ -17,6 +18,7 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to a new line */
     background-color: ${({ theme }) => theme.COLORS.DARK[800]};
+
     border-radius: 8px;
     justify-content: flex-start; /* Start align items from the beginning */
     align-items: center; /* Vertically center align items */
@@ -25,7 +27,8 @@ export const Container = styled.div`
 
     > .ingredientItem {
       height: 1px;
-      background-color: red;
+      background-color: ${({ theme }) => theme.COLORS.DARK[800]};
+      color: ${({ theme }) => theme.COLORS.LIGHT[200]};
     }
   }
 
@@ -128,10 +131,12 @@ export const Form = styled.form`
     text-align: center;
     padding: 12px 24px;
     gap: 8px;
+    background-color: ${({ theme }) => theme.COLORS.DARK[900]};
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
 
     width: 160px;
     height: 48px;
-    background: #0d161b;
+
     border-radius: 5px;
 
     font-family: Poppins, sans-serif;
@@ -214,7 +219,6 @@ export const Form = styled.form`
         flex-direction: column;
         padding: 0px;
         gap: 16px;
-        /* background-color: rebeccapurple; */
         width: 837px;
       }
       > label:nth-child(2) {
@@ -248,7 +252,6 @@ export const Form = styled.form`
 
       width: 160px;
       height: 48px;
-      background: #0d161b;
       border-radius: 5px;
 
       font-family: Poppins, sans-serif;

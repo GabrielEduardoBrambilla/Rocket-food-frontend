@@ -17,7 +17,7 @@ import { MdOutlineFavorite } from 'react-icons/md'
 // eslint-disable-next-line react/prop-types
 export function Card({ redirect, id_Dish, img, price, title, description, ...rest }) {
   const { user, isAdmin } = useAuth();
-  const [icon, setIcon] = useState(<MdOutlineFavoriteBorder />);
+  const [icon, setIcon] = useState(<MdOutlineFavorite />);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
       if (icon.type === MdOutlineFavoriteBorder) {
         setIcon(<MdOutlineFavorite />);
         api.post("/favoritelist/", {
-          id_user: user.id,
           id_dish: id_Dish
         })
           .then(() => {
@@ -46,7 +45,6 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
         setIcon(<MdOutlineFavoriteBorder />);
         api.delete("/favoritelist/delete", {
           data: {
-            id_user: user.id,
             id_dish: id_Dish
           }
         })
@@ -98,9 +96,10 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           const { favorite } = response.data;
 
           if (favorite) {
+            console.log("favorite for " + id_Dish + " " + favorite)
             setIcon(<MdOutlineFavorite />);
           } else {
-            setIcon(isAdmin ? <PiPencilSimpleBold /> : <MdOutlineFavorite />);
+            setIcon(isAdmin ? <PiPencilSimpleBold /> : <MdOutlineFavoriteBorder />);
           }
         }
       } catch (error) {

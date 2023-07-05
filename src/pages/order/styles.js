@@ -13,9 +13,8 @@ export const Container = styled.div`
     width: 350px;
     margin: auto;
     gap: 25px;
-    transition: all 1.5s ease-in;
 
-    > span {
+    > .orderPrice {
       font-size: 20px;
       font-family: Poppins;
       font-style: normal;
@@ -45,7 +44,6 @@ export const Container = styled.div`
     grid-template-columns: auto 1fr auto;
     gap: 10px;
     align-items: center;
-    transition: all 1.5s ease-in;
   }
 
   .left-section {

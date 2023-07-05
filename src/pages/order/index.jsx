@@ -117,7 +117,7 @@ export function Order() {
             <FaTrashAlt onClick={() => handleOrderItemDelete(item.dish_id)} className="right-section " />
           </div>
         ))}
-        <span>Total: {orderTotalPrice.toFixed(2)}</span>
+        <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
       </div>
       <div className="payment-wrapper"></div>
     </Container>

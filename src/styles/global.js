@@ -34,6 +34,10 @@ html:root{
     cursor: pointer;
     transition: filter 0.2s;
   }
+
+  #toggleButton{
+    display: none;
+  }
   transition: all 2.5s ease-in;
 
   button:hover, a:hover {

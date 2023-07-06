@@ -53,7 +53,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};
   }
   /* destopk class */
-  @media (max-width: 768px) {
+  @media (max-width: 1300px) {
     display: flex;
     align-items: center;
     justify-content: center;

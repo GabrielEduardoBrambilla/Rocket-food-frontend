@@ -44,7 +44,7 @@ html:root{
     filter: brightness(0.9)
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     .mobile {
       display: none;
     }
@@ -52,7 +52,7 @@ html:root{
       display: flex;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1300px) {
     .mobile {
       display: flex;
     }

@@ -38,7 +38,7 @@ export const Container = styled.div`
       width: 300px;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     .mobile {
       display: none;
     }

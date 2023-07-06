@@ -25,7 +25,7 @@ export const Container = styled.header`
   .hideMobile {
     display: none;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     align-items: center;
     justify-content: space-between;
     .hideMobile {

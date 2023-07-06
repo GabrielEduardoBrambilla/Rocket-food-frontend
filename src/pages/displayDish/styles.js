@@ -77,7 +77,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     min-height: 90vh;
     height: auto;
     flex-grow: 1;

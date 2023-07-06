@@ -58,7 +58,7 @@ export const Container = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     width: 304px;
     height: 482px;
 

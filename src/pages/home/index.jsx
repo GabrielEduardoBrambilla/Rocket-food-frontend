@@ -154,7 +154,7 @@ export function Home() {
             slidesPerView={1.5}
             className="swiper-container"
             breakpoints={{
-              768: {
+              1300: {
                 slidesPerView: 3,
                 modules: [Navigation, A11y],
                 pagination: {
@@ -191,7 +191,7 @@ export function Home() {
             slidesPerView={1.5}
             className="swiper-container"
             breakpoints={{
-              768: {
+              1300: {
                 slidesPerView: 3,
                 modules: [Navigation, A11y],
                 pagination: {
@@ -228,7 +228,7 @@ export function Home() {
             className="swiper-container"
             slidesPerView={1.5}
             breakpoints={{
-              768: {
+              1300: {
                 slidesPerView: 3,
                 modules: [Navigation, A11y],
                 pagination: {

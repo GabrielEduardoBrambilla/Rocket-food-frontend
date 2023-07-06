@@ -34,7 +34,7 @@ export const Container = styled(Link)`
     color: ${({ theme }) => theme.COLORS.LIGHT[700]};
   }
   /* destopk class */
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     display: flex;
     justify-content: flex-start;
 

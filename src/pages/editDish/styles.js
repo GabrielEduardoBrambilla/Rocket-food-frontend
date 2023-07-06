@@ -161,7 +161,7 @@ export const Form = styled.form`
     line-height: 140%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     display: flex;
     justify-content: center;
     margin: 10px auto 55px;

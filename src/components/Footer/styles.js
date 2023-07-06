@@ -16,7 +16,7 @@ export const Container = styled.footer`
     color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   }
   /* desktop class */
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     display: flex;
     padding: 24px 123px;
     justify-content: space-between;

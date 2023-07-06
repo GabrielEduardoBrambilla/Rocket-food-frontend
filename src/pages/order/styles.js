@@ -75,7 +75,7 @@ export const Container = styled.div`
     align-self: center;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     background-color: ${({ theme }) => theme.COLORS.DARK[400]};
 
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};

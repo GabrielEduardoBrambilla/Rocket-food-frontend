@@ -120,7 +120,7 @@ export const Container = styled.div`
     background-color: #555;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     .swiper-container {
       width: 1200px;
     }
@@ -168,7 +168,7 @@ export const Container = styled.div`
       }
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1300px) {
     .swiper-button-next,
     .swiper-button-prev {
       display: none !important;

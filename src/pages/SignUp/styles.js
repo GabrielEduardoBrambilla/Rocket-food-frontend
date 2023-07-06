@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  width: 100%;
+  align-items: center;
   padding: 0 47px 65px;
   gap: 72px;
   height: 100vh;
@@ -14,7 +15,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
-
+    justify-content: space-around;
+    width: 100%;
+    max-width: 581px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -45,7 +48,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1300px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -60,7 +63,8 @@ export const Container = styled.div`
       gap: 32px;
       padding: 64px;
       border-radius: 16px;
-
+      width: unset;
+      max-width: unset;
       background-color: ${({ theme }) => theme.COLORS.DARK[700]};
       color: ${({ theme }) => theme.COLORS.LIGHT[400]};
 

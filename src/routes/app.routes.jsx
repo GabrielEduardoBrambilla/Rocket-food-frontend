@@ -5,6 +5,7 @@ import { CreateDish } from '../pages/createDish'
 import { EditDish } from '../pages/editDish'
 import { DisplayDish } from '../pages/displayDish'
 import { Order } from '../pages/order'
+import { Favorites } from '../pages/favorites'
 
 export function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ export function AppRoutes() {
       <Route path='/editdish/:id' element={<EditDish />} />
       <Route path='/displaydish/:id' element={<DisplayDish />} />
       <Route path='/order' element={<Order />} />
+      <Route path='/favorites' element={<Favorites />} />
     </Routes>
   )
 }

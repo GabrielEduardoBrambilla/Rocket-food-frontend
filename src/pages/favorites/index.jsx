@@ -10,38 +10,18 @@ import { DishItem } from "../../components/DishItem";
 // import { Stepper } from "../../components/Stepper";
 // import { FaTrashAlt } from "react-icons/fa"
 
-export function Order() {
+export function Favorites() {
   const { user } = useAuth()
-  const [quantity, setQuantity] = useState(1);
-  const [localQuantity, setLocalQuantity] = useState(1);
   const [userOrder, setUserOrder] = useState([]);
   const [images, setImages] = useState({});
-  const [orderTotalPrice, setOrderTotalPrice] = useState(10)
-  const [itemTotalPrice, setItemTotalPrice] = useState({})
 
   async function handleOrderItemDelete(id_dish) {
     try {
-      await api.delete("order/delete",
-        {
-          data: {
-            id_user: user.id,
-            id_dish: id_dish,
-          }
-        });
+      await api.get("favoritelist/index");
 
       setUserOrder(prevUserOrder => prevUserOrder.filter(item => item.dish_id !== id_dish));
 
-      const updatedTotalPrice = userOrder.reduce((accumulator, item) =>
-        accumulator + item.quantity * item.item_price_at_time,
-        0
-      );
-      setOrderTotalPrice(updatedTotalPrice);
 
-      setItemTotalPrice(prevItemTotalPrice => {
-        const newItemTotalPrice = { ...prevItemTotalPrice };
-        delete newItemTotalPrice[id_dish];
-        return newItemTotalPrice;
-      });
 
     } catch (error) {
       // Handle error
@@ -50,11 +30,22 @@ export function Order() {
 
   useEffect(() => {
     async function fetchApi() {
-      const { data } = await api.get(`/order/index/${user.id}`);
-      setQuantity(quantity);
+      const { data } = await api.get("favoritelist/index");
+
+      console.warn(data);
       setUserOrder(data);
 
-      const imgNames = data.map((item) => item.dish_img);
+      const updatedUserOrder = data.map((item) => ({
+        dish_id: item.id,
+        dish_img: item.image,
+        item_price_at_time: item.price,
+        dish_name: item.name,
+        desc: item.description
+      }));
+      setUserOrder(updatedUserOrder);
+      console.log(userOrder);
+
+      const imgNames = data.map((item) => item.image);
       await Promise.all(imgNames.map(fetchImage)); // Fetch all images concurrently
 
       function fetchImage(imageName) {
@@ -84,40 +75,26 @@ export function Order() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id]);
 
-  useEffect(() => {
-    setLocalQuantity(quantity)
-  }, [localQuantity, quantity]);
 
-  useEffect(() => {
-    const totalPrice = userOrder.reduce(
-      (accumulator, item) =>
-        accumulator + (itemTotalPrice[item.dish_id] || item.quantity * item.item_price_at_time),
-      0
-    );
-    setOrderTotalPrice(totalPrice);
-  }, [userOrder, itemTotalPrice]);
-  console.log(userOrder)
+
   return (
     <Container>
       <Header />
       <div className="order-info-wrapper">
-        <h2>My Order</h2>
+        <h2>My Favorite List</h2>
         {userOrder.map((item) => (
-          // key={String(item.dish_id)
           <DishItem
             key={String(item.dish_id)}
             handleOrderItemDelete={handleOrderItemDelete}
-            setItemTotalPrice={setItemTotalPrice}
-            setQuantity={setQuantity}
             images={images}
             dishImage={item.dish_img}
             dishPrice={item.item_price_at_time}
             dishQuantity={item.quantity}
             dishName={item.dish_name}
             dishId={item.dish_id}
+            dishDesc={item.desc}
           />
         ))}
-        <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
       </div>
       <div className="payment-wrapper"></div>
     </Container>

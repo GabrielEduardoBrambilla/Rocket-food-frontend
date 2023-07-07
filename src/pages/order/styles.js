@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   min-height: 100%;
   height: 100vh;
@@ -34,6 +34,20 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1300px) {
+    .wrapper {
+      display: flex;
+      width: 90%;
+      margin: auto;
+      flex-direction: row;
+      justify-content: space-around;
+      .order-info-wrapper {
+        width: 350px;
+        margin: unset;
+      }
+      .payment-wrapper {
+        width: 350px;
+      }
+    }
     background-color: ${({ theme }) => theme.COLORS.DARK[400]};
     color: ${({ theme }) => theme.COLORS.LIGHT[400]};
   }

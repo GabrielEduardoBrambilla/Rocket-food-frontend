@@ -6,9 +6,11 @@ import { useAuth } from '../../hooks/auth'
 import { api } from "../../services/api";
 import loading from "../../assets/icons/loading.jpg";
 import { DishItem } from "../../components/DishItem";
+import { Stripe } from "../../components/Stripe";
 
 // import { Stepper } from "../../components/Stepper";
 // import { FaTrashAlt } from "react-icons/fa"
+import { Footer } from "../../components/Footer";
 
 export function Order() {
   const { user } = useAuth()
@@ -98,28 +100,36 @@ export function Order() {
   }, [userOrder, itemTotalPrice]);
   console.log(userOrder)
   return (
-    <Container>
-      <Header />
-      <div className="order-info-wrapper">
-        <h2>My Order</h2>
-        {userOrder.map((item) => (
-          // key={String(item.dish_id)
-          <DishItem
-            key={String(item.dish_id)}
-            handleOrderItemDelete={handleOrderItemDelete}
-            setItemTotalPrice={setItemTotalPrice}
-            setQuantity={setQuantity}
-            images={images}
-            dishImage={item.dish_img}
-            dishPrice={item.item_price_at_time}
-            dishQuantity={item.quantity}
-            dishName={item.dish_name}
-            dishId={item.dish_id}
-          />
-        ))}
-        <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
-      </div>
-      <div className="payment-wrapper"></div>
-    </Container>
+    <>
+      <Container>
+        <Header />
+        <div className="wrapper">
+
+          <div className="order-info-wrapper">
+            <h2>My Order</h2>
+            {userOrder.map((item) => (
+              // key={String(item.dish_id)
+              <DishItem
+                key={String(item.dish_id)}
+                handleOrderItemDelete={handleOrderItemDelete}
+                setItemTotalPrice={setItemTotalPrice}
+                setQuantity={setQuantity}
+                images={images}
+                dishImage={item.dish_img}
+                dishPrice={item.item_price_at_time}
+                dishQuantity={item.quantity}
+                dishName={item.dish_name}
+                dishId={item.dish_id}
+              />
+            ))}
+            <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
+          </div>
+          <div className="payment-wrapper">
+            <Stripe />
+          </div>
+        </div>
+      </Container>
+      <Footer />
+    </>
   );
 }

@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
-  min-height: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
-
   .order-info-wrapper {
     display: flex;
     flex-direction: column;
     width: 350px;
     margin: auto;
+    margin-bottom: 50px;
     gap: 25px;
 
     > .orderPrice {

@@ -98,7 +98,6 @@ export function Order() {
     );
     setOrderTotalPrice(totalPrice);
   }, [userOrder, itemTotalPrice]);
-  console.log(userOrder)
   return (
     <>
       <Container>

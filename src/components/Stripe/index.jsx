@@ -2,6 +2,7 @@ import { Container } from './styles';
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import { PaymentForm } from './PaymentForm';
+import { Payment } from './Payment';
 
 // eslint-disable-next-line react/prop-types
 export function Stripe({ ...rest }) {
@@ -13,6 +14,7 @@ export function Stripe({ ...rest }) {
     <Container {...rest}>
       <Elements stripe={stripeTestPromise}>
         <PaymentForm />
+        <Payment />
       </Elements>
     </Container>
   )

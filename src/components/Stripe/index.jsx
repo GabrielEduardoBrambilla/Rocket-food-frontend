@@ -1,21 +1,59 @@
-import { Container } from './styles';
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
-import { PaymentForm } from './PaymentForm';
-import { Payment } from './Payment';
+import { useEffect, useState } from "react";
 
-// eslint-disable-next-line react/prop-types
-export function Stripe({ ...rest }) {
-  const PUBLIC_KEY = "pk_test_51NQwoVGx2rwi3ccLClviFVn5gpFbKcwa2xWOFNd5zscgn821vg0sBgnSpoogzU5kpdDQn0iIqUYATdl2YvmvIBEo00PJKNPcCX"
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { api } from "../../services/api";
 
-  const stripeTestPromise = loadStripe(PUBLIC_KEY)
+export function Payment() {
+  const [stripePromise, setStripePromise] = useState(null);
+  const [clientSecret, setClientSecret] = useState("");
 
+  useEffect(() => {
+
+    async function fetchApiConfig() {
+      const response = await api.get("/payment/config");
+      const publishableKey = response.data.publishableKey
+      setStripePromise(loadStripe(publishableKey));
+    }
+    fetchApiConfig()
+  }, []);
+
+  useEffect(() => {
+    async function fetchApi() {
+      try {
+        const response = await api.post("/payment/create", {
+          orderPrice: 250,
+        });
+        const clientSecret = response.data.clientSecret;
+        setClientSecret(clientSecret);
+      } catch (error) {
+        console.warn(error)
+      }
+
+
+    }
+    fetchApi()
+  }, []);
+  const options = {
+    layout: {
+      type: 'tabs',
+      defaultCollapsed: false,
+    }
+  };
+  const appearance = {
+    theme: 'flat',
+    variables: { colorPrimaryText: '#262626' }
+  };
   return (
-    <Container {...rest}>
-      <Elements stripe={stripeTestPromise}>
-        <PaymentForm />
-        <Payment />
-      </Elements>
-    </Container>
-  )
+    <>
+      <h1>React Stripe and the Payment Element</h1>
+      {clientSecret && stripePromise && (
+        <Elements stripe={stripePromise} options={{ clientSecret, options, appearance }}>
+          <CheckoutForm />
+        </Elements>
+      )}
+    </>
+  );
+
 }

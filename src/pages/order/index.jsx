@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/auth'
 import { api } from "../../services/api";
 import loading from "../../assets/icons/loading.jpg";
 import { DishItem } from "../../components/DishItem";
-import { Stripe } from "../../components/Stripe";
+import { Payment } from "../../components/Stripe/";
 
 // import { Stepper } from "../../components/Stepper";
 // import { FaTrashAlt } from "react-icons/fa"
@@ -124,7 +124,7 @@ export function Order() {
             <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
           </div>
           <div className="payment-wrapper">
-            <Stripe />
+            <Payment />
           </div>
         </div>
       </Container>

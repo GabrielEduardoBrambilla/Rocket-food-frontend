@@ -6,7 +6,6 @@ export const Container = styled.div`
   justify-content: center;
   gap: 14px;
   margin: 12px 55px 16px;
-
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   > div {
@@ -17,7 +16,9 @@ export const Container = styled.div`
     justify-content: center;
     border: none;
     background-color: none;
-    /* color: ${({ theme }) => theme.COLORS.LIGHT[100]}; */
+    cursor: pointer;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT[100]};
   }
   @media (min-width: 768px) {
     margin: 12px 0px 16px;

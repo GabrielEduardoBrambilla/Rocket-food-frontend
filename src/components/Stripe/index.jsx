@@ -35,21 +35,16 @@ export function Payment() {
     }
     fetchApi()
   }, []);
-  const options = {
-    layout: {
-      type: 'tabs',
-      defaultCollapsed: false,
-    }
-  };
+
   const appearance = {
-    theme: 'flat',
-    variables: { colorPrimaryText: '#262626' }
-  };
+    theme: 'stripe'
+  }
+
   return (
     <>
       <h1>React Stripe and the Payment Element</h1>
       {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{ clientSecret, options, appearance }}>
+        <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
           <CheckoutForm />
         </Elements>
       )}

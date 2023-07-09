@@ -45,7 +45,7 @@ export const Container = styled.div`
         margin: unset;
       }
       .payment-wrapper {
-        width: 350px;
+        width: 550px;
       }
     }
     background-color: ${({ theme }) => theme.COLORS.DARK[400]};

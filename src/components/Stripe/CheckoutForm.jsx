@@ -12,13 +12,9 @@ export default function CheckoutForm() {
     e.preventDefault()
 
     if (!stripe || !elements) {
-
-
       return
     }
-
     setIsProcessing(true)
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -31,9 +27,10 @@ export default function CheckoutForm() {
     } else {
       setMessage("An unexpected error occured.");
     }
-
     setIsProcessing(false);
   }
+
+
 
   return (
     <form id='payment-form' onSubmit={handleSubmit}>

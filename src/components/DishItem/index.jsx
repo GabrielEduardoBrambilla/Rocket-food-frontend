@@ -57,8 +57,8 @@ export function DishItem({ dishDesc, dishImage, images, dishPrice, dishQuantity,
   return (
     <Container  >
       <img onClick={handleRedirect} className="dish_img left-section" src={images[dishImage] || loading} alt={"Dish representative image"} />
-      <div onClick={handleRedirect} className="middle-section">
-        <p>{dishName}</p>
+      <div className="middle-section">
+        <p onClick={handleRedirect}>{dishName}</p>
         {
           !dishDesc &&
           <Stepper
@@ -71,7 +71,7 @@ export function DishItem({ dishDesc, dishImage, images, dishPrice, dishQuantity,
         }
         {
           dishDesc &&
-          <p className="dishDesc">
+          <p onClick={handleRedirect} className="dishDesc">
             {dishDesc}
           </p>
         }

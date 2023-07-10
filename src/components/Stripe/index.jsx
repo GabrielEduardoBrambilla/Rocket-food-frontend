@@ -36,15 +36,17 @@ export function Payment() {
     fetchApi()
   }, []);
 
-  const appearance = {
-    theme: 'stripe'
-  }
 
+  const testAppearance = {
+    theme: 'night'
+  }
   return (
     <>
       <h1>React Stripe and the Payment Element</h1>
       {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
+        <Elements stripe={stripePromise} options={{
+          clientSecret, appearance: testAppearance
+        }}>
           <CheckoutForm />
         </Elements>
       )}

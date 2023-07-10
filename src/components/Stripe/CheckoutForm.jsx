@@ -17,6 +17,7 @@ export default function CheckoutForm() {
     setIsProcessing(true)
     const { error } = await stripe.confirmPayment({
       elements,
+
       confirmParams: {
         return: ` ${window.location.origin}/completion`
       }
@@ -33,16 +34,18 @@ export default function CheckoutForm() {
 
 
   return (
-    <form id='payment-form' onSubmit={handleSubmit}>
+    <>
       <PaymentElement id="payment-element" />
-      <button disabled={isProcessing || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isProcessing ? "Processing ..." : "Pay now"}
-        </span>
-      </button>
-      {message && <div id="payment-message">{message}</div>}
+      <form id='payment-form' onSubmit={handleSubmit}>
+        <button disabled={isProcessing || !stripe || !elements} id="submit">
+          <span id="button-text">
+            {isProcessing ? "Processing ..." : "Pay now"}
+          </span>
+        </button>
+        {message && <div id="payment-message">{message}</div>}
 
-    </form>
+      </form>
+    </>
   )
 
 } 

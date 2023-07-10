@@ -37,16 +37,30 @@ export function Payment() {
   }, []);
 
 
-  const testAppearance = {
-    theme: 'night'
-  }
+  // const testAppearance = {
+
+  //   variables: {
+  //     colorPrimary: '#0570de',
+  //     // colorBackground: '#ffffff',
+  //     // colorText: '#30313d',
+  //     colorDanger: '#df1b41',
+  //     fontFamily: 'Ideal Sans, system-ui, sans-serif',
+  //     // borderRadius: '4px',
+
+  //   }
+  // }
+  const options = {
+    clientSecret: clientSecret,
+    appearance: {
+      theme: 'night',
+      labels: 'floating',
+    }
+  };
   return (
     <>
       <h1>React Stripe and the Payment Element</h1>
       {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{
-          clientSecret, appearance: testAppearance
-        }}>
+        <Elements stripe={stripePromise} options={options}>
           <CheckoutForm />
         </Elements>
       )}

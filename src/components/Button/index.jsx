@@ -10,7 +10,7 @@ export function Button({ mobileHeader = false, title, icon, isAdmin = false, ...
 
       {isAdmin ? (
         <>
-          <p>Novo Prato</p>
+          <p>New Dish</p>
         </>
       ) : (
         <>

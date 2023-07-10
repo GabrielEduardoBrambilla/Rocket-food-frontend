@@ -112,7 +112,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
   return (
     <Container {...rest}>
       {/* <img onClick={handleIconClick} className="topLeftIcon" src={icon} alt="Top left icon" /> */}
-      <img onClick={handleRedirect} className="plateImg" src={img} alt="Dishe ilustrative image" />
+      <img onClick={handleRedirect} className="plateImg" src={img} alt="Dish illustrative image" />
       <div onClick={handleIconClick} className="topLeftIcon" >
         {icon}
       </div>
@@ -124,7 +124,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
         {!isAdmin && (
           <div className="buttonsWrapper">
             <Stepper setQuantity={setQuantity} />
-            <IncludeButton onClick={handleOrderInclude} title="incluir" />
+            <IncludeButton onClick={handleOrderInclude} title="Include" />
           </div>
         )}
       </div>

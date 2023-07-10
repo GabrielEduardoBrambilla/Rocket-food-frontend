@@ -54,7 +54,7 @@ export function Header({ searchValue, setSearchValue }) {
       <Input onChange={e => setSearchValue(e.target.value)} mobileHeader icon={<RiSearchLine />} placeholder='Search for dishes or ingredients' value={searchValue} />
 
       {/* desktop */}
-      <Button icon={<PiReceipt />} onClick={handleClickRedirect} title={"Pedidos"} mobileHeader isAdmin={isAdmin} />
+      <Button icon={<PiReceipt />} onClick={handleClickRedirect} title={"Orders"} mobileHeader isAdmin={isAdmin} />
       {/* desktop */}
       {/* onClick={handleSignOut} */}
 

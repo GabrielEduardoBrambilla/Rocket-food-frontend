@@ -23,17 +23,17 @@ export function Order() {
   const [nextButton, setNextButton] = useState("")
   const [paymentWrapper, setPaymentWrapper] = useState("hidden")
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Track the window width
+  const show_hide = paymentSession || windowWidth;
 
-
-
+  // Show and hide sessions in mobile view
   function handlePayNextStep() {
     if (paymentSession) {
       setPaymentSession(false)
-
     }
     setPaymentSession(true)
   }
 
+  // Remove an item from the order
   async function handleOrderItemDelete(id_dish) {
     try {
       await api.delete("order/delete",
@@ -62,6 +62,7 @@ export function Order() {
       // Handle error
     }
   }
+  // Show and hide sessions in mobile view
   useEffect(() => {
     if (windowWidth <= 1300) {
       setOrderInfoWrapper(paymentSession ? "hidden" : "order-info-wrapper")
@@ -73,8 +74,9 @@ export function Order() {
       setPaymentWrapper("payment-wrapper")
       setNextButton("hidden")
     }
-  }, [paymentSession || windowWidth])
+  }, [show_hide])
 
+  // Fetch order info from the api
   useEffect(() => {
     async function fetchApi() {
       const { data } = await api.get(`/order/index/${user.id}`);
@@ -111,10 +113,12 @@ export function Order() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id]);
 
+  // Set the quantity
   useEffect(() => {
     setLocalQuantity(quantity)
   }, [localQuantity, quantity]);
 
+  // Calculate the orders price
   useEffect(() => {
     const totalPrice = userOrder.reduce(
       (accumulator, item) =>
@@ -125,17 +129,15 @@ export function Order() {
     setOrderTotalPrice(roundedPrice);
   }, [userOrder, itemTotalPrice, orderTotalPrice]);
 
+  // Window resize 
   useEffect(() => {
     // Function to handle window resize event
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     // Add event listener for window resize
     window.addEventListener('resize', handleResize);
-
     // Clean up the event listener on component unmount
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };

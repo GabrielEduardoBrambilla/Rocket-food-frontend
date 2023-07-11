@@ -7,9 +7,7 @@ import { api } from "../../services/api";
 import loading from "../../assets/icons/loading.jpg";
 import { DishItem } from "../../components/DishItem";
 import { Payment } from "../../components/Stripe/";
-
-// import { Stepper } from "../../components/Stepper";
-// import { FaTrashAlt } from "react-icons/fa"
+import { IncludeButton } from "../../components/IncludeButton"
 import { Footer } from "../../components/Footer";
 
 export function Order() {
@@ -20,6 +18,21 @@ export function Order() {
   const [images, setImages] = useState({});
   const [orderTotalPrice, setOrderTotalPrice] = useState(10)
   const [itemTotalPrice, setItemTotalPrice] = useState({})
+  const [paymentSession, setPaymentSession] = useState(false)
+  const [orderInfoWrapper, setOrderInfoWrapper] = useState("order-info-wrapper")
+  const [nextButton, setNextButton] = useState("")
+  const [paymentWrapper, setPaymentWrapper] = useState("hidden")
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Track the window width
+
+
+
+  function handlePayNextStep() {
+    if (paymentSession) {
+      setPaymentSession(false)
+
+    }
+    setPaymentSession(true)
+  }
 
   async function handleOrderItemDelete(id_dish) {
     try {
@@ -49,6 +62,18 @@ export function Order() {
       // Handle error
     }
   }
+  useEffect(() => {
+    if (windowWidth <= 1300) {
+      setOrderInfoWrapper(paymentSession ? "hidden" : "order-info-wrapper")
+      setPaymentWrapper(paymentSession ? "payment-wrapper" : "hidden")
+      setNextButton("")
+
+    } else {
+      setOrderInfoWrapper("order-info-wrapper")
+      setPaymentWrapper("payment-wrapper")
+      setNextButton("hidden")
+    }
+  }, [paymentSession || windowWidth])
 
   useEffect(() => {
     async function fetchApi() {
@@ -96,15 +121,32 @@ export function Order() {
         accumulator + (itemTotalPrice[item.dish_id] || item.quantity * item.item_price_at_time),
       0
     );
-    setOrderTotalPrice(totalPrice);
-  }, [userOrder, itemTotalPrice]);
+    const roundedPrice = totalPrice.toFixed(2)
+    setOrderTotalPrice(roundedPrice);
+  }, [userOrder, itemTotalPrice, orderTotalPrice]);
+
+  useEffect(() => {
+    // Function to handle window resize event
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <div className="wrapper">
 
-          <div className="order-info-wrapper">
+          <div className={orderInfoWrapper} >
             <h2>My Order</h2>
             {userOrder.map((item) => (
               // key={String(item.dish_id)
@@ -121,9 +163,12 @@ export function Order() {
                 dishId={item.dish_id}
               />
             ))}
-            <div className="orderPrice">Total: U${orderTotalPrice.toFixed(2)}</div>
+            <div className="orderPrice">Total: U${orderTotalPrice}</div>
+            <IncludeButton title="Next" className={nextButton} onClick={handlePayNextStep} />
           </div>
-          <div className="payment-wrapper">
+          <div className={paymentWrapper} >
+            <p>Payment </p>
+
             <Payment />
           </div>
         </div>

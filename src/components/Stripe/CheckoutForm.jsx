@@ -1,6 +1,7 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
+import { IncludeButton } from "../../components/IncludeButton"
 
 export default function CheckoutForm() {
   const stripe = useStripe()
@@ -17,7 +18,6 @@ export default function CheckoutForm() {
     setIsProcessing(true)
     const { error } = await stripe.confirmPayment({
       elements,
-
       confirmParams: {
         return: ` ${window.location.origin}/completion`
       }
@@ -35,13 +35,10 @@ export default function CheckoutForm() {
 
   return (
     <>
-      <PaymentElement id="payment-element" />
       <form id='payment-form' onSubmit={handleSubmit}>
-        <button disabled={isProcessing || !stripe || !elements} id="submit">
-          <span id="button-text">
-            {isProcessing ? "Processing ..." : "Pay now"}
-          </span>
-        </button>
+        <PaymentElement id="payment-element" />
+        <IncludeButton title={isProcessing ? "Processing ..." : "Pay now"} disabled={isProcessing || !stripe || !elements} id="submit" />
+
         {message && <div id="payment-message">{message}</div>}
 
       </form>

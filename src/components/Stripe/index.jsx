@@ -1,29 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { api } from "../../services/api";
+import { Container } from "./styles";
+import { ThemeContext } from 'styled-components';
 
-export function Payment() {
+export function Payment(priceToPay, pay) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+  const theme = useContext(ThemeContext);
+  const options = {
+    clientSecret: clientSecret,
+    appearance: {
+      theme: 'night',
+      labels: 'floating',
+      variables: {
+        colorBackground: theme.COLORS.DARK[700],
+        colorText: theme.COLORS.LIGHT[100],
+        spacingUnit: '4px',
+      }
+    },
+    loader: "always",
+    automatic_payment_methods: { enabled: true },
+    layout: "tabs",
+  };
 
   useEffect(() => {
-
     async function fetchApiConfig() {
       const response = await api.get("/payment/config");
       const publishableKey = response.data.publishableKey
       setStripePromise(loadStripe(publishableKey));
     }
+    console.log(priceToPay)
+
     fetchApiConfig()
   }, []);
 
   useEffect(() => {
     async function fetchApi() {
       try {
+        const orderPrice = priceToPay.orderPrice
         const response = await api.post("/payment/create", {
-          orderPrice: 250,
+          orderPrice: 2500,
         });
         const clientSecret = response.data.clientSecret;
         setClientSecret(clientSecret);
@@ -34,37 +54,16 @@ export function Payment() {
 
     }
     fetchApi()
-  }, []);
+  }, [priceToPay, priceToPay.orderPrice, pay]);
 
-
-  // const testAppearance = {
-
-  //   variables: {
-  //     colorPrimary: '#0570de',
-  //     // colorBackground: '#ffffff',
-  //     // colorText: '#30313d',
-  //     colorDanger: '#df1b41',
-  //     fontFamily: 'Ideal Sans, system-ui, sans-serif',
-  //     // borderRadius: '4px',
-
-  //   }
-  // }
-  const options = {
-    clientSecret: clientSecret,
-    appearance: {
-      theme: 'night',
-      labels: 'floating',
-    }
-  };
   return (
-    <>
-      <h1>React Stripe and the Payment Element</h1>
-      {clientSecret && stripePromise && (
+    <Container>
+      {clientSecret && stripePromise && options && (
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm />
         </Elements>
       )}
-    </>
+    </Container>
   );
 
 }

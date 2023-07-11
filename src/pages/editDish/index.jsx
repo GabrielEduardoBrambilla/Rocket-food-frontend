@@ -42,15 +42,6 @@ export function EditDish() {
       setPrice(response.data.price)
       setDescription(response.data.description)
 
-      // Maybe later
-      // const imageFile = await api.get(`/files/${response.data.image}`);
-      // const imageString = imageFile.data; // Assuming 'imageFile' contains the image data in string format
-      // const imageBlob = new Blob([imageString], { type: imageFile.headers['content-type'] });
-      // const imageUrl = URL.createObjectURL(imageBlob);
-      // setDishImgPreview(imageUrl);
-      // console.log(imageBlob);
-
-
 
     }
     fetchDish()

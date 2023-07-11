@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 import { ThemeContext } from 'styled-components';
 
-export function Payment(priceToPay, pay) {
+export function Payment(totalPrice, pay) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const theme = useContext(ThemeContext);
@@ -33,7 +33,6 @@ export function Payment(priceToPay, pay) {
       const publishableKey = response.data.publishableKey
       setStripePromise(loadStripe(publishableKey));
     }
-    console.log(priceToPay)
 
     fetchApiConfig()
   }, []);
@@ -41,9 +40,8 @@ export function Payment(priceToPay, pay) {
   useEffect(() => {
     async function fetchApi() {
       try {
-        const orderPrice = 5000
         const response = await api.post("/payment/create", {
-          orderPrice: orderPrice,
+          orderPrice: totalPrice.totalPrice,
         });
         const clientSecret = response.data.clientSecret;
         setClientSecret(clientSecret);
@@ -53,8 +51,10 @@ export function Payment(priceToPay, pay) {
 
 
     }
-    fetchApi()
-  }, [priceToPay, priceToPay.orderPrice, pay]);
+    if (pay) {
+      fetchApi()
+    }
+  }, [pay, totalPrice]);
 
   return (
     <Container>

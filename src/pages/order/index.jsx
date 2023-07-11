@@ -135,6 +135,7 @@ export function Order() {
     window.addEventListener('resize', handleResize);
 
     // Clean up the event listener on component unmount
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -169,7 +170,7 @@ export function Order() {
           <div className={paymentWrapper} >
             <p>Payment </p>
 
-            <Payment />
+            <Payment totalPrice={orderTotalPrice} pay={paymentSession} />
           </div>
         </div>
       </Container>

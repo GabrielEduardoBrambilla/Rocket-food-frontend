@@ -41,9 +41,9 @@ export function Payment(priceToPay, pay) {
   useEffect(() => {
     async function fetchApi() {
       try {
-        const orderPrice = priceToPay.orderPrice
+        const orderPrice = 5000
         const response = await api.post("/payment/create", {
-          orderPrice: 2500,
+          orderPrice: orderPrice,
         });
         const clientSecret = response.data.clientSecret;
         setClientSecret(clientSecret);

@@ -19,14 +19,14 @@ export default function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return: ` ${window.location.origin}/completion`
+        return_url: ` ${window.location.origin}/completion`
       }
     })
 
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
-      setMessage("An unexpected error occurred.");
+      setMessage("An unexpected error occurred. Try again later");
     }
     setIsProcessing(false);
   }

@@ -175,7 +175,7 @@ export function Order() {
             {orderTotalPrice && (
 
 
-              < Payment orderPrice={orderTotalPrice} />
+              < Payment orderPrice={orderTotalPrice} re_render={paymentSession} />
             )
             }
           </div>

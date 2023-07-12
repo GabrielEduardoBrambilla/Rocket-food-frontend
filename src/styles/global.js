@@ -46,18 +46,18 @@ html:root{
 
   @media (min-width: 1300px) {
     .mobile {
-      display: none;
+      display: none !important;
     }
     .desktop {
-      display: flex;
+      display: flex !important;
     }
   }
   @media (max-width: 1300px) {
     .mobile {
-      display: flex;
+      display: flex !important;
     }
     .desktop {
-      display: none;
+      display: none!important;
     }
   }
 `

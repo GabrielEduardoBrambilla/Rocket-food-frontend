@@ -56,7 +56,7 @@ export function Payment(orderPrice, re_render) {
         }
       },
     })
-  }, [re_render])
+  }, [re_render, theme.COLORS.DARK, theme.COLORS.LIGHT])
   return (
     <Container>
       {paymentOrder && stripePromise && options && orderPrice && (

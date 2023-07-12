@@ -14,7 +14,8 @@ export function SignUp() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
-  function handleSignUp() {
+  function handleSignUp(e) {
+    e.preventDefault
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!");
     }
@@ -34,7 +35,7 @@ export function SignUp() {
   return (
     <Container>
       <Logo formHeader />
-      <form action="">
+      <form action="" onSubmit={handleSignUp}>
         <p className="desktop-title">Create your account</p>
         <label htmlFor="user-name">Your name
           <Input id='user-name' label='email' type='text' placeholder='John Don' onChange={e => setName(e.target.value)} />
@@ -45,7 +46,7 @@ export function SignUp() {
         <label htmlFor="password">Password
           <Input id='password' type='password' placeholder='password' onChange={e => setPassword(e.target.value)} />
         </label>
-        <IncludeButton title='Create account' onClick={handleSignUp} />
+        <IncludeButton title='Create account' />
         <Link to="/">Login here!</Link>
       </form>
     </Container>

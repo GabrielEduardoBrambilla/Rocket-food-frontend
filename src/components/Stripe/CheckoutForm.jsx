@@ -3,13 +3,14 @@ import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { IncludeButton } from "../../components/IncludeButton"
 import { api } from "../../services/api";
+import { useNavigate } from 'react-router-dom'
 
 export default function CheckoutForm(amount) {
   const stripe = useStripe()
   const elements = useElements()
   const [message, setMessage] = useState(null)
   const [isProcessing, setIsProcessing] = useState(null)
-
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -42,11 +43,14 @@ export default function CheckoutForm(amount) {
           orderPrice: amount.amount,
           paymentMethodId: paymentMethod.id,
         });
-        if (data.status === 'succeeded') {
+        const status = data.status
+        if (status == 'succeeded') {
+
           const fetch = async () => {
-            await api.patch('/payment/update', {
+            const response = await api.patch('/payment/update', {
               status: "succeeded",
             })
+            navigate(response.data.redirect)
           }
           fetch()
         }

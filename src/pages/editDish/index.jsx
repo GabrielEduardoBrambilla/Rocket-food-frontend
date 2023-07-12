@@ -5,7 +5,6 @@ import { Footer } from '../../components/Footer'
 import { Textarea } from '../../components/Textarea'
 import { IncludeButton } from '../../components/IncludeButton';
 import { IngredientFormItem } from "../../components/IngredientFormItem"
-import { useHistory } from 'react-router-dom';
 
 import { PiCaretLeftBold } from 'react-icons/pi'
 import { FiUpload } from 'react-icons/fi'
@@ -29,7 +28,6 @@ export function EditDish() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
   const { id } = useParams();
-  const history = useHistory();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,7 +88,7 @@ export function EditDish() {
   }
 
   function handleBackButton() {
-    history.goBack(); // Go back to the previous page in the history
+    navigate.goBack(); // Go back to the previous page in the history
   }
 
 

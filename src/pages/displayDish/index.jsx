@@ -6,7 +6,7 @@ import { PiCaretLeftBold, PiReceipt } from 'react-icons/pi'//Maybe is the PiRece
 
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Stepper } from '../../components/Stepper'
 import { useAuth } from "../../hooks/auth";
@@ -17,7 +17,7 @@ export function DisplayDish() {
   const [ingredients, setIngredients] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
-  const history = useHistory();
+  const history = useNavigate();
 
   function handleOrderInclude() {
     async function fetch() {

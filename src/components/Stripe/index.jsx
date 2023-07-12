@@ -7,12 +7,15 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 import { ThemeContext } from 'styled-components';
 
-export function Payment(totalPrice, pay) {
+export function Payment(orderPrice) {
   const [stripePromise, setStripePromise] = useState(null);
-  const [clientSecret, setClientSecret] = useState("");
   const theme = useContext(ThemeContext);
+  const [paymentOrder, setPaymentOrder] = useState(false);
   const options = {
-    clientSecret: clientSecret,
+    mode: 'payment',
+    paymentMethodCreation: 'manual',
+    amount: 1099,
+    currency: 'usd',
     appearance: {
       theme: 'night',
       labels: 'floating',
@@ -22,11 +25,9 @@ export function Payment(totalPrice, pay) {
         spacingUnit: '4px',
       }
     },
-    loader: "always",
-    automatic_payment_methods: { enabled: true },
-    layout: "tabs",
   };
 
+  // fetch Config (publishableKey) from the Api for the Stripe promise
   useEffect(() => {
     async function fetchApiConfig() {
       const response = await api.get("/payment/config");
@@ -35,32 +36,14 @@ export function Payment(totalPrice, pay) {
     }
 
     fetchApiConfig()
-  }, []);
-
-  useEffect(() => {
-    async function fetchApi() {
-      try {
-        const response = await api.post("/payment/create", {
-          orderPrice: totalPrice.totalPrice,
-        });
-        const clientSecret = response.data.clientSecret;
-        setClientSecret(clientSecret);
-      } catch (error) {
-        console.warn(error)
-      }
-
-
-    }
-    if (pay) {
-      fetchApi()
-    }
-  }, [pay, totalPrice]);
+    setPaymentOrder(orderPrice.orderPrice)
+  }, [orderPrice.orderPrice]);
 
   return (
     <Container>
-      {clientSecret && stripePromise && options && (
+      {paymentOrder && stripePromise && options && orderPrice && (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm />
+          <CheckoutForm amount={paymentOrder} />
         </Elements>
       )}
     </Container>

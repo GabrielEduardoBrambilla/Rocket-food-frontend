@@ -16,7 +16,7 @@ export function Order() {
   const [localQuantity, setLocalQuantity] = useState(1);
   const [userOrder, setUserOrder] = useState([]);
   const [images, setImages] = useState({});
-  const [orderTotalPrice, setOrderTotalPrice] = useState(10)
+  const [orderTotalPrice, setOrderTotalPrice] = useState(undefined)
   const [itemTotalPrice, setItemTotalPrice] = useState({})
   const [paymentSession, setPaymentSession] = useState(false)
   const [orderInfoWrapper, setOrderInfoWrapper] = useState("order-info-wrapper")
@@ -143,6 +143,7 @@ export function Order() {
     };
   }, []);
 
+
   return (
     <>
       <Header />
@@ -171,8 +172,12 @@ export function Order() {
           </div>
           <div className={paymentWrapper} >
             <p>Payment </p>
+            {orderTotalPrice && (
 
-            <Payment totalPrice={orderTotalPrice} pay={paymentSession} />
+
+              < Payment orderPrice={orderTotalPrice} />
+            )
+            }
           </div>
         </div>
       </Container>

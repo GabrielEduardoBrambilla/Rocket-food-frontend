@@ -4,7 +4,7 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { IncludeButton } from "../../components/IncludeButton"
 import { api } from "../../services/api";
 
-export default function CheckoutForm() {
+export default function CheckoutForm(amount) {
   const stripe = useStripe()
   const elements = useElements()
   const [message, setMessage] = useState(null)
@@ -17,37 +17,46 @@ export default function CheckoutForm() {
       return
     }
     setIsProcessing(true)
-    const { error } = await stripe.confirmPayment({
-      elements,
-
-      confirmParams: {
-        return_url: `${window.location.href}/successfulPayment`,
-      },
-    }).then(function (result) {
-
-      // Update the order status when the payment intent is confirmed
-      if (result.status === 'succeeded') {
-        console.warn(elements)
-        const fetch = async () => {
-          await api.patch('/payment/update', {
-            status: result.status,
-          })
-        }
-        console.log("Fetch " + fetch)
-      }
-      if (result.error) {
-        console.log("Error in confirmPayment" + result.error)
-        // Inform the customer that there was an error.
-      }
-    });
-
-
-
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage(error.message);
+    42
+    const { error: submitError } = await elements.submit();
+    if (submitError) {
+      console.log(submitError);
+      setIsProcessing(false)
+      return;
     }
+
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      elements,
+    });
+    setMessage(error)
+    /*
+    // Update the order status when the payment intent is confirmed
+   
+   */
+
+    async function fetchApi() {
+      console.log(amount.amount)
+      try {
+        const { data } = await api.post("/payment/create", {
+          orderPrice: amount.amount,
+          paymentMethodId: paymentMethod.id,
+        });
+        if (data.status === 'succeeded') {
+          const fetch = async () => {
+            await api.patch('/payment/update', {
+              status: "succeeded",
+            })
+          }
+          fetch()
+        }
+      } catch (error) {
+        console.warn(error)
+      }
+    }
+    fetchApi()
+
+
     setIsProcessing(false);
   }
 

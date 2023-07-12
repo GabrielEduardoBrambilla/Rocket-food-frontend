@@ -14,14 +14,15 @@ export function SignUp() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
-  function handleSignUp(e) {
-    e.preventDefault
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!");
     }
     api.post("/users", { name, email, password })
       .then(() => {
         alert("Cadastro realizado com sucesso!");
+        console.log("navigate")
         navigate("/");
       }).catch(error => {
         if (error.response) {
@@ -35,7 +36,7 @@ export function SignUp() {
   return (
     <Container>
       <Logo formHeader />
-      <form action="" onSubmit={handleSignUp}>
+      <form onSubmit={handleSubmit}>
         <p className="desktop-title">Create your account</p>
         <label htmlFor="user-name">Your name
           <Input id='user-name' label='email' type='text' placeholder='John Don' onChange={e => setName(e.target.value)} />

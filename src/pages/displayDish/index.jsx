@@ -6,7 +6,7 @@ import { PiCaretLeftBold, PiReceipt } from 'react-icons/pi'//Maybe is the PiRece
 
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Stepper } from '../../components/Stepper'
 import { useAuth } from "../../hooks/auth";
@@ -17,6 +17,7 @@ export function DisplayDish() {
   const [ingredients, setIngredients] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const { user } = useAuth();
+  const history = useHistory();
 
   function handleOrderInclude() {
     async function fetch() {
@@ -33,6 +34,10 @@ export function DisplayDish() {
     }
     console.log(dish)
     fetch()
+  }
+
+  function handleBackButton() {
+    history.goBack(); // Go back to the previous page in the history
   }
 
   useEffect(() => {
@@ -62,7 +67,7 @@ export function DisplayDish() {
       <Header notInMobile />
       <Container>
         <section className="left-section">
-          <Link to='/' className="back-btn"><PiCaretLeftBold /><span>voltar</span></Link>
+          <Link onClick={handleBackButton} to='/' className="back-btn"><PiCaretLeftBold /><span>back</span></Link>
           <img src={dish.image} alt="" />
         </section>
 

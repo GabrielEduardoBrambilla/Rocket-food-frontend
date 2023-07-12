@@ -11,7 +11,7 @@ import { FiUpload } from 'react-icons/fi'
 
 import { useState } from "react";
 import { api } from "../../services/api";
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 
 export function CreateDish() {
@@ -25,7 +25,7 @@ export function CreateDish() {
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const handleSubmit = () => {
     const formData = new FormData();
@@ -66,7 +66,8 @@ export function CreateDish() {
   }
 
   function handleBackButton() {
-    navigate("/")
+    window.history.back(); // Go back to the previous page in the history
+
   }
   return (
     <>

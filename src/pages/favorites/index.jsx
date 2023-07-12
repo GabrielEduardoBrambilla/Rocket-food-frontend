@@ -6,6 +6,7 @@ import { useAuth } from '../../hooks/auth'
 import { api } from "../../services/api";
 import loading from "../../assets/icons/loading.jpg";
 import { DishItem } from "../../components/DishItem";
+import { Footer } from "../../components/Footer";
 
 // import { Stepper } from "../../components/Stepper";
 // import { FaTrashAlt } from "react-icons/fa"
@@ -80,23 +81,29 @@ export function Favorites() {
   return (
     <Container>
       <Header />
-      <div className="order-info-wrapper">
+      <div className="fav-list">
         <h2>My Favorite List</h2>
-        {userOrder.map((item) => (
-          <DishItem
-            key={String(item.dish_id)}
-            handleOrderItemDelete={handleOrderItemDelete}
-            images={images}
-            dishImage={item.dish_img}
-            dishPrice={item.item_price_at_time}
-            dishQuantity={item.quantity}
-            dishName={item.dish_name}
-            dishId={item.dish_id}
-            dishDesc={item.desc}
-          />
-        ))}
+        <div className="fav-display">
+
+          {userOrder.map((item) => (
+            <div className="fav-item" key={String(item.dish_id)}>
+              <DishItem
+                handleOrderItemDelete={handleOrderItemDelete}
+                images={images}
+                dishImage={item.dish_img}
+                dishPrice={item.item_price_at_time}
+                dishQuantity={item.quantity}
+                dishName={item.dish_name}
+                dishId={item.dish_id}
+                dishDesc={item.desc}
+              />
+            </div>
+
+          ))}
+        </div>
+
       </div>
-      <div className="payment-wrapper"></div>
+      <Footer />
     </Container>
   );
 }

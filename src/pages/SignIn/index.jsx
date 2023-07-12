@@ -37,6 +37,7 @@ export function SignIn() {
           <Input
             onChange={e => setPassword(e.target.value)}
             id='password'
+            type='password'
             placeholder='password'
           />
         </label>

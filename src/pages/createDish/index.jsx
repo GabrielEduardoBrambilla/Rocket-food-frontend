@@ -8,6 +8,7 @@ import { IngredientFormItem } from "../../components/IngredientFormItem"
 
 import { PiCaretLeftBold } from 'react-icons/pi'
 import { FiUpload } from 'react-icons/fi'
+import sharp from "sharp";
 
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -50,9 +51,22 @@ export function CreateDish() {
   };
   function handleImageChange(e) {
     const file = e.target.files[0]; // Get the first selected file
-    setDishImg(file)
-    setDishImgPreview(URL.createObjectURL(file))
 
+    // Perform image compression
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const imageData = event.target.result;
+      const compressedImage = await compressImage(imageData);
+      setDishImg(compressedImage);
+      setDishImgPreview(URL.createObjectURL(compressedImage));
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  async function compressImage(imageData) {
+    return await sharp(imageData)
+      .resize({ width: 1020 }) // Adjust the width as per your requirements
+      .toBuffer();
   }
   function handleAddIngredient() {
     setIngredients(prevState => [...prevState, newIngredient])

@@ -28,6 +28,7 @@ export const Container = styled.div`
       font-style: normal;
       font-weight: 500;
       line-height: 140%;
+      margin-top: 10px;
     }
   }
 

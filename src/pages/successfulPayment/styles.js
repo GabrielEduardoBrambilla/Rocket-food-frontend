@@ -3,86 +3,94 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   min-height: 100%;
   height: 100vh;
+  gap: 16px;
   background-color: ${({ theme }) => theme.COLORS.DARK[400]};
+  font-family: Poppins;
 
-  .hidden {
-    display: none;
-  }
-  .order-info-wrapper {
+  .back-btn {
     display: flex;
-    flex-direction: column;
-    width: 350px;
-    margin: 25px auto;
-    gap: 25px;
-
-    > .orderPrice {
-      font-size: 20px;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 160%;
-      padding: 0 0 20px 0;
+    align-items: center;
+    width: 90vw;
+    padding: 10vh;
+    font-size: 18px;
+    font-weight: 500;
+    > svg {
+      cursor: pointer;
     }
-
-    > h2 {
-      color: ${({ theme }) => theme.COLORS.LIGHT[300]};
-      font-size: 32px;
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 140%;
+    > span {
+      cursor: pointer;
     }
   }
-  .payment-wrapper {
+  .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
-    > p {
-      display: flex;
-      align-items: left;
-      width: 350px;
-      color: ${({ theme }) => theme.COLORS.LIGHT[300]};
+    justify-content: center;
 
-      font-family: Poppins;
-      font-size: 32px;
+    > p {
+      font-size: 27px;
       font-style: normal;
-      font-weight: 500;
-      line-height: 140%;
+      font-weight: 600;
+    }
+    span {
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
     }
   }
-
-  @media (min-width: 1300px) {
-    .payment-wrapper {
+  .thanks {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1vh;
+    color: ${({ theme }) => theme.COLORS.RED[300]};
+    flex-direction: column;
+    > p {
       display: flex;
-      flex-direction: column;
+      text-align: center;
       align-items: center;
-      width: 530px;
-
-      p {
-        width: 530px;
-        align-items: left;
+      font-size: 16px;
+      font-style: normal;
+      gap: 3px;
+      font-weight: 400;
+    }
+    > span {
+      a {
+        text-decoration: none !important;
+        &:hover {
+          color: ${({ theme }) => theme.COLORS.RED[200]};
+        }
+        &:visited {
+          color: ${({ theme }) => theme.COLORS.RED[300]};
+        }
       }
     }
-
+  }
+  @media (min-width: 1300px) {
     .wrapper {
-      display: flex;
-      width: 90%;
-      margin: auto;
-      flex-direction: row;
-      justify-content: space-around;
-      .order-info-wrapper {
-        width: 350px;
-        margin: unset;
+      > p {
+        font-size: 40px;
       }
-      .payment-wrapper {
-        width: 550px;
+      > span {
+        font-size: 24px;
       }
     }
-    background-color: ${({ theme }) => theme.COLORS.DARK[400]};
-    color: ${({ theme }) => theme.COLORS.LIGHT[400]};
+    .thanks {
+      > p {
+        font-size: 28px;
+      }
+      > span {
+        font-size: 24px;
+      }
+    }
+    .back-btn {
+      font-size: 24px;
+      font-weight: 700;
+    }
   }
 `

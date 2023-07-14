@@ -9,19 +9,19 @@
 <h1 align="center">Rocket Food Frontend</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8">
+ 
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8" /> -->
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{GabrielEduardoBrambilla}}/rocket-food-frontend?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
@@ -46,23 +46,37 @@
 
 ## :dart: About
 
-Describe your project
+Food Explorer is a web application for a restaurant. After registering on the platform, users will be able to create orders, pay for them, and create a favorite list. There is also a profile customization feature, favorites filtering, a search field, and a contact section with the restaurant. The shopping cart is fully functional, using Stripe Payment Elements to display the best payment options for the user based on their location. The administrator has the ability to create, edit, and remove dishes as desired. The project has some additional features such as the ability to toggle between dark and light page themes, perform fuzzy search, and search simultaneously by ingredients and dish name. Most importantly, the application is responsive for use on different types of devices!
 
 ## :sparkles: Features
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Fuzzy Search;\
+:heavy_check_mark: Stripe Payment Element;\
+:heavy_check_mark: User menu;
+
+## 🎨 Layout
+
+A página inicial em formato desktop é vista na imagem abaixo:
+
+![foodexplorer layout_top](https://i.imgur.com/cV6E5bW.jpeg)
+
+![foodexplorer layout_middle](https://i.imgur.com/2qj8Iiu.jpeg)
 
 ## :rocket: Technologies
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Fuse](https://www.fusejs.io)
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Router Dom](https://react-icons.github.io/react-icons/)
+- [ReactJs](https://reactjs.org)
+- [Stripe](https://stripe.com/)
+- [Styled Components](https://styled-components.com/)
+- [Swiper](https://swiperjs.com/)
+- [Vite](https://vitejs.dev/)
 
 ## :white_check_mark: Requirements
 
@@ -72,25 +86,22 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/rocket-food-frontend
+$ git clone https://github.com/{{GabrielEduardoBrambilla}}/rocket-food-frontend
 
 # Access
 $ cd rocket-food-frontend
 
 # Install dependencies
-$ yarn
+$ npm
 
 # Run the project
-$ yarn start
+$ npm run dev
 
-# The server will initialize in the <http://localhost:3000>
 ```
 
 ## :memo: License
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/{{GabrielEduardoBrambilla}}" target="_blank">{{Gabriel Eduardo Brambilla}}</a>
 
 &#xa0;
 

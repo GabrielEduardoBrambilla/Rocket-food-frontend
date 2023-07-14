@@ -30,7 +30,7 @@
 <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
 <a href="#memo-license">License</a> &#xa0; | &#xa0;
 <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Author</a> &#xa0; | &#xa0;
-<a href="https://rocketfoodfrontend.netlify.app">App on Netlify</a>
+<a href="https://roketfood.netlify.app">App on Netlify</a>
 
 </p>
 
@@ -58,7 +58,7 @@ The provided image showcases the desktop version of the homepage. However, there
 
 **App access**
 
-- Link: [rocket food](https://rocketfoodfrontend.netlify.app)
+- Link: [rocket food](https://roketfood.netlify.app)
 
 **Common User**
 

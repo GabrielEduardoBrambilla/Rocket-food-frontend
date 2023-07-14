@@ -56,7 +56,7 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 
 ## 🎨 Layout
 
-A página inicial em formato desktop é vista na imagem abaixo:
+The desktop format home page is seen in the image below
 
 ![foodexplorer layout_top](https://i.imgur.com/cV6E5bW.jpeg)
 
@@ -104,5 +104,9 @@ $ npm run dev
 Made with :heart: by <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Gabriel Eduardo Brambilla</a>
 
 &#xa0;
+
+The Frontend is hosted directly on Netlify.
+
+## [and it's available here](https://roketfood.netlify.app)
 
 <a href="#top">Back to top</a>

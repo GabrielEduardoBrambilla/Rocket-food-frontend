@@ -35,11 +35,27 @@
 
 Food Explorer is a web application for a restaurant. After registering on the platform, users will be able to create orders, pay for them, and create a favorite list. There is also a profile customization feature, favorites filtering, a search field, and a contact section with the restaurant. The shopping cart is fully functional, using Stripe Payment Elements to display the best payment options for the user based on their location. The administrator has the ability to create, edit, and remove dishes as desired. The project has some additional features such as the ability to toggle between dark and light page themes, perform fuzzy search, and search simultaneously by ingredients and dish name. Most importantly, the application is responsive for use on different types of devices!
 
+## :bulb: User Guide
+
+Common User
+Login: user@gmail.com  
+Password: 123
+(normal users can be registered in the signUp page, but as the api is hosted in a free service provider, it may take a while)
+
+Admin User
+Login: admin@gmail.com
+Password: 123
+
+Test Credit Card:
+Card Number: 4242 4242 4242 4242
+Expiration: any 3 digits
+CVC: any future date
+
 ## :sparkles: Features
 
-:heavy_check_mark: Fuzzy Search;\
-:heavy_check_mark: Stripe Payment Element;\
-:heavy_check_mark: User menu;
+:white_check_mark: Fuzzy Search;\
+:white_check_mark: Stripe Payment Element;\
+:white_check_mark: User menu;
 
 ## 🎨 Layout
 
@@ -88,7 +104,7 @@ $ npm run dev
 
 ## :memo: License
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
 
 Made with :heart: by <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Gabriel Eduardo Brambilla</a>
 

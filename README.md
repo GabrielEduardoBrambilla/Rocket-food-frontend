@@ -23,8 +23,7 @@
   <a href=🎨>Layout</a> &#xa0; | &#xa0;
   <a href="#bulb-user-guide">User Guide</a> &#xa0; | &#xa0;
   <a href="#sparkler-layout">Layout</a> &#xa0; | &#xa0;
-
-<a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a>
 
 </p>
 <p align="center">

@@ -5,8 +5,9 @@
 
 </div>
 
-<h1 align="center">Rocket Food Frontend</h1>
 <a href="https://rocketfoodfrontend.netlify.app">App on netlify</a>
+
+<h1 align="center">Rocket Food Frontend</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8">

@@ -5,7 +5,6 @@
 
 </div>
 
-
 <h1 align="center">Rocket Food Frontend</h1>
 
 <p align="center">
@@ -36,11 +35,26 @@
 
 Food Explorer is a web application for a restaurant. After registering on the platform, users will be able to create orders, pay for them, and create a favorite list. There is also a profile customization feature, favorites filtering, a search field, and a contact section with the restaurant. The shopping cart is fully functional, using Stripe Payment Elements to display the best payment options for the user based on their location. The administrator has the ability to create, edit, and remove dishes as desired. The project has some additional features such as the ability to toggle between dark and light page themes, perform fuzzy search, and search simultaneously by ingredients and dish name. Most importantly, the application is responsive for use on different types of devices!
 
+## :sparkles: Features
+
+:white_check_mark: Fuzzy Search;\
+:white_check_mark: Stripe Payment Element;\
+:white_check_mark: User menu;
+
+## 🎨 Layout
+
+The provided image showcases the desktop version of the homepage. However, there is a mobile version that is not shown to prevent the article from becoming too long.
+
+![foodexplorer layout_top](https://i.imgur.com/cV6E5bW.jpeg)
+
+![foodexplorer layout_middle](https://i.imgur.com/2qj8Iiu.jpeg)
+
 ## :bulb: User Guide
 
 **App access**
+
 - Link: [rocket food](https://rocketfoodfrontend.netlify.app)
-  
+
 **Common User**
 
 - Login: user@gmail.com
@@ -58,20 +72,6 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 - Card Number: 4242 4242 4242 4242
 - Expiration: Any 3 digits
 - CVC: Any future date
-
-## :sparkles: Features
-
-:white_check_mark: Fuzzy Search;\
-:white_check_mark: Stripe Payment Element;\
-:white_check_mark: User menu;
-
-## 🎨 Layout
-
-The provided image showcases the desktop version of the homepage. However, there is a mobile version that is not shown to prevent the article from becoming too long.
-
-![foodexplorer layout_top](https://i.imgur.com/cV6E5bW.jpeg)
-
-![foodexplorer layout_middle](https://i.imgur.com/2qj8Iiu.jpeg)
 
 ## :rocket: Technologies
 

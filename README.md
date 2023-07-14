@@ -3,7 +3,8 @@
 
 &#xa0;
 
-  <!-- <a href="https://rocketfoodfrontend.netlify.app">Demo</a> -->
+<a href="https://rocketfoodfrontend.netlify.app">App on netlify</a>
+
 </div>
 
 <h1 align="center">Rocket Food Frontend</h1>
@@ -16,21 +17,8 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8">
 
   <img alt="License" src="https://img.shields.io/github/license/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8">
- 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8" /> -->
 </p>
-
-<!-- Status -->
-
-<!-- <h4 align="center">
-	🚧  Rocket Food Frontend 🚀 Under construction...  🚧
-</h4>
-
-<hr> -->
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -103,10 +91,9 @@ $ npm run dev
 
 Made with :heart: by <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Gabriel Eduardo Brambilla</a>
 
-&#xa0;
-
 The Frontend is hosted directly on Netlify.
 
-## [and it's available here](https://roketfood.netlify.app)
+## [It is available here](https://roketfood.netlify.app)
 
+&#xa0;
 <a href="#top">Back to top</a>

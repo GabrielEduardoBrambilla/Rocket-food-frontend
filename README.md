@@ -5,7 +5,6 @@
 
 </div>
 
-<a href="https://rocketfoodfrontend.netlify.app">App on netlify</a>
 
 <h1 align="center">Rocket Food Frontend</h1>
 
@@ -17,7 +16,6 @@
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8">
 
   <img alt="License" src="https://img.shields.io/github/license/GabrielEduardoBrambilla/rocket-food-frontend?color=56BEB8">
-
 </p>
 
 <p align="center">
@@ -27,7 +25,9 @@
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Author</a>
+  <a href="https://github.com/GabrielEduardoBrambilla" target="_blank">Author</a> &#xa0; | &#xa0;
+ <a href="https://rocketfoodfrontend.netlify.app">App on Netlify</a>
+  
 </p>
 
 <br>
@@ -38,6 +38,9 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 
 ## :bulb: User Guide
 
+**App access**
+- Link: [rocket food](https://rocketfoodfrontend.netlify.app)
+  
 **Common User**
 
 - Login: user@gmail.com

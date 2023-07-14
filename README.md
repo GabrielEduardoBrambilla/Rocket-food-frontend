@@ -37,19 +37,23 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 
 ## :bulb: User Guide
 
-Common User<br>
-Login: user@gmail.com <br>
-Password: 123<br>
-(normal users can be registered in the signUp page, but as the api is hosted in a free service provider, it may take a while)
+**Common User**
 
-Admin User<br>
-Login: admin@gmail.com<br>
-Password: 123
+- Login: user@gmail.com
+- Password: 123
 
-Test Credit Card:<br>
-Card Number: 4242 4242 4242 4242<br>
-Expiration: any 3 digits<br>
-CVC: any future date
+(Note: Normal users can register on the signUp page, but please be aware that as the API is hosted on a free service provider, it may take some time for the registration process to complete.)
+
+**Admin User**
+
+- Login: admin@gmail.com
+- Password: 123
+
+**Test Credit Card Details:**
+
+- Card Number: 4242 4242 4242 4242
+- Expiration: Any 3 digits
+- CVC: Any future date
 
 ## :sparkles: Features
 
@@ -59,7 +63,7 @@ CVC: any future date
 
 ## 🎨 Layout
 
-The desktop format home page is seen in the image below
+The provided image showcases the desktop version of the homepage. However, there is a mobile version that is not shown to prevent the article from becoming too long.
 
 ![foodexplorer layout_top](https://i.imgur.com/cV6E5bW.jpeg)
 

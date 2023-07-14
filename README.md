@@ -21,9 +21,13 @@
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href=🎨>Layout</a> &#xa0; | &#xa0;
+  <a href="#bulb-user-guide">User Guide</a> &#xa0; | &#xa0;
+  <a href="#sparkler-layout">Layout</a> &#xa0; | &#xa0;
 
-<a href="#bulb">User Guide</a> &#xa0; | &#xa0;
 <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+
+</p>
+<p align="center">
 <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
 <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
 <a href="#memo-license">License</a> &#xa0; | &#xa0;
@@ -44,7 +48,7 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 :white_check_mark: Stripe Payment Element;\
 :white_check_mark: User menu;
 
-## 🎨 Layout
+## :sparkler: Layout
 
 The provided image showcases the desktop version of the homepage. However, there is a mobile version that is not shown to prevent the article from becoming too long.
 

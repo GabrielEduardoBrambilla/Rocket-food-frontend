@@ -25,6 +25,7 @@ export function CreateDish() {
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+  const navigate = useNavigate();
   // const navigate = useNavigate()
 
   const handleSubmit = () => {
@@ -39,6 +40,8 @@ export function CreateDish() {
     api.post("/dishes/", formData)
       .then(() => {
         alert("Add to favorites");
+        navigate("/");
+
       })
       .catch((error) => {
         if (error.response) {

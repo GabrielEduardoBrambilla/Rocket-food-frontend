@@ -19,8 +19,12 @@ export const Container = styled.button`
   font-size: 14px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.COLORS.RED[200]};
+    opacity: 0.9;
   }
+  &:active {
+    background-color: ${({ theme }) => theme.COLORS.RED[400]};
+  }
+
   &:disabled {
     background-color: ${({ theme }) => theme.COLORS.RED[400]};
   }

@@ -5,6 +5,7 @@ import { Stepper } from '../Stepper'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { toast } from 'react-toastify'
 
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +34,15 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           id_dish: id_Dish
         })
           .then(() => {
+            toast.success('Add to favorites', {
+              position: 'bottom-left',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              theme: 'light'
+            })
           }).catch(error => {
             if (error.response) {
               alert(error.response.data.message);
@@ -49,6 +59,15 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           }
         })
           .then(() => {
+            toast.success('Removed from favorites', {
+              position: 'bottom-left',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              theme: 'light'
+            })
           }).catch(error => {
             if (error.response) {
               alert(error.response.data.message);
@@ -72,7 +91,39 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
         id_dish: id_Dish,
         selectedQuantity: quantity,
         dishPrice: price
-      });
+      }).then(() => {
+        toast.success('Added to order sucessfully', {
+          position: 'bottom-left',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light'
+        })
+      }).catch(error => {
+        if (error.response) {
+          toast.error(error.response.data.message, {
+            position: 'bottom-left',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
+        } else {
+          toast.error("Not possible to be deleted", {
+            position: 'bottom-left',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
+        }
+      });;
     }
 
     fetch()

@@ -31,22 +31,49 @@ export function EditDish() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchDish() {
-      const response = await api.get(`/dishes/show/${id}`);
-      const ingredients = response.data.ingredients;
-      setIngredients(ingredients);
-      setDishImg(response.data.image)
-      setName(response.data.name)
-      setSelectedCategory(response.data.category)
-      setPrice(response.data.price)
-      setDescription(response.data.description)
 
-
-    }
     fetchDish()
   }, [id], dishImg, dishImgPreview)
 
+  async function fetchDish() {
+    const response = await api.get(`/dishes/show/${id}`);
+    const ingredients = response.data.ingredients;
+    setIngredients(ingredients);
+    setDishImg(response.data.image)
+    setName(response.data.name)
+    setSelectedCategory(response.data.category)
+    setPrice(response.data.price)
+    setDescription(response.data.description)
+  }
+  async function handleSubmit() {
+    const formData = new FormData();
+    formData.append("price", price);
+    console.log(price)
+    formData.append("name", name);
+    console.log(name)
+    formData.append("description", description);
+    console.log(description)
+    formData.append("category", selectedCategory);
+    console.log(selectedCategory)
+    formData.append("ingredients", JSON.stringify(ingredients));
+    console.log(ingredients)
+    formData.append("image", dishImg);
+    formData.append("id", id);
 
+    dishImg ? console.log("Tem imagem") : console.log("Nao tem")
+
+    api.patch(`/dishes/patch/`, formData)
+      .then(() => {
+        alert("Dish updated");
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Not possible to update dish");
+        }
+      });
+  }
 
   function handleImageChange(e) {
     const file = e.target.files[0]; // Get the first selected file
@@ -65,28 +92,6 @@ export function EditDish() {
     setSelectedCategory(event.target.value);
   }
 
-  function handleSubmit() {
-    const formData = new FormData();
-    formData.append("price", price);
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("category", selectedCategory);
-    formData.append("ingredients", JSON.stringify(ingredients));
-    formData.append("image", dishImg);
-
-    api.post("/dishes/", formData)
-      .then(() => {
-        alert("Add to favorites");
-      })
-      .catch((error) => {
-        if (error.response) {
-          alert(error.response.data.message);
-        } else {
-          alert("Not possible to be added to favorites");
-        }
-      });
-  }
-
   function handleBackButton() {
     navigate.goBack(); // Go back to the previous page in the history
   }
@@ -98,6 +103,8 @@ export function EditDish() {
       alert(responseDelete.data.message);
       navigate("/")
     } catch (error) {
+
+      console.warn(id);
       console.error(error);
       // Handle error
     }

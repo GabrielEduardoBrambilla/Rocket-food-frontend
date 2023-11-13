@@ -7,6 +7,8 @@ import { Routes } from './routes'
 import React, { useEffect, useState } from 'react'
 import LightTheme from './styles/LightTheme'
 import DarkTheme from './styles/DarkTheme'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const { theme, toggleTheme } = useThemeToggle();
@@ -26,6 +28,7 @@ export default function App() {
           <Routes />
           <button id='toggleButton' className='toggleHide' onClick={toggleTheme}>sadas</button>
         </AuthProvider>
+        <ToastContainer />
       </ThemeProvider>
     </React.StrictMode>
   );

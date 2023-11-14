@@ -48,9 +48,8 @@ export function EditDish() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    api.put(`dishes/ok/`,
+    api.put(`dishes/update`,
       {
-        formDataEdit,
         price: price,
         name: name,
         description: description,

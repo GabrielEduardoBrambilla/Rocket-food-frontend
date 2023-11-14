@@ -44,7 +44,7 @@ Food Explorer is a web application for a restaurant. After registering on the pl
 
 :white_check_mark: Fuzzy Search;\
 :white_check_mark: Stripe Payment Element;\
-:white_check_mark: User menu;
+:white_check_mark: Toastify notifications;
 
 ## :sparkler: Layout
 
@@ -83,6 +83,7 @@ The provided image showcases the desktop version of the homepage. However, there
 The following tools were used in this project:
 
 - [Axios](https://www.npmjs.com/package/axios)
+- [Toastify](https://fkhadra.github.io/react-toastify/introduction)
 - [Fuse](https://www.fusejs.io)
 - [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken)

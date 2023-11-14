@@ -6,6 +6,7 @@ import { Textarea } from '../../components/Textarea'
 import { IncludeButton } from '../../components/IncludeButton';
 import { IngredientFormItem } from "../../components/IngredientFormItem"
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 
 import { PiCaretLeftBold } from 'react-icons/pi'
 import { FiUpload } from 'react-icons/fi'
@@ -29,7 +30,8 @@ export function CreateDish() {
   const navigate = useNavigate();
   // const navigate = useNavigate()
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append("price", price);
     formData.append("name", name);
@@ -40,15 +42,37 @@ export function CreateDish() {
 
     api.post("/dishes/", formData)
       .then(() => {
-        alert("Add to favorites");
-        navigate("/");
-
+        toast.success('Dish created', {
+          position: 'bottom-left',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light'
+        })
       })
       .catch((error) => {
         if (error.response) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message, {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
         } else {
-          alert("Not possible to be added to favorites");
+          toast.error("Not possible to create dish", {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
         }
       });
   };

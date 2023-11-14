@@ -34,6 +34,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           id_dish: id_Dish
         })
           .then(() => {
+
             toast.success('Add to favorites', {
               position: 'bottom-left',
               autoClose: 2000,
@@ -59,7 +60,7 @@ export function Card({ redirect, id_Dish, img, price, title, description, ...res
           }
         })
           .then(() => {
-            toast.success('Removed from favorites', {
+            toast.error('Removed from favorites', {
               position: 'bottom-left',
               autoClose: 2000,
               hideProgressBar: false,

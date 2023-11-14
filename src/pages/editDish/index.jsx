@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export function EditDish() {
   const [dishImg, setDishImg] = useState("");
@@ -31,7 +32,6 @@ export function EditDish() {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     fetchDish()
   }, [id], dishImg, dishImgPreview)
 
@@ -47,17 +47,6 @@ export function EditDish() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const formDataEdit = new FormData();
-    formDataEdit.append("price", price);
-    formDataEdit.append("name", name);
-    formDataEdit.append("description", description);
-    formDataEdit.append("category", selectedCategory);
-    // formDataEdit.append("ingredients", );
-    // formDataEdit.append("image", dishImg);
-    formDataEdit.append("id", id);
-
-
-    console.log(formDataEdit)
 
     api.put(`dishes/ok/`,
       {
@@ -71,17 +60,40 @@ export function EditDish() {
       }
     )
       .then(() => {
-        alert("Dish updated");
+        toast.success("Dish updated", {
+          position: 'bottom-left',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light'
+        })
       })
       .catch((error) => {
         if (error.response) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message, {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
         } else {
-          alert("Not possible to update dish");
+          toast.error("Not possible to update dish", {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
         }
       });
   }
-
   function handleImageChange(e) {
     const file = e.target.files[0]; // Get the first selected file
     setDishImg(file)
@@ -93,18 +105,12 @@ export function EditDish() {
     setIngredients(prevState => [...prevState, { name: newIngredient, id_dishes: id }])
     setNewIngredient("")
   }
-  useEffect(() => {
-
-    console.log(ingredients)
-  }, [ingredients])
-
   function handleRemoveIngredient(deleted) {
     setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
   }
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
   }
-
   function handleBackButton() {
     navigate.goBack(); // Go back to the previous page in the history
   }
@@ -113,7 +119,7 @@ export function EditDish() {
   async function handleDelete() {
     try {
       const responseDelete = await api.delete(`/dishes/delete/${id}`);
-      alert(responseDelete.data.message);
+      alert("deu ");
       navigate("/")
     } catch (error) {
 

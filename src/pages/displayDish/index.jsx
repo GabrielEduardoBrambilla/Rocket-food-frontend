@@ -10,6 +10,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Stepper } from '../../components/Stepper'
 import { useAuth } from "../../hooks/auth";
+import { toast } from 'react-toastify'
 
 export function DisplayDish() {
   const { id } = useParams();
@@ -21,16 +22,44 @@ export function DisplayDish() {
 
   function handleOrderInclude() {
     async function fetch() {
-      console.log("User " + user.id)
-      console.log("Dish " + dish.id)
-      console.log("Quant " + quantity)
-      console.log("Price " + dish.price)
       await api.post(`/order/`, {
         id_user: user.id,
         id_dish: dish.id,
         selectedQuantity: quantity,
         dishPrice: dish.price
-      });
+      }).then(() => {
+        toast.success("Add to order", {
+          position: 'bottom-left',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light'
+        })
+      }).catch((error) => {
+        if (error.response) {
+          toast.error(error.response.data.message, {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
+        } else {
+          toast.error("Error adding to order", {
+            position: 'bottom-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light'
+          })
+        }
+      });;
     }
     console.log(dish)
     fetch()

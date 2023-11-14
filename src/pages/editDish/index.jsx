@@ -45,24 +45,31 @@ export function EditDish() {
     setPrice(response.data.price)
     setDescription(response.data.description)
   }
-  async function handleSubmit() {
-    const formData = new FormData();
-    formData.append("price", price);
-    console.log(price)
-    formData.append("name", name);
-    console.log(name)
-    formData.append("description", description);
-    console.log(description)
-    formData.append("category", selectedCategory);
-    console.log(selectedCategory)
-    formData.append("ingredients", JSON.stringify(ingredients));
-    console.log(ingredients)
-    formData.append("image", dishImg);
-    formData.append("id", id);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formDataEdit = new FormData();
+    formDataEdit.append("price", price);
+    formDataEdit.append("name", name);
+    formDataEdit.append("description", description);
+    formDataEdit.append("category", selectedCategory);
+    // formDataEdit.append("ingredients", );
+    // formDataEdit.append("image", dishImg);
+    formDataEdit.append("id", id);
 
-    dishImg ? console.log("Tem imagem") : console.log("Nao tem")
 
-    api.patch(`/dishes/patch/`, formData)
+    console.log(formDataEdit)
+
+    api.put(`dishes/ok/`,
+      {
+        formDataEdit,
+        price: price,
+        name: name,
+        description: description,
+        category: selectedCategory,
+        ingredients: JSON.stringify(ingredients),
+        id: id
+      }
+    )
       .then(() => {
         alert("Dish updated");
       })
@@ -82,9 +89,15 @@ export function EditDish() {
 
   }
   function handleAddIngredient() {
-    setIngredients(prevState => [...prevState, newIngredient])
+
+    setIngredients(prevState => [...prevState, { name: newIngredient, id_dishes: id }])
     setNewIngredient("")
   }
+  useEffect(() => {
+
+    console.log(ingredients)
+  }, [ingredients])
+
   function handleRemoveIngredient(deleted) {
     setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
   }
@@ -161,8 +174,7 @@ export function EditDish() {
               <div className="ingredient">
                 {
                   ingredients.map((ingredient, index) => (
-
-                    <IngredientFormItem value={ingredient.name}
+                    < IngredientFormItem value={ingredient.name}
                       key={String(index)}
                       onClick={() => handleRemoveIngredient(ingredient)}
 
@@ -183,7 +195,8 @@ export function EditDish() {
               Price
               <Input
                 value={price}
-                onChange={e => setPrice(e.target.value)}
+                name="price"
+                // onChange={e => setPrice(e.target.value)}
                 id='price'
                 placeholder='Ex: 10 [just the number]'
                 type="number"
@@ -205,7 +218,7 @@ export function EditDish() {
           </label>
 
           <div className="third-wrapper">
-            <p className='deleteButton' onClick={handleDelete} >Delete Dish</p>
+            <p className='deleteButton' onClick={(event) => { handleDelete(event) }} >Delete Dish</p>
             <IncludeButton className='IncludeButton' onClick={handleSubmit} title='Save Edit' type='submit' />
           </div>
 
